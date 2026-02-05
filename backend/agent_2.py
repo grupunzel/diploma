@@ -4,19 +4,21 @@ from langchain_core.messages import SystemMessage
 import json
 from agent2_prompt import prompt_for_agent_2
 from agent_1 import create_test
+from database_functions import check_user_answer
 
 gigachat = GigaChat(temperature=0,
                     top_p=0.1,
                     credentials=Settings.GIGA_CREDENTIALS,
-                    model="GigaChat-2-Lite",
+                    model="GigaChat-2",
                     verify_ssl_certs=False)
 
 def check_answers():
 
-    content = create_test()
+    test_id, content = create_test()
 
     prompt = prompt_for_agent_2.format(
-                        content=content)
+                        content=content,
+                        test_id=test_id)
 
     try:
         response = gigachat.invoke([SystemMessage(content=prompt)])
@@ -29,6 +31,7 @@ def check_answers():
             result = json.loads(content)
         else:
             result = [json.loads(content)]
-        return result
+        user_id = check_user_answer(result)
+        return [result, user_id, test_id]
     except Exception as e:
-        print('Error: ', e)
+        logger.error('Error: ', e)

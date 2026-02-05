@@ -5,7 +5,7 @@ import os
 THIS_DIR = os.path.dirname(os.path.abspath(__file__))
 DB_PATH = os.path.join(os.path.dirname(THIS_DIR), 'ITest.db')
 
-def database_fill(data):
+def database_fill(data: list):
     try:
         with sqlite3.connect(DB_PATH) as db:
             if data is not None:
@@ -16,10 +16,19 @@ def database_fill(data):
                     test_id = result[0] + 1
                 else:
                     test_id = 1
+
+                user_id = data[0].get("user_id")
+                cursor = db.execute("SELECT user_id FROM Users WHERE user_id=?", (user_id,))
+                row = cursor.fetchone()
+                
+                if not row:
+                    new_user_id = add_user()
+                    logger.info(f"Добавлен новый пользователь: {new_user_id}")
+                else:
+                    new_user_id = user_id
                 
                 for i, task in enumerate(data, 1):
                     logger.info(f"Обработка задания {i}/{len(data)}: {task.get('question', 'No question')}")
-                    user_id = task.get("user_id")
                     module = task.get("module")
                     type_ = task.get("type")
                     question = task.get("question")
@@ -30,19 +39,14 @@ def database_fill(data):
                     score = task.get("score", 10)
                     score_earned = task.get("score_earned", 0)
 
-                    cursor = db.execute("SELECT user_id FROM Users WHERE user_id=?", (user_id,))
-                    row = cursor.fetchone()
-                    
-                    if not row:
-                        add_user()
-                        logger.info(f"Добавлен новый пользователь: {user_id}")
-                    
-                    cursor.execute("INSERT INTO TestQuestions (test_id, user_id, module, type, question, answers, right_answer, user_answer, file_answer_path, score, score_earned) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", (test_id, user_id, module, type_, question, answers, right_answer, user_answer, file_answer_path, score, score_earned))
+                    cursor.execute("INSERT INTO TestQuestions (test_id, user_id, module, type, question, answers, right_answer, user_answer, file_answer_path, score, score_earned) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", (test_id, new_user_id, module, type_, question, answers, right_answer, user_answer, file_answer_path, score, score_earned))
                     logger.info(f"Добавлено задание {i} для теста #{test_id}")
 
                 db.commit()
                 logger.info(f"Тест #{test_id} успешно сохранен в БД ({len(data)} вопросов)")
-                return True 
+                cursor = db.execute("SELECT * FROM TestQuestions")
+                print(cursor.fetchall())
+                return test_id
             else:
                 logger.error("Объект data пустой")
                 return False
@@ -70,7 +74,7 @@ def add_user(first_name=None, last_name=None, email=None, is_anonymous=True):
                 last_name = str(user_id)
             db.commit()
             logger.info(f"Создан пользователь #{user_id}: {first_name} {last_name}")
-            return True
+            return user_id
         
     except Exception as e:
         logger.error(f"Ошибка создания пользователя: {e}")
@@ -159,8 +163,48 @@ def update_user_progress(user_id, test_id, report):
             cursor = db.execute("INSERT INTO UserProgress (user_id, test_id, total_score, max_score, percentage, report) VALUES(?, ?, ?, ?, ?, ?)", (user_id, test_id, total_score, max_score, percentage, report))
             db.commit()
             logger.info(f"Тест #{test_id} успешно добавлен в UserProgress")
+            cursor = db.execute("SELECT * FROM UserProgress")
+            print(cursor.fetchall())
             return True
     
     except Exception as e:
         logger.error(f"Ошибка при добавлении теста в UserProgress: {e}")
+        return False
+    
+
+def check_user_answer(data: list):
+    try:
+        with sqlite3.connect(DB_PATH) as db:
+            if data is not None:
+                logger.info(f"Начало проверки заданий для теста #{data[0].get('test_id')}")
+
+                for i, task in enumerate(data, 1):
+                    logger.info(f"Проверка задания {i}/{len(data)}: {task.get('question', 'No question')}")
+                    user_id = task.get("user_id")
+                    test_id = task.get("test_id")
+                    question = task.get("question")
+                    score_earned = task.get("score_earned")
+
+                    logger.info(f"Типы: user_id={type(user_id)}, test_id={type(test_id)}, question={type(question)}")
+
+                    cursor = db.execute("SELECT question_id FROM TestQuestions WHERE test_id=? AND question=?", (test_id, question,))
+                    question_id = cursor.fetchone()
+                    if not question_id:
+                        logger.error(f"Вопрос не найден в БД! user_id={user_id}, test_id={test_id}")
+                    else:
+                        question_id = question_id[0]
+
+                    cursor = db.execute("UPDATE TestQuestions SET score_earned=? WHERE question_id=?", (score_earned, question_id,))
+                    print("Обновили таблицу")
+                    logger.info(f"Задание {i}/{len(data)} успешно проверено")
+
+                db.commit()
+                logger.info(f"Тест #{data[0].get("test_id")} успешно проверен")
+                return user_id
+            else:
+                logger.error("Объект data пустой")
+                return False
+            
+    except Exception as e:
+        logger.error(f"Ошибка проверки заданий: {e}")
         return False

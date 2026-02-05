@@ -28,9 +28,7 @@ def create_test():
             result = json.loads(content)
         else:
             result = [json.loads(content)]
-        database_fill(result)
-        return result
+        test_id = database_fill(result)
+        return [test_id, result]
     except Exception as e:
-        print('Error: ', e)
-
-create_test()
+        logger.error('Error: ', e)
