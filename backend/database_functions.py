@@ -56,7 +56,7 @@ def database_fill(data: list):
         return False
         
           
-def add_user(first_name=None, last_name=None, email=None, is_anonymous=True):
+def add_user(first_name=None, last_name=None, email=None, password=None, is_anonymous=True):
     try:
         with sqlite3.connect(DB_PATH) as db:
             if is_anonymous:
@@ -66,7 +66,7 @@ def add_user(first_name=None, last_name=None, email=None, is_anonymous=True):
                 if cursor.fetchone():
                     logger.warning(f"Пользователь с email {email} уже существует!")
                     return False
-            cursor = db.execute("INSERT INTO Users (first_name, last_name, email) VALUES (?, ?, ?)", (first_name, last_name, email))
+            cursor = db.execute("INSERT INTO Users (first_name, last_name, email, password) VALUES (?, ?, ?)", (first_name, last_name, email, password))
             user_id = cursor.lastrowid
 
             if is_anonymous:
@@ -81,7 +81,7 @@ def add_user(first_name=None, last_name=None, email=None, is_anonymous=True):
         return False
     
 
-def update_user(user_id, first_name, last_name, email):
+def update_user(user_id, first_name, last_name, email, password):
     try:
         with sqlite3.connect(DB_PATH) as db:
             cursor = db.execute("SELECT email FROM Users WHERE user_id=?", (user_id,))
@@ -91,7 +91,7 @@ def update_user(user_id, first_name, last_name, email):
                 if cursor.fetchone():
                     logger.warning("Пользователь с таким email уже существует!")
                     return False
-            cursor = db.execute("UPDATE Users SET first_name=?, last_name=?, email=? WHERE user_id=?", (first_name, last_name, email, user_id,))
+            cursor = db.execute("UPDATE Users SET first_name=?, last_name=?, email=?, password=? WHERE user_id=?", (first_name, last_name, email, user_id, password))
             db.commit()
             logger.info(f"Данные пользователя #{user_id} успешно изменены")
             return True

@@ -22,14 +22,6 @@ prompt = prompt_for_agent_3.format(
 try:
     response = gigachat.invoke([SystemMessage(content=prompt)])
     content = response.content.strip()
-    # if content.startswith('```json') and content.endswith('```'):
-    #     content = content[7:-3].strip()
-    # elif content.startswith('```') and content.endswith('```'):
-    #     content = content[3:-3].strip()
-    # if content.startswith('[') and content.endswith(']'):
-    #     result = json.loads(content)
-    # else:
-    #     result = [json.loads(content)]
     update_user_progress(user_id, test_id, content)
 except Exception as e:
     logger.error('Error: ', e)
