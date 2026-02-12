@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="/frontend/static/sign_up_style.css">
+</head>
+<body>
+    <div class="title">
+        <h3>Sign up</h3>
+    </div>
+
+    <form action="/register" method="POST" enctype="application/x-www-form-urlencoded">
+        <div class="email_input">
+        <input type="text" id="email" name="email" placeholder="email" required>
+        </div>
+        <div class="password_input">
+            <input type="password" id="password" name="password" placeholder="password" required>
+        </div>
+        <div class="submit">
+            <input type="submit" value="Sign up">
+        </div>
+    </form>
+
+    <div class="link">
+        <pre>
+            Already have an account? <a id="sign_in" href="/login">Sign in</a>
+        </pre>
+    </div>
+</body>
+</html>

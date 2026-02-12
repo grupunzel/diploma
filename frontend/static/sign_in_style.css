@@ -1,0 +1,40 @@
+body {
+    background-color: #004225;
+    font-family: 'Gill Sans', sans-serif;
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+.title {
+    color: antiquewhite;
+    text-align: center;
+}
+
+.email_input, .password_input {
+    text-align: center;
+}
+
+input {
+    border-radius: 5px;
+    border: none;
+    height: 25px;
+    margin-bottom: 15px;
+}
+
+.submit, .link {
+    text-align: center;
+}
+
+#sign_in {
+    background-color: antiquewhite;
+    text-decoration: none;
+    color: black;
+    border-radius: 10px;
+    padding: 5px;
+    height: 15px;
+}
+
+#sign_up, pre {
+    color: antiquewhite;
+}

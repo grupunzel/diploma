@@ -1,5 +1,5 @@
 import sqlite3
-from config.logger import logger
+from backend.config.logger import logger
 import os
 
 THIS_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -66,7 +66,7 @@ def add_user(first_name=None, last_name=None, email=None, password=None, is_anon
                 if cursor.fetchone():
                     logger.warning(f"Пользователь с email {email} уже существует!")
                     return False
-            cursor = db.execute("INSERT INTO Users (first_name, last_name, email, password) VALUES (?, ?, ?)", (first_name, last_name, email, password))
+            cursor = db.execute("INSERT INTO Users (first_name, last_name, email, password) VALUES (?, ?, ?, ?)", (first_name, last_name, email, password))
             user_id = cursor.lastrowid
 
             if is_anonymous:
@@ -208,3 +208,67 @@ def check_user_answer(data: list):
     except Exception as e:
         logger.error(f"Ошибка проверки заданий: {e}")
         return False
+    
+
+def sign_in_check(email, password):
+    try:
+        with sqlite3.connect(DB_PATH) as db:
+            cursor = db.execute("SELECT email FROM Users WHERE email=?", (email,))
+            if not cursor.fetchone():
+                logger.error("Неправильная почта")
+                return False
+            
+            cursor = db.execute("SELECT password FROM Users WHERE email=?", (email,))
+            real_password = cursor.fetchone()[0]
+
+            if password == real_password:
+                logger.info("Пароль правильный")
+                return True
+            else:
+                logger.info("Пароль не правильный")
+                return False
+            
+    except Exception as e:
+        logger.error(f"Ошибка сравнения паролей: {e}")
+        return None
+
+
+def sign_up_check(email):
+    try:
+        with sqlite3.connect(DB_PATH) as db:
+            cursor = db.execute("SELECT email FROM Users WHERE email=?", (email,))
+            if cursor.fetchone():
+                logger.error("Пользователь с такой почтой уже существует")
+                return False
+            return True
+    except Exception as e:
+        logger.error(f"Ошибка регистрации пользователя: {e}")
+        return None
+    
+
+def get_user_id(email):
+    try:
+        with sqlite3.connect(DB_PATH) as db:
+            cursor = db.execute("SELECT user_id FROM Users WHERE email=?", (email,))
+            logger.info("Успешно получили id пользователя")
+            return cursor.fetchone()[0]
+    
+    except Exception as e:
+        logger.error(f"Ошибка получения id пользователя: {e}")
+        return False
+    
+
+def check_user_exists(user_id):
+    try:
+        with sqlite3.connect(DB_PATH) as db:
+            cursor = db.execute("SELECT user_id FROM Users WHERE user_id=?", (user_id,))
+            if cursor.fetchone:
+                logger.info("Пользователь существует")
+                return True
+            else:
+                logger.error("Такого пользователя не существует")
+                return False
+    
+    except Exception as e:
+        logger.error(f"Ошибка проверки существования пользователя: {e}")
+        return None

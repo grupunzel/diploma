@@ -1,13 +1,82 @@
-from fastapi import FastAPI, Request
-from fastapi.middleware import Middleware
-from fastapi.responses import JSONResponse
+from fastapi import FastAPI, Form, Request
+from fastapi.responses import HTMLResponse, RedirectResponse
+from fastapi.staticfiles import StaticFiles
+from fastapi.templating import Jinja2Templates
+import hashlib
+from backend.database_functions import sign_up_check, sign_in_check, add_user, get_user_id, check_user_exists
 from backend.config.settings import settings
 from backend.config.logger import logger
-import asyncio
 import os
 import sqlite3
 
-# app = FastAPI()
+app = FastAPI()
+templates = Jinja2Templates(directory="frontend/templates")
+app.mount("/frontend/static", StaticFiles(directory="frontend/static"), name="static")
+
+@app.get("/", response_class=HTMLResponse)
+async def home(request: Request):
+    return templates.TemplateResponse("main.html", {"request": request})
+
+
+@app.get("/profile", response_class=HTMLResponse)
+async def profile_redirect(request: Request):
+    return RedirectResponse(url="/register", status_code=303)
+
+
+@app.get("/register", response_class=HTMLResponse)
+async def register_page(request: Request):
+    return templates.TemplateResponse("sign_up.html", {"request": request})
+
+
+@app.post("/register")
+async def register_user(request: Request, email: str=Form(...), password: str=Form(...)):
+    real_password = hashlib.sha256(password.encode()).hexdigest()
+    if_new_user = sign_up_check(email)
+    if if_new_user:
+        add_user(first_name=None, last_name=None, email=email, password=real_password, is_anonymous=True)
+        return RedirectResponse(url="/login?registered=1", status_code=303)
+    else:
+        return templates.TemplateResponse(
+            "sign_up.html",
+            {"request": request, "error": "Email уже используется"}
+        )
+    
+
+@app.get("/login", response_class=HTMLResponse)
+async def login_page(request: Request, registered: int = 0):
+    message = "You signed in successfully!" if registered == 1 else ""
+    return templates.TemplateResponse(
+        "sign_in.html", 
+        {"request": request, "message": message}
+    )
+
+
+@app.post("/login")
+async def login_user(request: Request, email: str=Form(...), password: str=Form(...)):
+    real_password = hashlib.sha256(password.encode()).hexdigest()
+    check = sign_in_check(email, real_password)
+    if check:
+        print("check = True")
+        user_id = get_user_id(email)
+        return RedirectResponse(url=f"/dashboard/{user_id}", status_code=303)
+    else:
+        return templates.TemplateResponse(
+            "sign_in.html",
+            {"request": request, "error": "Неверный email или пароль"}
+        )
+    
+
+@app.get("/dashboard/{user_id}", response_class=HTMLResponse)
+async def dashboard(request: Request, user_id: int):
+    if_user_exists = check_user_exists(user_id)
+    if if_user_exists:
+        return templates.TemplateResponse(
+        "dashboard.html",
+        {"request": request, "user": user_id}
+    )
+    else:
+        return RedirectResponse(url="/register", status_code=303)
+
 
 def init_db():
     if os.path.exists('ITest.db'):

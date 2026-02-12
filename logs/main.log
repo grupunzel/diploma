@@ -1,0 +1,33 @@
+2026-02-12 11:50:49,607 - database_functions.py - backend.config.logger - ERROR - Ошибка создания пользователя: 3 values for 4 columns
+2026-02-12 11:54:16,553 - database_functions.py - backend.config.logger - ERROR - Ошибка создания пользователя: 3 values for 4 columns
+2026-02-12 11:57:29,950 - database_functions.py - backend.config.logger - ERROR - Ошибка создания пользователя: 3 values for 4 columns
+2026-02-12 11:58:53,504 - database_functions.py - backend.config.logger - ERROR - Ошибка создания пользователя: 3 values for 4 columns
+2026-02-12 12:01:21,016 - database_functions.py - backend.config.logger - INFO - Создан пользователь #1: Аноним _ 1
+2026-02-12 12:02:32,842 - database_functions.py - backend.config.logger - ERROR - Пользователь с такой почтой уже существует
+2026-02-12 12:02:55,896 - database_functions.py - backend.config.logger - INFO - Создан пользователь #2: Аноним _ 2
+2026-02-12 12:06:21,181 - database_functions.py - backend.config.logger - INFO - Создан пользователь #3: Аноним _ 3
+2026-02-12 13:27:05,306 - database_functions.py - backend.config.logger - INFO - Создан пользователь #4: Аноним _ 4
+2026-02-12 13:28:18,924 - database_functions.py - backend.config.logger - INFO - Создан пользователь #5: Аноним _ 5
+2026-02-12 13:34:11,044 - database_functions.py - backend.config.logger - INFO - Создан пользователь #6: Аноним _ 6
+2026-02-12 13:35:26,175 - database_functions.py - backend.config.logger - ERROR - Пользователь с такой почтой уже существует
+2026-02-12 13:42:25,697 - database_functions.py - backend.config.logger - INFO - Создан пользователь #7: Аноним _ 7
+2026-02-12 13:44:28,130 - database_functions.py - backend.config.logger - INFO - Создан пользователь #8: Аноним _ 8
+2026-02-12 13:52:42,235 - database_functions.py - backend.config.logger - INFO - Создан пользователь #9: Аноним _ 9
+2026-02-12 13:54:06,784 - database_functions.py - backend.config.logger - INFO - Создан пользователь #10: Аноним _ 10
+2026-02-12 13:59:18,655 - database_functions.py - backend.config.logger - INFO - Создан пользователь #11: Аноним _ 11
+2026-02-12 14:03:05,296 - database_functions.py - backend.config.logger - INFO - Создан пользователь #12: Аноним _ 12
+2026-02-12 14:09:01,978 - database_functions.py - backend.config.logger - INFO - Создан пользователь #13: Аноним _ 13
+2026-02-12 14:10:20,397 - database_functions.py - backend.config.logger - INFO - Создан пользователь #14: Аноним _ 14
+2026-02-12 14:10:23,762 - database_functions.py - backend.config.logger - INFO - Пароль правильный
+2026-02-12 14:10:23,763 - database_functions.py - backend.config.logger - INFO - Успешно получили id пользователя
+2026-02-12 14:10:23,768 - database_functions.py - backend.config.logger - ERROR - Ошибка проверки существования пользователя: parameters are of unsupported type
+2026-02-12 14:10:30,310 - database_functions.py - backend.config.logger - ERROR - Пользователь с такой почтой уже существует
+2026-02-12 14:13:05,257 - database_functions.py - backend.config.logger - ERROR - Пользователь с такой почтой уже существует
+2026-02-12 14:13:07,243 - database_functions.py - backend.config.logger - ERROR - Пользователь с такой почтой уже существует
+2026-02-12 14:13:19,513 - database_functions.py - backend.config.logger - INFO - Создан пользователь #15: Аноним _ 15
+2026-02-12 14:13:21,758 - database_functions.py - backend.config.logger - INFO - Пароль правильный
+2026-02-12 14:13:21,759 - database_functions.py - backend.config.logger - INFO - Успешно получили id пользователя
+2026-02-12 14:13:21,760 - database_functions.py - backend.config.logger - INFO - Пользователь существует
+2026-02-12 14:14:36,278 - database_functions.py - backend.config.logger - INFO - Пароль правильный
+2026-02-12 14:14:36,279 - database_functions.py - backend.config.logger - INFO - Успешно получили id пользователя
+2026-02-12 14:14:36,283 - database_functions.py - backend.config.logger - INFO - Пользователь существует
