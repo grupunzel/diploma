@@ -4,8 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
+    <link rel="stylesheet" href="/frontend/static/dashboard.css">
 </head>
 <body>
-    <h2>Dashboard</h2>
+    <h2 id="title">Profile</h2>
+    <div class="main">
+        <pre id="user_info" style="color: antiquewhite;">{{user.replace('\n', '<br>')|safe}}</pre>
+
+        <pre id="test_info" style="color: antiquewhite;">{{tests.replace('\n', '<br>')|safe}}</pre>
+    </div>
+    
 </body>
 </html>

@@ -12,10 +12,12 @@ gigachat = GigaChat(temperature=0,
                     verify_ssl_certs=False)
 
 topics = ['Python']
+user_id = 13
 
 def create_test():
     prompt = prompt_for_agent_1.format(
-                        topics=topics)
+                        topics=topics,
+                        user_id=user_id)
 
     try:
         response = gigachat.invoke([SystemMessage(content=prompt)])

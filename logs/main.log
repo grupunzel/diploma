@@ -31,3 +31,122 @@
 2026-02-12 14:14:36,278 - database_functions.py - backend.config.logger - INFO - Пароль правильный
 2026-02-12 14:14:36,279 - database_functions.py - backend.config.logger - INFO - Успешно получили id пользователя
 2026-02-12 14:14:36,283 - database_functions.py - backend.config.logger - INFO - Пользователь существует
+2026-02-14 10:04:03,460 - database_functions.py - backend.config.logger - INFO - Пользователь существует
+2026-02-14 10:04:14,387 - database_functions.py - backend.config.logger - INFO - Создан пользователь #16: Аноним _ 16
+2026-02-14 10:04:17,086 - database_functions.py - backend.config.logger - INFO - Пароль правильный
+2026-02-14 10:04:17,087 - database_functions.py - backend.config.logger - INFO - Успешно получили id пользователя
+2026-02-14 10:04:17,090 - database_functions.py - backend.config.logger - INFO - Пользователь существует
+2026-02-14 10:45:02,540 - database_functions.py - backend.config.logger - INFO - Пароль правильный
+2026-02-14 10:45:02,540 - database_functions.py - backend.config.logger - INFO - Успешно получили id пользователя
+2026-02-14 10:45:02,543 - database_functions.py - backend.config.logger - INFO - Пользователь существует
+2026-02-14 10:45:26,735 - database_functions.py - backend.config.logger - INFO - Пользователь существует
+2026-02-14 10:45:42,288 - database_functions.py - backend.config.logger - INFO - Пользователь существует
+2026-02-14 10:45:42,835 - database_functions.py - backend.config.logger - INFO - Пользователь существует
+2026-02-14 10:45:43,188 - database_functions.py - backend.config.logger - INFO - Пользователь существует
+2026-02-14 10:45:43,356 - database_functions.py - backend.config.logger - INFO - Пользователь существует
+2026-02-14 10:45:43,738 - database_functions.py - backend.config.logger - INFO - Пользователь существует
+2026-02-14 10:46:03,007 - database_functions.py - backend.config.logger - INFO - Пользователь существует
+2026-02-14 10:46:03,452 - database_functions.py - backend.config.logger - INFO - Пользователь существует
+2026-02-14 10:46:03,604 - database_functions.py - backend.config.logger - INFO - Пользователь существует
+2026-02-14 10:46:03,738 - database_functions.py - backend.config.logger - INFO - Пользователь существует
+2026-02-14 10:46:03,886 - database_functions.py - backend.config.logger - INFO - Пользователь существует
+2026-02-14 10:46:11,871 - database_functions.py - backend.config.logger - INFO - Пользователь существует
+2026-02-14 10:46:22,269 - database_functions.py - backend.config.logger - INFO - Пользователь существует
+2026-02-14 10:46:22,789 - database_functions.py - backend.config.logger - INFO - Пользователь существует
+2026-02-14 10:46:28,118 - database_functions.py - backend.config.logger - INFO - Пользователь существует
+2026-02-14 10:46:41,402 - database_functions.py - backend.config.logger - INFO - Пользователь существует
+2026-02-14 11:53:49,427 - database_functions.py - backend.config.logger - INFO - Пользователь существует
+2026-02-14 11:54:04,653 - database_functions.py - backend.config.logger - INFO - Пользователь существует
+2026-02-14 11:54:04,653 - database_functions.py - backend.config.logger - INFO - Успешно вывели информацию о пользователе
+2026-02-14 11:58:40,653 - database_functions.py - backend.config.logger - INFO - Пользователь существует
+2026-02-14 11:58:40,654 - database_functions.py - backend.config.logger - INFO - Успешно вывели информацию о пользователе
+2026-02-14 11:58:41,555 - database_functions.py - backend.config.logger - INFO - Пользователь существует
+2026-02-14 11:58:41,556 - database_functions.py - backend.config.logger - INFO - Успешно вывели информацию о пользователе
+2026-02-14 12:15:57,152 - database_functions.py - backend.config.logger - INFO - Пользователь существует
+2026-02-14 12:15:57,153 - database_functions.py - backend.config.logger - INFO - Успешно вывели информацию о пользователе
+2026-02-14 12:15:57,916 - database_functions.py - backend.config.logger - INFO - Пользователь существует
+2026-02-14 12:15:57,917 - database_functions.py - backend.config.logger - INFO - Успешно вывели информацию о пользователе
+2026-02-14 12:15:58,131 - database_functions.py - backend.config.logger - INFO - Пользователь существует
+2026-02-14 12:15:58,132 - database_functions.py - backend.config.logger - INFO - Успешно вывели информацию о пользователе
+2026-02-14 12:15:58,300 - database_functions.py - backend.config.logger - INFO - Пользователь существует
+2026-02-14 12:15:58,300 - database_functions.py - backend.config.logger - INFO - Успешно вывели информацию о пользователе
+2026-02-14 12:16:06,667 - database_functions.py - backend.config.logger - INFO - Пароль правильный
+2026-02-14 12:16:06,667 - database_functions.py - backend.config.logger - INFO - Успешно получили id пользователя
+2026-02-14 12:16:06,671 - database_functions.py - backend.config.logger - INFO - Пользователь существует
+2026-02-14 12:16:06,671 - database_functions.py - backend.config.logger - INFO - Успешно вывели информацию о пользователе
+2026-02-14 12:16:11,901 - database_functions.py - backend.config.logger - INFO - Пароль правильный
+2026-02-14 12:16:11,902 - database_functions.py - backend.config.logger - INFO - Успешно получили id пользователя
+2026-02-14 12:16:11,907 - database_functions.py - backend.config.logger - INFO - Пользователь существует
+2026-02-14 12:16:11,907 - database_functions.py - backend.config.logger - INFO - Успешно вывели информацию о пользователе
+2026-02-14 12:20:24,515 - database_functions.py - backend.config.logger - ERROR - Пользователь с такой почтой уже существует
+2026-02-14 12:20:27,801 - database_functions.py - backend.config.logger - INFO - Пароль правильный
+2026-02-14 12:20:27,802 - database_functions.py - backend.config.logger - INFO - Успешно получили id пользователя
+2026-02-14 12:20:27,806 - database_functions.py - backend.config.logger - INFO - Пользователь существует
+2026-02-14 12:20:27,807 - database_functions.py - backend.config.logger - INFO - Успешно вывели информацию о пользователе
+2026-02-19 12:06:40,541 - database_functions.py - backend.config.logger - INFO - Пароль правильный
+2026-02-19 12:06:40,543 - database_functions.py - backend.config.logger - INFO - Успешно получили id пользователя
+2026-02-19 12:06:40,546 - database_functions.py - backend.config.logger - INFO - Пользователь существует
+2026-02-19 12:06:40,547 - database_functions.py - backend.config.logger - INFO - Успешно вывели информацию о пользователе
+2026-02-19 12:09:02,116 - database_functions.py - backend.config.logger - INFO - Пользователь существует
+2026-02-19 12:09:02,118 - database_functions.py - backend.config.logger - INFO - Успешно вывели информацию о пользователе
+2026-02-19 12:09:02,647 - database_functions.py - backend.config.logger - INFO - Пользователь существует
+2026-02-19 12:09:02,648 - database_functions.py - backend.config.logger - INFO - Успешно вывели информацию о пользователе
+2026-02-19 12:09:03,031 - database_functions.py - backend.config.logger - INFO - Пользователь существует
+2026-02-19 12:09:03,032 - database_functions.py - backend.config.logger - INFO - Успешно вывели информацию о пользователе
+2026-02-19 12:09:03,194 - database_functions.py - backend.config.logger - INFO - Пользователь существует
+2026-02-19 12:09:03,195 - database_functions.py - backend.config.logger - INFO - Успешно вывели информацию о пользователе
+2026-02-19 12:09:03,947 - database_functions.py - backend.config.logger - INFO - Пользователь существует
+2026-02-19 12:09:03,947 - database_functions.py - backend.config.logger - INFO - Успешно вывели информацию о пользователе
+2026-02-19 12:12:29,648 - database_functions.py - backend.config.logger - INFO - Пользователь существует
+2026-02-19 12:12:29,650 - database_functions.py - backend.config.logger - INFO - Успешно вывели информацию о пользователе
+2026-02-19 12:12:40,577 - database_functions.py - backend.config.logger - INFO - Пароль правильный
+2026-02-19 12:12:40,577 - database_functions.py - backend.config.logger - INFO - Успешно получили id пользователя
+2026-02-19 12:12:40,580 - database_functions.py - backend.config.logger - INFO - Пользователь существует
+2026-02-19 12:12:40,581 - database_functions.py - backend.config.logger - INFO - Успешно вывели информацию о пользователе
+2026-02-19 12:13:25,314 - database_functions.py - backend.config.logger - INFO - Пароль не правильный
+2026-02-19 12:13:28,730 - database_functions.py - backend.config.logger - INFO - Пароль правильный
+2026-02-19 12:13:28,730 - database_functions.py - backend.config.logger - INFO - Успешно получили id пользователя
+2026-02-19 12:13:28,733 - database_functions.py - backend.config.logger - INFO - Пользователь существует
+2026-02-19 12:13:28,734 - database_functions.py - backend.config.logger - INFO - Успешно вывели информацию о пользователе
+2026-02-19 12:16:33,737 - database_functions.py - backend.config.logger - INFO - Пользователь существует
+2026-02-19 12:16:33,740 - database_functions.py - backend.config.logger - INFO - Успешно вывели информацию о пользователе
+2026-02-19 12:16:55,875 - database_functions.py - backend.config.logger - INFO - Пользователь существует
+2026-02-19 12:16:55,876 - database_functions.py - backend.config.logger - INFO - Успешно вывели информацию о пользователе
+2026-02-19 12:16:56,778 - database_functions.py - backend.config.logger - INFO - Пользователь существует
+2026-02-19 12:16:56,779 - database_functions.py - backend.config.logger - INFO - Успешно вывели информацию о пользователе
+2026-02-19 12:17:09,181 - database_functions.py - backend.config.logger - INFO - Пользователь существует
+2026-02-19 12:17:09,182 - database_functions.py - backend.config.logger - INFO - Успешно вывели информацию о пользователе
+2026-02-19 12:17:09,561 - database_functions.py - backend.config.logger - INFO - Пользователь существует
+2026-02-19 12:17:09,562 - database_functions.py - backend.config.logger - INFO - Успешно вывели информацию о пользователе
+2026-02-19 12:18:33,029 - database_functions.py - backend.config.logger - INFO - Пользователь существует
+2026-02-19 12:18:33,029 - database_functions.py - backend.config.logger - INFO - Успешно вывели информацию о пользователе
+2026-02-19 12:18:33,777 - database_functions.py - backend.config.logger - INFO - Пользователь существует
+2026-02-19 12:18:33,777 - database_functions.py - backend.config.logger - INFO - Успешно вывели информацию о пользователе
+2026-02-19 12:18:51,231 - database_functions.py - backend.config.logger - INFO - Пароль правильный
+2026-02-19 12:18:51,232 - database_functions.py - backend.config.logger - INFO - Успешно получили id пользователя
+2026-02-19 12:18:51,237 - database_functions.py - backend.config.logger - INFO - Пользователь существует
+2026-02-19 12:18:51,237 - database_functions.py - backend.config.logger - INFO - Успешно вывели информацию о пользователе
+2026-02-19 12:19:40,061 - database_functions.py - backend.config.logger - INFO - Пользователь существует
+2026-02-19 12:19:40,062 - database_functions.py - backend.config.logger - INFO - Успешно вывели информацию о пользователе
+2026-02-19 12:20:54,732 - database_functions.py - backend.config.logger - INFO - Пользователь существует
+2026-02-19 12:20:54,735 - database_functions.py - backend.config.logger - INFO - Успешно вывели информацию о пользователе
+2026-02-19 12:21:55,560 - database_functions.py - backend.config.logger - INFO - Пользователь существует
+2026-02-19 12:21:55,562 - database_functions.py - backend.config.logger - INFO - Успешно вывели информацию о пользователе
+2026-02-19 12:22:26,746 - database_functions.py - backend.config.logger - INFO - Пользователь существует
+2026-02-19 12:22:26,749 - database_functions.py - backend.config.logger - INFO - Успешно вывели информацию о пользователе
+2026-02-19 12:22:27,743 - database_functions.py - backend.config.logger - INFO - Пользователь существует
+2026-02-19 12:22:27,745 - database_functions.py - backend.config.logger - INFO - Успешно вывели информацию о пользователе
+2026-02-19 12:24:11,510 - database_functions.py - backend.config.logger - INFO - Пользователь существует
+2026-02-19 12:24:11,511 - database_functions.py - backend.config.logger - INFO - Успешно вывели информацию о пользователе
+2026-02-19 12:25:02,177 - database_functions.py - backend.config.logger - INFO - Пользователь существует
+2026-02-19 12:25:02,178 - database_functions.py - backend.config.logger - INFO - Успешно вывели информацию о пользователе
+2026-02-19 12:25:03,025 - database_functions.py - backend.config.logger - INFO - Пользователь существует
+2026-02-19 12:25:03,026 - database_functions.py - backend.config.logger - INFO - Успешно вывели информацию о пользователе
+2026-02-19 12:26:39,070 - database_functions.py - backend.config.logger - INFO - Пользователь существует
+2026-02-19 12:26:39,072 - database_functions.py - backend.config.logger - INFO - Успешно вывели информацию о пользователе
+2026-02-19 12:28:31,615 - database_functions.py - backend.config.logger - INFO - Пользователь существует
+2026-02-19 12:28:31,617 - database_functions.py - backend.config.logger - INFO - Успешно вывели информацию о пользователе
+2026-02-19 12:48:43,507 - database_functions.py - backend.config.logger - INFO - Пароль правильный
+2026-02-19 12:48:43,509 - database_functions.py - backend.config.logger - INFO - Успешно получили id пользователя
+2026-02-19 12:48:43,513 - database_functions.py - backend.config.logger - INFO - Пользователь существует
+2026-02-19 12:48:43,515 - database_functions.py - backend.config.logger - INFO - Успешно вывели информацию о пользователе

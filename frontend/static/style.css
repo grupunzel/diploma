@@ -1,5 +1,5 @@
 body {
-    background-color: #004225;
+    background-color: #fff5e4;
     font-family: 'Gill Sans', sans-serif;
     margin-top: 0px;
     margin-left: 0px;
@@ -12,11 +12,13 @@ body {
     margin-right: 20px;
     margin-bottom: 12px;
     padding-bottom: 3px;
-    background-color: white;
+    background-color: #fff5e4;
     justify-content: space-between;
     border-bottom-left-radius: 25px;
     border-bottom-right-radius: 25px;
     position: sticky;
+    border: #002515 solid 0.5px;
+    border-top: none;
 }
 
 .menu {
@@ -28,7 +30,8 @@ body {
 
 .menu_link {
     text-decoration: none;
-    color: #3d433d;
+    color: #004225;
+    font-weight: 600;
     border-radius: 25px;
     padding-top: 7px;
     width: 80px;
@@ -37,7 +40,7 @@ body {
 }
 
 .menu_link:hover {
-    background-color: #e7e3e0;
+    background-color: #e5d9c3d3;
 }
 
 #profile {
@@ -60,7 +63,7 @@ body {
 
 .main_photo {
     /* background-image: url('pictures/main_photo_5.jpg'); */
-    background-color: white;
+    background-color: #fff5e4;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -99,7 +102,7 @@ body {
     font-size: 25px;
     text-decoration: none;
     background-color: #004225;
-    color: #f6ebd1;
+    color: #fff5e4;
     border-radius: 60px;
     padding-left: 15px;
     padding-right: 15px;
@@ -128,19 +131,19 @@ body {
 
 .info_text {
     margin-top: 30px;
-    background-color: #00321d;
+    background-color: #fff5e4;
     padding-top: 20px;
 }
 
 #info_title_text {
     margin-left: 40px;
-    color: #f4f0ec;
+    color: #004225;
     font-size: 30px;
 }
 
 #info_main_text {
     margin-left: 40px;
-    color: #f4f0ec;
+    color: #004225;
     font-family: 'Gill Sans', sans-serif;
     font-size: 20px;
     font-weight: 300;
@@ -149,9 +152,9 @@ body {
 
 .steps {
     text-align: right;
-    color: #f4f0ec;
+    color: #004225;
     margin-top: 80px;
-    background-color: #00321d;
+    background-color: #fff5e4;
 }
 
 #first_step, #third_step {
@@ -162,7 +165,7 @@ body {
 }
 
 .second_photo {
-    background-color: #00321d;
+    background-color: #fff5e4;
     margin-top: 15px;
     height: 100px;
 }

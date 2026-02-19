@@ -163,8 +163,6 @@ def update_user_progress(user_id, test_id, report):
             cursor = db.execute("INSERT INTO UserProgress (user_id, test_id, total_score, max_score, percentage, report) VALUES(?, ?, ?, ?, ?, ?)", (user_id, test_id, total_score, max_score, percentage, report))
             db.commit()
             logger.info(f"Тест #{test_id} успешно добавлен в UserProgress")
-            cursor = db.execute("SELECT * FROM UserProgress")
-            print(cursor.fetchall())
             return True
     
     except Exception as e:
@@ -195,7 +193,6 @@ def check_user_answer(data: list):
                         question_id = question_id[0]
 
                     cursor = db.execute("UPDATE TestQuestions SET score_earned=? WHERE question_id=?", (score_earned, question_id,))
-                    print("Обновили таблицу")
                     logger.info(f"Задание {i}/{len(data)} успешно проверено")
 
                 db.commit()
@@ -272,3 +269,37 @@ def check_user_exists(user_id):
     except Exception as e:
         logger.error(f"Ошибка проверки существования пользователя: {e}")
         return None
+    
+
+def get_user_info(user_id):
+    try:
+        with sqlite3.connect(DB_PATH) as db:
+            cursor = db.execute("SELECT first_name, last_name, email FROM Users WHERE user_id=?", (user_id,))
+            result = cursor.fetchone()
+            first_name, last_name, email = result
+
+            user_info = f"""
+            {first_name} {last_name} \n
+            {email}
+            """
+
+            cursor = db.execute("SELECT test_id, total_score, max_score, percentage, report FROM UserProgress WHERE user_id=?", (user_id,))
+            result = cursor.fetchall()
+
+            tests_info = []
+            for test in result:
+                test_id, total_score, max_score, percentage, report = test
+
+                test_info = f"""
+                {test_id}: {total_score}/{max_score} ({percentage})
+
+                Отчёт: {report}/n/n
+                """
+                tests_info.append(test_info)
+
+            logger.info("Успешно вывели информацию о пользователе")
+            return user_info, tests_info
+    
+    except Exception as e:
+        logger.error(f"Ошибка вывода информации о пользователе: {e}")
+        return False

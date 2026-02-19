@@ -13,15 +13,21 @@ gigachat = GigaChat(temperature=0,
                     model="GigaChat-2",
                     verify_ssl_certs=False)
 
-content, user_id, test_id = check_answers()
 
-prompt = prompt_for_agent_3.format(
-                    content=content,
-                    topics=topics)
+def make_report():
+    content, user_id, test_id = check_answers()
 
-try:
-    response = gigachat.invoke([SystemMessage(content=prompt)])
-    content = response.content.strip()
-    update_user_progress(user_id, test_id, content)
-except Exception as e:
-    logger.error('Error: ', e)
+    prompt = prompt_for_agent_3.format(
+                        content=content,
+                        topics=topics)
+
+    try:
+        response = gigachat.invoke([SystemMessage(content=prompt)])
+        content = response.content.strip()
+        update_user_progress(user_id, test_id, content)
+        return
+    except Exception as e:
+        logger.error('Error: ', e)
+        return
+    
+    

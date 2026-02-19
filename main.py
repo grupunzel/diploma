@@ -3,7 +3,7 @@ from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 import hashlib
-from backend.database_functions import sign_up_check, sign_in_check, add_user, get_user_id, check_user_exists
+from backend.database_functions import sign_up_check, sign_in_check, add_user, get_user_id, check_user_exists, get_user_info
 from backend.config.settings import settings
 from backend.config.logger import logger
 import os
@@ -68,14 +68,23 @@ async def login_user(request: Request, email: str=Form(...), password: str=Form(
 
 @app.get("/dashboard/{user_id}", response_class=HTMLResponse)
 async def dashboard(request: Request, user_id: int):
-    if_user_exists = check_user_exists(user_id)
+    if_user_exists = check_user_exists(user_id + 1)
     if if_user_exists:
+        user_info, test_info = get_user_info(user_id + 1)
+        tests = ""
+        for test in test_info:
+            tests += test
         return templates.TemplateResponse(
         "dashboard.html",
-        {"request": request, "user": user_id}
+        {"request": request, "user": user_id, "user": user_info, "tests": tests}
     )
     else:
         return RedirectResponse(url="/register", status_code=303)
+
+
+@app.get("/pick_topics", response_class=HTMLResponse)
+async def register_page(request: Request):
+    return templates.TemplateResponse("pick_topics.html", {"request": request})
 
 
 def init_db():

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pick a topic</title>
+    <link rel="stylesheet" href="/frontend/static/pick_topics.css">
+</head>
+<body>
+    <div class = 'head'>
+        <a id="logo">Logo</a>
+        <div class = 'menu'>
+            <a class='menu_link' href="#">About</a>
+            <a class='menu_link' href="#">Test me</a>
+            <a class='menu_link' href="#">Create</a>
+            <a class='menu_link' href="#">Contacts</a>
+            <a class='menu_link' id="profile" href="/profile">Profile</a>
+        </div>
+    </div>
+
+    <div class="main_block">
+        <div class="assistant_message">
+            <pre id="ai_message">Hi!&#128513; I'm your personal AI assistant. Feel free to choose topics 
+for your test or write them down!</pre>
+        </div>
+
+        <div>
+            <form action="/test">
+                
+            </form>
+        </div>
+    </div>
+</body>
+</html>
