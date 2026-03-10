@@ -3,11 +3,13 @@ from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 import hashlib
-from backend.database_functions import sign_up_check, sign_in_check, add_user, get_user_id, check_user_exists, get_user_info
+from backend.database_functions import sign_up_check, sign_in_check, add_user, get_user_id, check_user_exists, get_user_info, get_test_questions
+from backend.agent_1 import create_test
 from backend.config.settings import settings
 from backend.config.logger import logger
 import os
 import sqlite3
+import asyncio
 
 app = FastAPI()
 templates = Jinja2Templates(directory="frontend/templates")
@@ -83,8 +85,20 @@ async def dashboard(request: Request, user_id: int):
 
 
 @app.get("/pick_topics", response_class=HTMLResponse)
-async def register_page(request: Request):
+async def pick_topics(request: Request):
     return templates.TemplateResponse("pick_topics.html", {"request": request})
+
+
+@app.post("/pick_topics")
+async def submitting_topics(request: Request, user_topics: str=Form(...)):
+    test_id = create_test(user_topics)
+    return RedirectResponse(url=f"/test/{test_id}", status_code=303)
+
+
+@app.get("/test/{test_id}", response_class=HTMLResponse)
+async def test(request: Request, test_id: int):
+    test_questions = get_test_questions(test_id)
+    return templates.TemplateResponse("test.html", {"request": request, "questions": test_questions})
 
 
 def init_db():

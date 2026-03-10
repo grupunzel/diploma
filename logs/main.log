@@ -150,3 +150,49 @@
 2026-02-19 12:48:43,509 - database_functions.py - backend.config.logger - INFO - Успешно получили id пользователя
 2026-02-19 12:48:43,513 - database_functions.py - backend.config.logger - INFO - Пользователь существует
 2026-02-19 12:48:43,515 - database_functions.py - backend.config.logger - INFO - Успешно вывели информацию о пользователе
+2026-02-26 13:53:29,167 - database_functions.py - backend.config.logger - INFO - Пароль правильный
+2026-02-26 13:53:29,168 - database_functions.py - backend.config.logger - INFO - Успешно получили id пользователя
+2026-02-26 13:53:29,170 - database_functions.py - backend.config.logger - INFO - Пользователь существует
+2026-02-26 13:53:29,171 - database_functions.py - backend.config.logger - INFO - Успешно вывели информацию о пользователе
+2026-02-26 14:23:39,707 - database_functions.py - backend.config.logger - INFO - Начало обработки 4 заданий
+2026-02-26 14:23:39,710 - database_functions.py - backend.config.logger - INFO - Обработка задания 1/4: Что такое Python?
+2026-02-26 14:23:39,711 - database_functions.py - backend.config.logger - INFO - Добавлено задание 1 для теста #4
+2026-02-26 14:23:39,711 - database_functions.py - backend.config.logger - INFO - Обработка задания 2/4: Какие типы данных существуют в Python?
+2026-02-26 14:23:39,711 - database_functions.py - backend.config.logger - INFO - Добавлено задание 2 для теста #4
+2026-02-26 14:23:39,711 - database_functions.py - backend.config.logger - INFO - Обработка задания 3/4: Для чего нужны функции в Python?
+2026-02-26 14:23:39,711 - database_functions.py - backend.config.logger - INFO - Добавлено задание 3 для теста #4
+2026-02-26 14:23:39,711 - database_functions.py - backend.config.logger - INFO - Обработка задания 4/4: Опишите основные методы работы с файлами в Python.
+2026-02-26 14:23:39,711 - database_functions.py - backend.config.logger - INFO - Добавлено задание 4 для теста #4
+2026-02-26 14:23:39,713 - database_functions.py - backend.config.logger - INFO - Тест #4 успешно сохранен в БД (4 вопросов)
+2026-02-26 14:52:25,689 - database_functions.py - backend.config.logger - ERROR - Ошибка при выводе вопросов из теста №4: string index out of range
+2026-02-26 14:54:32,877 - database_functions.py - backend.config.logger - INFO - Успешно вывели вопросы из теста №4
+2026-02-26 14:55:26,254 - database_functions.py - backend.config.logger - INFO - Пользователь существует
+2026-02-26 14:55:26,255 - database_functions.py - backend.config.logger - INFO - Успешно вывели информацию о пользователе
+2026-02-26 14:55:31,053 - database_functions.py - backend.config.logger - INFO - Пользователь существует
+2026-02-26 14:55:31,053 - database_functions.py - backend.config.logger - INFO - Успешно вывели информацию о пользователе
+2026-02-26 14:56:05,659 - database_functions.py - backend.config.logger - INFO - Начало обработки 3 заданий
+2026-02-26 14:56:05,660 - database_functions.py - backend.config.logger - INFO - Обработка задания 1/3: Что такое интерпретируемый язык программирования?
+2026-02-26 14:56:05,662 - database_functions.py - backend.config.logger - INFO - Добавлено задание 1 для теста #5
+2026-02-26 14:56:05,662 - database_functions.py - backend.config.logger - INFO - Обработка задания 2/3: Какой оператор используется для условных выражений в Python?
+2026-02-26 14:56:05,662 - database_functions.py - backend.config.logger - INFO - Добавлено задание 2 для теста #5
+2026-02-26 14:56:05,662 - database_functions.py - backend.config.logger - INFO - Обработка задания 3/3: Напишите пример простого цикла for в Python.
+2026-02-26 14:56:05,662 - database_functions.py - backend.config.logger - INFO - Добавлено задание 3 для теста #5
+2026-02-26 14:56:05,664 - database_functions.py - backend.config.logger - INFO - Тест #5 успешно сохранен в БД (3 вопросов)
+2026-02-26 14:56:05,667 - database_functions.py - backend.config.logger - INFO - Успешно вывели вопросы из теста №5
+2026-02-26 14:58:35,916 - database_functions.py - backend.config.logger - INFO - Успешно вывели вопросы из теста №5
+2026-02-26 15:00:10,080 - database_functions.py - backend.config.logger - INFO - Успешно вывели вопросы из теста №5
+2026-02-26 15:00:56,316 - database_functions.py - backend.config.logger - INFO - Успешно вывели вопросы из теста №5
+2026-02-26 15:01:23,295 - database_functions.py - backend.config.logger - INFO - Успешно вывели вопросы из теста №5
+2026-02-26 15:04:51,949 - database_functions.py - backend.config.logger - INFO - Успешно вывели вопросы из теста №5
+2026-02-26 15:05:03,491 - database_functions.py - backend.config.logger - INFO - Успешно вывели вопросы из теста №5
+2026-03-10 18:56:08,512 - database_functions.py - backend.config.logger - INFO - Начало обработки 4 заданий
+2026-03-10 18:56:08,516 - database_functions.py - backend.config.logger - INFO - Обработка задания 1/4: Что такое базовый блок в Python?
+2026-03-10 18:56:08,517 - database_functions.py - backend.config.logger - INFO - Добавлено задание 1 для теста #6
+2026-03-10 18:56:08,517 - database_functions.py - backend.config.logger - INFO - Обработка задания 2/4: Опишите синтаксис оператора цикла for в Python.
+2026-03-10 18:56:08,517 - database_functions.py - backend.config.logger - INFO - Добавлено задание 2 для теста #6
+2026-03-10 18:56:08,517 - database_functions.py - backend.config.logger - INFO - Обработка задания 3/4: Какой метод используется для чтения всего содержимого файла целиком в Python?
+2026-03-10 18:56:08,517 - database_functions.py - backend.config.logger - INFO - Добавлено задание 3 для теста #6
+2026-03-10 18:56:08,517 - database_functions.py - backend.config.logger - INFO - Обработка задания 4/4: Напишите программу на Python, которая считывает данные из файла и выводит их в консоль.
+2026-03-10 18:56:08,517 - database_functions.py - backend.config.logger - INFO - Добавлено задание 4 для теста #6
+2026-03-10 18:56:08,519 - database_functions.py - backend.config.logger - INFO - Тест #6 успешно сохранен в БД (4 вопросов)
+2026-03-10 18:56:08,523 - database_functions.py - backend.config.logger - INFO - Успешно вывели вопросы из теста №6

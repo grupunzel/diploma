@@ -44,8 +44,6 @@ def database_fill(data: list):
 
                 db.commit()
                 logger.info(f"Тест #{test_id} успешно сохранен в БД ({len(data)} вопросов)")
-                cursor = db.execute("SELECT * FROM TestQuestions")
-                print(cursor.fetchall())
                 return test_id
             else:
                 logger.error("Объект data пустой")
@@ -293,7 +291,7 @@ def get_user_info(user_id):
                 test_info = f"""
                 {test_id}: {total_score}/{max_score} ({percentage})
 
-                Отчёт: {report}/n/n
+                Отчёт: {report}\n\n
                 """
                 tests_info.append(test_info)
 
@@ -302,4 +300,39 @@ def get_user_info(user_id):
     
     except Exception as e:
         logger.error(f"Ошибка вывода информации о пользователе: {e}")
+        return False
+
+
+def get_test_questions(test_id):
+    try:
+        with sqlite3.connect(DB_PATH) as db:
+            cursor = db.execute("SELECT question_id, module, question, answers, score FROM TestQuestions WHERE test_id=?", (test_id,))
+            result = cursor.fetchall()
+
+            questions = ""
+            for question in result:
+                question_id, module, question_text, answers, score = question
+
+                question_answers = answers.split(', ')
+                answers_info = ""
+                for i in range(len(question_answers)):
+                    answers_info += f"{i+1}. {question_answers[i]}\n"
+
+                question_info = f"""
+                №{question_id}     Module: {module}
+                score: {score}
+
+                {question_text}
+
+                Answers:
+                {answers_info} \n\n
+                """
+            
+                questions += question_info
+            
+            logger.info(f"Успешно вывели вопросы из теста №{test_id}")
+            return questions
+    
+    except Exception as e:
+        logger.error(f'Ошибка при выводе вопросов из теста №{test_id}: {e}')
         return False

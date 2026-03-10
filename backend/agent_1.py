@@ -1,9 +1,9 @@
-from config.settings import logger, Settings
+from backend.config.settings import logger, Settings
 from langchain_gigachat.chat_models import GigaChat
 from langchain_core.messages import SystemMessage
 import json
-from agent1_prompt import prompt_for_agent_1
-from database_functions import database_fill
+from backend.agent1_prompt import prompt_for_agent_1
+from backend.database_functions import database_fill
 
 gigachat = GigaChat(temperature=0,
                     top_p=0.1,
@@ -11,13 +11,10 @@ gigachat = GigaChat(temperature=0,
                     model="GigaChat-2",
                     verify_ssl_certs=False)
 
-topics = ['Python']
-user_id = 13
-
-def create_test():
+def create_test(topics):
     prompt = prompt_for_agent_1.format(
                         topics=topics,
-                        user_id=user_id)
+                        user_id=13)
 
     try:
         response = gigachat.invoke([SystemMessage(content=prompt)])
@@ -31,6 +28,7 @@ def create_test():
         else:
             result = [json.loads(content)]
         test_id = database_fill(result)
-        return [test_id, result]
+        print(f"test_id = {test_id}")
+        return test_id
     except Exception as e:
         logger.error('Error: ', e)
