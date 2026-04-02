@@ -34,12 +34,9 @@ def database_fill(data: list):
                     question = task.get("question")
                     answers = task.get("answers")
                     right_answer = task.get("right_answer")
-                    user_answer = task.get("user_answer", None)
-                    file_answer_path = task.get("file_answer_path", None)
                     score = task.get("score", 10)
-                    score_earned = task.get("score_earned", 0)
 
-                    cursor.execute("INSERT INTO TestQuestions (test_id, user_id, module, type, question, answers, right_answer, user_answer, file_answer_path, score, score_earned) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", (test_id, new_user_id, module, type_, question, answers, right_answer, user_answer, file_answer_path, score, score_earned))
+                    cursor.execute("INSERT INTO TestQuestions (test_id, user_id, module, type, question, answers, right_answer, score) VALUES(?, ?, ?, ?, ?, ?, ?, ?)", (test_id, new_user_id, module, type_, question, answers, right_answer, score))
                     logger.info(f"Добавлено задание {i} для теста #{test_id}")
 
                 db.commit()
@@ -54,7 +51,7 @@ def database_fill(data: list):
         return False
         
           
-def add_user(first_name=None, last_name=None, email=None, password=None, is_anonymous=True):
+def add_user(role="user", first_name=None, last_name=None, email=None, password=None, is_anonymous=True):
     try:
         with sqlite3.connect(DB_PATH) as db:
             if is_anonymous:
@@ -64,7 +61,7 @@ def add_user(first_name=None, last_name=None, email=None, password=None, is_anon
                 if cursor.fetchone():
                     logger.warning(f"Пользователь с email {email} уже существует!")
                     return False
-            cursor = db.execute("INSERT INTO Users (first_name, last_name, email, password) VALUES (?, ?, ?, ?)", (first_name, last_name, email, password))
+            cursor = db.execute("INSERT INTO Users (role, first_name, last_name, email, password) VALUES (?, ?, ?, ?, ?)", (role, first_name, last_name, email, password))
             user_id = cursor.lastrowid
 
             if is_anonymous:
@@ -306,33 +303,99 @@ def get_user_info(user_id):
 def get_test_questions(test_id):
     try:
         with sqlite3.connect(DB_PATH) as db:
-            cursor = db.execute("SELECT question_id, module, question, answers, score FROM TestQuestions WHERE test_id=?", (test_id,))
+            cursor = db.execute("SELECT question_id, module, type, question, answers, score FROM TestQuestions WHERE test_id=?", (test_id,))
             result = cursor.fetchall()
 
-            questions = ""
+            questions = {}
             for question in result:
-                question_id, module, question_text, answers, score = question
+                question_id, module, type, question_text, answers, score = question
 
-                question_answers = answers.split(', ')
-                answers_info = ""
-                for i in range(len(question_answers)):
-                    answers_info += f"{i+1}. {question_answers[i]}\n"
+                if answers:
+                    question_answers = answers.split('; ')
+                    answers_info = []
+                    for i in range(len(question_answers)):
+                        answers_info.append(f"{i+1}) {question_answers[i]}")
+                else:
+                    answers_info = None
 
-                question_info = f"""
-                №{question_id}     Module: {module}
-                score: {score}
-
-                {question_text}
-
-                Answers:
-                {answers_info} \n\n
-                """
-            
-                questions += question_info
+                questions[question_id] = {
+                    'module': module,
+                    'type': type,
+                    'question_text': question_text,
+                    'answers': answers_info,
+                    'score': score,
+                }
             
             logger.info(f"Успешно вывели вопросы из теста №{test_id}")
             return questions
     
     except Exception as e:
         logger.error(f'Ошибка при выводе вопросов из теста №{test_id}: {e}')
+        return False
+    
+def get_questions_info(test_id):
+    try:
+        with sqlite3.connect(DB_PATH) as db:
+            cursor = db.execute("SELECT question_id, question, answers, right_answer, user_answer FROM TestQuestions WHERE test_id=?", (test_id,))
+            result = cursor.fetchall()
+            all_questions = {}
+            for question in result:
+                question_id, question_text, answers, right_answer, user_answer = question
+
+                all_questions[question_id] = {
+                    'question_text': question_text,
+                    'answers': answers,
+                    'right_answer': right_answer,
+                    'user_answer': user_answer,
+                }
+            logger.info(f"Успешно получили информацию о заданиях теста №{test_id}")
+            return all_questions
+    
+    except Exception as e:
+        logger.error(f'Ошибка получения информации о заданиях теста №{test_id}: {e}')
+        return False
+    
+
+def get_user_testing_info(user_id):
+    try:
+        with sqlite3.connect(DB_PATH) as db:
+            cursor = db.execute("SELECT test_id, total_score, max_score, report FROM UserProgress WHERE user_id=?", (user_id,))
+            result = cursor.fetchall()
+
+            test_info = {}
+            for test in result:
+                test_id, total_score, max_score, report = test
+                test_info[test_id] = {
+                    'total_score': total_score,
+                    'max_score': max_score,
+                    'report': report,
+                }
+            
+            logger.info(f'Успешно вывели историю прошлах тестирований пользователя №{user_id}')
+            return test_info
+    
+    except Exception as e:
+        logger.error(f'Ошибка вывод истории тестирований: {e}')
+        return False
+    
+
+def show_user_answers(test_id):
+    try:
+        with sqlite3.connect(DB_PATH) as db:
+            cursor = db.execute("SELECT question, user_answer, score, score_earned FROM TestQuestions WHERE test_id=?", (test_id,))
+            result = cursor.fetchall()
+
+            info = ""
+            for question in result:
+                question_text, user_answer, score, score_earned = question
+
+                info += f"""\n
+                Question: {question_text}
+                Score: {score_earned}/{score}
+
+                Answer: {user_answer}\n"""
+            
+            return info
+        
+    except Exception as e:
         return False

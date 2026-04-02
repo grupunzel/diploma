@@ -18,9 +18,46 @@
         </div>
     </div>
 
-    <div>
-        <pre id="question_info" style="color: #004225;">{{questions.replace('\n', '<br>')|safe}}</pre>
+    <div class="main_block">
+        <div class="left_block">
+            <div class="navigation">
+                <img id="navigation_logo" src="frontend/static/pictures/Navigation_logo.png" alt="navigation_log">
+                <a id="navigation_text">Navigation</a><br><br>
+            </div>
+            <hr>
+            <div class="buttons">
+                {% for id, question in questions.items() %}
+                    <button id="button_{{id}}" class="all_buttons">{{loop.index}}</button>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="right_block">
+            <form action="/test" method="POST" >
+                <div>
+                    {% for id, question in questions.items() %}
+                        <p class="question_info" style="color: #004225;">{{loop.index}}. {{question['question_text']}}</p>
+                        <p class="question_info" style="color: #004225;">Module: {{question['module']}}</p>
+                        <p class="question_info" style="color: #004225;">Score: {{question['score']}}</p><br><br>
+                        {% if question['answers'] is not none %}
+                            {% for answer in question['answers'] %}
+                                <p class="question_info" style="color: #004225;">{{answer}}</p>
+                            {% endfor %}<br><br>
+                        {% endif %}
+                        {% if question['type'] != 'file_question' %}
+                            <a>Answer: <input type="text" name="answers"></a><br><br><br><br>
+                        {% else %}
+                            <a>Answer: <input type="file" name="file_answer_path"></a><br><br><br><br>
+                        {% endif %}
+                        <input type="hidden" name="question_ids" value="{{ id }}">
+                    {% endfor %}
+                    <br><br>
+                    <input type="submit" value="Finish test">
+                </div>
+            </form>
+        </div>
+        
     </div>
+    
     
 </body>
 </html>

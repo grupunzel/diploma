@@ -1,5 +1,5 @@
 body {
-    background-color: #fff5e4;
+    background-color: #fff8f3;
     font-family: 'Gill Sans', sans-serif;
     margin-top: 0px;
     margin-left: 0px;
@@ -12,13 +12,14 @@ body {
     margin-right: 20px;
     margin-bottom: 12px;
     padding-bottom: 3px;
-    background-color: #fff5e4;
+    background-color: #fffdf9;
     justify-content: space-between;
     border-bottom-left-radius: 25px;
     border-bottom-right-radius: 25px;
     position: sticky;
-    border: #002515 solid 0.5px;
+    /* border: #002515 solid 0.5px; */
     border-top: none;
+    box-shadow: 1px 1px 10px rgb(220, 220, 220);
 }
 
 .menu {
@@ -40,7 +41,9 @@ body {
 }
 
 .menu_link:hover {
-    background-color: #e5d9c3d3;
+    background-color: #ece8e1d3;
+    border: transparent;
+    box-shadow: 0px 0px 20px #dfdbd4d3;
 }
 
 #profile {
@@ -49,4 +52,81 @@ body {
     width: 80px;
     height: 30px;
     text-align: center;
+}
+
+.main_block {
+    display: flex;
+}
+
+.left_block {
+    flex: 1;
+    background-color: #fffdf9;
+    border-radius: 20px;
+    margin-left: 30px;
+    margin-top: 20px;
+    box-shadow: 1px 1px 10px rgb(220, 220, 220);
+    padding: 20px;
+    height: fit-content;
+}
+
+.right_block {
+    flex: 3;
+    background-color: #fffdf9;
+    margin-top: 20px;
+    border-radius: 20px;
+    margin-right: 30px;
+    margin-left: 30px;
+    padding: 20px;
+    box-shadow: 1px 1px 10px rgb(220, 220, 220);
+}
+
+.navigation {
+    display: inline-flex;
+    vertical-align: middle;
+    align-items: center;
+}
+
+#navigation_text {
+    font-size: 20px;
+    color: #004225;
+    font-weight: 600;
+}
+
+#navigation_logo {
+    transform: scale(0.6);
+    width: auto;
+    height: 50px;
+}
+
+hr {
+    width: 100%;
+    opacity: 20%;
+    margin-top: 5px;
+}
+
+.buttons {
+    display: flex;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.all_buttons {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    padding: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: 15px;
+    font-family: 'Helvetica', sans-serif;
+    color: #004225;
+    background-color: #fffdf9;
+    border: 1px solid rgb(206, 207, 206);
+    border-radius: 8px;
+    box-shadow: 1px 1px 7px rgb(220, 220, 220);
+}
+
+.all_buttons:hover {
+    background-color: #004225;
+    color: #fffdf9;
 }

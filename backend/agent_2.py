@@ -1,10 +1,10 @@
-from config.settings import logger, Settings
+from backend.config.settings import logger, Settings
 from langchain_gigachat.chat_models import GigaChat
 from langchain_core.messages import SystemMessage
 import json
-from agent2_prompt import prompt_for_agent_2
-from agent_1 import create_test
-from database_functions import check_user_answer
+from backend.agent2_prompt import prompt_for_agent_2
+from backend.agent_1 import create_test
+from backend.database_functions import check_user_answer
 
 gigachat = GigaChat(temperature=0,
                     top_p=0.1,
@@ -12,9 +12,7 @@ gigachat = GigaChat(temperature=0,
                     model="GigaChat-2",
                     verify_ssl_certs=False)
 
-def check_answers():
-
-    test_id, content = create_test()
+def check_answers(test_id, content):
 
     prompt = prompt_for_agent_2.format(
                         content=content,

@@ -11,10 +11,11 @@ gigachat = GigaChat(temperature=0,
                     model="GigaChat-2",
                     verify_ssl_certs=False)
 
-def create_test(topics):
+def create_test(user_id, topics, user_info):
     prompt = prompt_for_agent_1.format(
                         topics=topics,
-                        user_id=13)
+                        user_id=user_id,
+                        user_info=user_info)
 
     try:
         response = gigachat.invoke([SystemMessage(content=prompt)])
@@ -28,7 +29,6 @@ def create_test(topics):
         else:
             result = [json.loads(content)]
         test_id = database_fill(result)
-        print(f"test_id = {test_id}")
         return test_id
     except Exception as e:
         logger.error('Error: ', e)
