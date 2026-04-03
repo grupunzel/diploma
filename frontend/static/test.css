@@ -1,5 +1,5 @@
 body {
-    background-color: #fff8f3;
+    background-color: #f9f0e9;
     font-family: 'Gill Sans', sans-serif;
     margin-top: 0px;
     margin-left: 0px;
@@ -77,6 +77,7 @@ body {
     margin-right: 30px;
     margin-left: 30px;
     padding: 20px;
+    padding-left: 30px;
     box-shadow: 1px 1px 10px rgb(220, 220, 220);
 }
 
@@ -129,4 +130,46 @@ hr {
 .all_buttons:hover {
     background-color: #004225;
     color: #fffdf9;
+}
+
+.choice_card {
+    position: relative;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+}
+
+.checkbox_input {
+    appearance: none;
+    position: relative;
+    width: 745px;
+    height: 60px;
+    border-radius: 15px;
+    border: 1.5px solid #c2c2c2;
+}
+
+.checkbox_new {
+    position: absolute;
+    display: flex;
+    border: 1px solid transparent;
+    border-radius: 20px;
+    justify-content: center;
+    user-select: none;
+    padding-left: 20px;
+}
+
+.choice_card:hover .checkbox_input {
+    border: 1.2px solid #004225;
+    cursor: pointer;
+}
+
+.choice_card:hover .checkbox_new {
+    color: #066f42;
+    cursor: pointer;
+}
+
+.checkbox_input:checked {
+    border: 1.2px solid #004225;
+    cursor: pointer;
+    background-color: #d3e6de;
 }

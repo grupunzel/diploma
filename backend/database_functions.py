@@ -314,7 +314,7 @@ def get_test_questions(test_id):
                     question_answers = answers.split('; ')
                     answers_info = []
                     for i in range(len(question_answers)):
-                        answers_info.append(f"{i+1}) {question_answers[i]}")
+                        answers_info.append(f"{question_answers[i]}")
                 else:
                     answers_info = None
 

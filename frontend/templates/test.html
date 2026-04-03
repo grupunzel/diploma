@@ -25,39 +25,50 @@
                 <a id="navigation_text">Navigation</a><br><br>
             </div>
             <hr>
-            <div class="buttons">
-                {% for id, question in questions.items() %}
-                    <button id="button_{{id}}" class="all_buttons">{{loop.index}}</button>
-                {% endfor %}
-            </div>
+            <div class="buttons" id="quick_navigation"></div>
         </div>
         <div class="right_block">
-            <form action="/test" method="POST" >
-                <div>
-                    {% for id, question in questions.items() %}
-                        <p class="question_info" style="color: #004225;">{{loop.index}}. {{question['question_text']}}</p>
-                        <p class="question_info" style="color: #004225;">Module: {{question['module']}}</p>
-                        <p class="question_info" style="color: #004225;">Score: {{question['score']}}</p><br><br>
-                        {% if question['answers'] is not none %}
-                            {% for answer in question['answers'] %}
-                                <p class="question_info" style="color: #004225;">{{answer}}</p>
-                            {% endfor %}<br><br>
-                        {% endif %}
-                        {% if question['type'] != 'file_question' %}
-                            <a>Answer: <input type="text" name="answers"></a><br><br><br><br>
-                        {% else %}
-                            <a>Answer: <input type="file" name="file_answer_path"></a><br><br><br><br>
-                        {% endif %}
-                        <input type="hidden" name="question_ids" value="{{ id }}">
-                    {% endfor %}
-                    <br><br>
-                    <input type="submit" value="Finish test">
+            <div id="current_question_block">
+                <div id="question_card" class="question_card">
+                    <p class="question_info" id="question_text"></p>
+                    <p class="question_info" id="question_module"></p>
+                    <p class="question_score" id="question_score"></p>
+
+                    <div id="answers_list"></div>
+                    <div id="answer_input_block">
+                        <a>Answer: <input type="text" id="answer_input" name="answers"></a>
+                    </div>
+                    <div id="file_answer_input_block">
+                        <a>Answer: <input type="file" id="file_answer_input" name="file_answer_path"></a>
+                    </div>
+
+                    <div class="answer_stat" id="answer_status"></div>
                 </div>
-            </form>
-        </div>
+            </div>
+
+            <div class="nav_buttons">
+                <button id="previous_button" class="navigation_buttons" disabled>
+                    <div class="navigation">
+                        <span>Previous</span>
+                    </div>
+                </button>
+                <button id="next_button" class="navigation_buttons">
+                    <div class="navigation">
+                        <span>Next</span>
+                    </div>
+                </button>
+            </div>
+
+            <div id="finish_block" style="display: none;">
+                <button id="finish_button" class="finish">Finish test</button>
+            </div>
         
     </div>
     
+    <script type="application/json" id="questions_data">
+        {{ questions | tojson }}
+    </script>
     
+    <script src="/frontend/static/js/test.js"></script>
 </body>
 </html>
