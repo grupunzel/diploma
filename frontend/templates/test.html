@@ -24,37 +24,59 @@
                 <img id="navigation_logo" src="frontend/static/pictures/Navigation_logo.png" alt="navigation_log">
                 <a id="navigation_text">Navigation</a><br><br>
             </div>
-            <hr>
+            <hr id="'left_hr">
             <div class="buttons" id="quick_navigation"></div>
+            <div class="if_answered">
+                <div id="green_block">
+                    <img id="green_square" src="frontend/static/pictures/green_square.jpg" alt="green_square">
+                    <a id="green_text">Answered</a>
+                </div>
+                <div id="grey_block">
+                    <img id="grey_square" src="frontend/static/pictures/grey_square.jpg" alt="grey_square">
+                    <a id="grey_text">Not answered</a>
+                </div>
+            </div>
         </div>
         <div class="right_block">
             <div id="current_question_block">
                 <div id="question_card" class="question_card">
+                    <p class="question_info" id="question_index"></p>
                     <p class="question_info" id="question_text"></p>
                     <p class="question_info" id="question_module"></p>
                     <p class="question_score" id="question_score"></p>
 
                     <div id="answers_list"></div>
                     <div id="answer_input_block">
-                        <a>Answer: <input type="text" id="answer_input" name="answers"></a>
+                        <a id="answer_text">Your answer: <br><br><textarea id="answer_input" name="answers" placeholder="Write your answer here."></textarea></a>
                     </div>
                     <div id="file_answer_input_block">
-                        <a>Answer: <input type="file" id="file_answer_input" name="file_answer_path"></a>
+                        <a id="answer_text">Attach your file here: <br><input type="file" id="file_answer_input" name="file_answer_path" multiple hidden>
+                            <label for="file_answer_input" id="file_upload_block">
+                                <span class="file_upload_logo"><img id="upload_logo" src="frontend/static/pictures/upload_logo.jpg" alt="upload_logo"></span>
+                                <span class="file_answer_text">Choose file</span>
+                            </label>
+                            <div id="file_status"></div>
+                        </a>
                     </div>
 
-                    <div class="answer_stat" id="answer_status"></div>
+                    <div class="answer_stat" id="answer_status" hidden></div>
                 </div>
             </div>
-
+            <hr id="right_hr">
             <div class="nav_buttons">
                 <button id="previous_button" class="navigation_buttons" disabled>
                     <div class="navigation">
-                        <span>Previous</span>
+                        <span>&lt; Previous</span>
+                    </div>
+                </button>
+                <button id="help_button" class="navigation_buttons">
+                    <div class="navigation">
+                        <span>Want help?</span>
                     </div>
                 </button>
                 <button id="next_button" class="navigation_buttons">
                     <div class="navigation">
-                        <span>Next</span>
+                        <span>Next &gt;</span>
                     </div>
                 </button>
             </div>

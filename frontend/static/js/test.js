@@ -47,9 +47,10 @@ function render_quick_nav() {
 function render_current_question() {
     const question = questions[current_index];
 
-    document.getElementById('question_text').innerHTML = `${current_index + 1}. ${question.text}`;
+    document.getElementById('question_index').innerHTML = `QUESTION ${current_index + 1}`;
+    document.getElementById('question_text').innerHTML = `${question.text}`;
     document.getElementById('question_module').innerHTML = `Module: ${question.module}`;
-    document.getElementById('question_score').innerHTML = `Score: ${question.score}`;
+    document.getElementById('question_score').innerHTML = `${question.score} points`;
     const text_input_block = document.getElementById('answer_input_block');
     const file_input_block = document.getElementById('file_answer_input_block');
 
@@ -164,28 +165,41 @@ function update_nav_buttons() {
 function save_current_answer() {
     const question = questions[current_index];
     let answer = '';
-    const status_div = document.getElementById('answer_status');
+    const status_div = document.getElementById('answer_status')
+    const file_status = document.getElementById('file_status');
 
-    if (question.type === 'file_question') {
+    if (question.type === 'multiple_choice') {
+        const checkboxes = document.querySelectorAll('.choice_card input[type="checkbox"]:checked');
+        const selected_answers = Array.from(checkboxes).map(cb => cb.value);
+        answer = selected_answers.join('; ');
+    }
+    else if (question.type === 'file_question') {
         const file_input = document.getElementById('file_answer_input');
-        if (file_input.files.length > 0) {
+        if (file_input && file_input.files.length > 0) {
             answer = file_input.files[0].name;
+            const success_text = document.createElement('p');
+            success_text.className = `success_text`;
+            success_text.style.display = 'block';
+            success_text.innerHTML = `File "${file_input.files[0].name}" attached.`;
+            file_status.appendChild(success_text);
         }
     }
     else {
         answer = document.getElementById('answer_input').value;
     }
-    
+
     saved_answers[question.id] = answer;
 
-    status_div.innerHTML = 'Saved';
-    status_div.style.color = 'green';
+    if (status_div) {
+        status_div.innerHTML = 'Saved';
+        status_div.style.color = 'green';
+    }
 
     update_question_status(question.id, answer !== '');
     update_progress();
 
     setTimeout(() => {
-        if (status_div.innerHTML === 'Saved') {
+        if (status_div && status_div.innerHTML === 'Saved') {
             status_div.innerHTML = '';
         }
     }, 2000);
@@ -295,6 +309,18 @@ function setup_event_listeners() {
             autosave_timeout = setTimeout(() => {
                 save_current_answer();
             }, 1000);
+        });
+
+        answer_input.addEventListener('keydown', function(e) {
+            if (e.key === 'Tab') {
+                e.preventDefault();
+            
+                const start = this.selectionStart;
+                const end = this.selectionEnd;
+                const tabChar = '    ';
+                this.value = this.value.substring(0, start) + tabChar + this.value.substring(end);
+                this.selectionStart = this.selectionEnd = start + tabChar.length;
+            }
         });
     }
 
