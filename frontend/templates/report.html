@@ -3,9 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Report</title>
+    <title>Test Report</title>
+    <link rel="stylesheet" href="/frontend/static/report.css">
 </head>
-<body>
-    {{report}}
+<body class="body">
+    <div class = 'head'>
+        <a href="/"><img id="logo" src="frontend/static/pictures/logo.jpeg" alt="logo"></a>
+        <div class = 'menu'>
+            <a class='menu_link' href="#">About</a>
+            <a class='menu_link' href="#">Test me</a>
+            <a class='menu_link' href="#">Create</a>
+            <a class='menu_link' href="#">Contacts</a>
+            <a class='menu_link' id="profile" href="/profile">Profile</a>
+        </div>
+    </div>
+
+    <div class="report_container">
+        <div class="report_header_container">
+           <img id="report_logo" src="frontend/static/pictures/report_logo.jpeg" alt="report_logo">
+            <h1 id="report_header">Test report</h1>
+            <div class="download_container">
+                <button id="download_button"><img id="upload_logo" src="frontend/static/pictures/upload_logo.jpg" alt="upload_logo"><span id="download_text">Save as PDF</span></button>
+            </div>
+        </div>
+        <div class="total_analys" id="total"></div>
+    </div>
+
+    <div class="analys_by_topic" id="analys_topic"></div>
+
+    <div class="analys_recomendations" id="recomendations">
+        <div class="recomendations_header_container">
+            <img id="recomendations_logo" src="frontend/static/pictures/recomendations_logo.jpeg" alt="recomendations_logo">
+            <h1 id="recomendations_header">Recommendations</h1>
+        </div>
+    </div>
+
+    <script type="application/json" id="report_data">
+        {{ report | tojson }}
+    </script>
+    
+    <script src="/frontend/static/js/report.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </body>
 </html>

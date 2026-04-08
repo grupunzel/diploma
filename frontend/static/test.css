@@ -306,6 +306,7 @@ hr {
     border: 1.5px solid #044227;
     border-radius: 10px;
     padding: 8px;
+    font-family: 'Gill Sans', sans-serif;
 }
 
 #answer_input:focus {
@@ -401,4 +402,28 @@ hr {
 #finish_button:hover {
     background-color: #0f5f26;
     border: 1.5px solid #467953;
+}
+
+#help_content {
+    margin-top: 30px;
+    margin-left: 12px;
+    margin-right: 20px;
+    color: #444444;
+    font-size: 15px;
+    font-weight: 400;
+    font-family: 'Gill Sans', sans-serif;
+    text-align: center;
+}
+
+.help_header {
+    text-align: left;
+    font-size: 20px;
+    color: #1a4b22;
+    font-weight: 600;
+}
+
+.help_text {
+    text-align: left;
+    font-size: 17px;
+    color: #535454;
 }

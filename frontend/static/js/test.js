@@ -12,6 +12,7 @@ const questions = Object.entries(questions_data).map(([id, data]) => ({
 let saved_answers = {};
 let current_index = 0;
 let autosave_timeout = null;
+let is_loading_hint = false;
 
 document.addEventListener('DOMContentLoaded', () => {
     render_quick_nav();
@@ -162,7 +163,7 @@ function update_nav_buttons() {
     }
 }
 
-function save_current_answer() {
+async function save_current_answer() {
     const question = questions[current_index];
     let answer = '';
     const status_div = document.getElementById('answer_status')
@@ -175,13 +176,37 @@ function save_current_answer() {
     }
     else if (question.type === 'file_question') {
         const file_input = document.getElementById('file_answer_input');
+
         if (file_input && file_input.files.length > 0) {
             answer = file_input.files[0].name;
+            file_status.innerHTML = '';
+            file_status.style.display = 'block';
             const success_text = document.createElement('p');
             success_text.className = `success_text`;
             success_text.style.display = 'block';
-            success_text.innerHTML = `File "${file_input.files[0].name}" attached.`;
+            success_text.innerHTML = '⏳ Uploading and parsing file...';
             file_status.appendChild(success_text);
+
+            const result = await upload_file(question.id, file_input.files[0]);
+            file_status.innerHTML = '';
+
+            if (result[0]) {
+                success_text.innerHTML = `File "${file_input.files[0].name}" attached.`;
+                answer = result[1];
+                console.log(answer);
+            }
+            else {
+                answer = '';
+                success_text.innerHTML = `${result[1]}`;
+            }
+            file_status.appendChild(success_text);
+        }
+        else {
+            answer = '';
+            if (file_status) {
+                file_status.style.display = 'none';
+                file_status.innerHTML = '';
+            }
         }
     }
     else {
@@ -203,6 +228,32 @@ function save_current_answer() {
             status_div.innerHTML = '';
         }
     }, 2000);
+}
+
+async function upload_file(question_id, file) {
+    const form_data = new FormData();
+    form_data.append('file', file);
+    form_data.append('question_id', question_id);
+
+    try {
+        const response = await fetch('/upload_file_answer', {
+            method: 'POST',
+            body: form_data
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+            return [true, `${result.parsed_text}`];
+        }
+        else {
+            return [false, `${result.error}`];
+        }
+    }
+    catch (error) {
+        console.error('Upload error:', error);
+        return [false, "Network error. Please try again."];
+    }
 }
 
 function update_question_status(question_id, is_answered) {
@@ -235,6 +286,7 @@ function go_to_question(index) {
     save_current_answer();
     current_index = index;
     render_current_question();
+    hide_hint();
 }
 
 function next_question() {
@@ -242,6 +294,7 @@ function next_question() {
         save_current_answer();
         current_index++;
         render_current_question();
+        hide_hint();
     }
 }
 
@@ -250,6 +303,7 @@ function previous_question() {
         save_current_answer();
         current_index--;
         render_current_question();
+        hide_hint();
     }
 }
 
@@ -289,15 +343,68 @@ function submit_answers() {
     });
 }
 
+async function help_with_task() {
+    const question = questions[current_index];
+    const help_content = document.getElementById('help_content');
+
+    if (is_loading_hint) {
+        return;
+    }
+
+    help_content.style.display = 'block';
+    help_content.innerHTML = '⏳ Hint is loading...';
+
+    is_loading_hint = true;
+
+    try {
+        const response = await fetch('/get_hint', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                question_text: question.text
+            })
+        });
+
+        const data = await response.json();
+
+        help_content.innerHTML = `
+            <div class="help_header">
+                <span>Hint:</span>
+            </div>
+            <p class="help_text">${data.hint}</p>`;
+    }
+    catch (error) {
+        help_text.innerHTML = 'Failed to get a hint for this question.';
+    }
+    finally {
+        is_loading_hint = false;
+    }
+}
+
+function hide_hint() {
+    const help_content = document.getElementById('help_content');
+    help_content.style.display = 'none';
+}
+
 function setup_event_listeners() {
     const previous_button = document.getElementById('previous_button');
     const next_button = document.getElementById('next_button');
+    const help_button = document.getElementById('help_button');
     const finish_button = document.getElementById('finish_button');
     const answer_input = document.getElementById('answer_input');
     const file_input = document.getElementById('file_answer_input');
+    const help_content = document.getElementById('help_content');
 
     previous_button.onclick = previous_question;
     next_button.onclick = next_question;
+    help_button.onclick = help_with_task;
+
+    if (help_content) {
+        help_content.style.display = 'none';
+        help_content.innerHTML = '';
+    }
 
     if (finish_button) {
         finish_button.onclick = finish_test;

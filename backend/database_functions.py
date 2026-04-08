@@ -1,6 +1,7 @@
 import sqlite3
 from backend.config.logger import logger
 import os
+from datetime import datetime
 
 THIS_DIR = os.path.dirname(os.path.abspath(__file__))
 DB_PATH = os.path.join(os.path.dirname(THIS_DIR), 'ITest.db')
@@ -86,7 +87,7 @@ def update_user(user_id, first_name, last_name, email, password):
                 if cursor.fetchone():
                     logger.warning("Пользователь с таким email уже существует!")
                     return False
-            cursor = db.execute("UPDATE Users SET first_name=?, last_name=?, email=?, password=? WHERE user_id=?", (first_name, last_name, email, user_id, password))
+            cursor = db.execute("UPDATE Users SET first_name=?, last_name=?, email=?, password=? WHERE user_id=?", (first_name, last_name, email, password, user_id))
             db.commit()
             logger.info(f"Данные пользователя #{user_id} успешно изменены")
             return True
@@ -126,27 +127,35 @@ def update_user_answer(question_id, user_answer):
         return False
     
 
-def update_file_answer(question_id, file_path):
+def update_file_answer(question_id, file_answer):
     try:
         with sqlite3.connect(DB_PATH) as db:
-            cursor = db.execute("UPDATE TestQuestions SET file_answer_path=? WHERE question_id=?", (file_path, question_id,))
+            cursor = db.execute("UPDATE TestQuestions SET file_answer=? WHERE question_id=?", (file_answer, question_id,))
             db.commit()
             logger.info("Ответ пользователя успешно изменён")
             return True
     
     except Exception as e:
-        logger.error(f"Ошибка замены file_path {e}")
+        logger.error(f"Ошибка замены file_answer {e}")
         return False
 
 
-def update_user_progress(user_id, test_id, report):
+def create_user_progress(user_id, test_id):
     try:
         with sqlite3.connect(DB_PATH) as db:
-            cursor = db.execute("SELECT test_id FROM UserProgress WHERE test_id=?", (test_id,))
-            if cursor.fetchone():
-                logger.error(f"Запись с тестом #{test_id} уже существует")
-                return False
-            
+            cursor = db.execute('INSERT INTO UserProgress (user_id, test_id) VALUES (?, ?)', (user_id, test_id))
+            db.commit()
+            logger.info(f'Добавили запись о тесте #{test_id} в UserProgress')
+            return True
+    
+    except Exception as e:
+        logger.error(f'Ошибка создания записи о тесте #{test_id} в UserProgress: {e}')
+        return False
+
+
+def update_user_progress(test_id, report):
+    try:
+        with sqlite3.connect(DB_PATH) as db:
             cursor = db.execute("SELECT SUM(score) FROM TestQuestions WHERE test_id=?", (test_id,))
             max_score = cursor.fetchone()[0]
 
@@ -155,7 +164,7 @@ def update_user_progress(user_id, test_id, report):
 
             percentage = int((total_score / max_score)*100)
     
-            cursor = db.execute("INSERT INTO UserProgress (user_id, test_id, total_score, max_score, percentage, report) VALUES(?, ?, ?, ?, ?, ?)", (user_id, test_id, total_score, max_score, percentage, report))
+            cursor = db.execute("UPDATE UserProgress SET total_score=?, max_score=?, percentage=?, report=? WHERE test_id=?", (total_score, max_score, percentage, report, test_id))
             db.commit()
             logger.info(f"Тест #{test_id} успешно добавлен в UserProgress")
             return True
@@ -336,17 +345,19 @@ def get_test_questions(test_id):
 def get_questions_info(test_id):
     try:
         with sqlite3.connect(DB_PATH) as db:
-            cursor = db.execute("SELECT question_id, question, answers, right_answer, user_answer FROM TestQuestions WHERE test_id=?", (test_id,))
+            cursor = db.execute("SELECT question_id, question, answers, right_answer, user_answer, file_answer, score FROM TestQuestions WHERE test_id=?", (test_id,))
             result = cursor.fetchall()
             all_questions = {}
             for question in result:
-                question_id, question_text, answers, right_answer, user_answer = question
+                question_id, question_text, answers, right_answer, user_answer, file_answer, score = question
 
                 all_questions[question_id] = {
                     'question_text': question_text,
                     'answers': answers,
                     'right_answer': right_answer,
                     'user_answer': user_answer,
+                    'file_answer': file_answer,
+                    'score': score
                 }
             logger.info(f"Успешно получили информацию о заданиях теста №{test_id}")
             return all_questions
@@ -379,23 +390,67 @@ def get_user_testing_info(user_id):
         return False
     
 
-def show_user_answers(test_id):
+def user_answers_info(test_id):
     try:
         with sqlite3.connect(DB_PATH) as db:
-            cursor = db.execute("SELECT question, user_answer, score, score_earned FROM TestQuestions WHERE test_id=?", (test_id,))
+            cursor = db.execute("SELECT question, user_answer, file_answer, score, score_earned FROM TestQuestions WHERE test_id=?", (test_id,))
             result = cursor.fetchall()
 
-            info = ""
+            info = {}
+            question_id = 1
             for question in result:
-                question_text, user_answer, score, score_earned = question
+                question_text, user_answer, file_answer, score, score_earned = question
 
-                info += f"""\n
-                Question: {question_text}
-                Score: {score_earned}/{score}
-
-                Answer: {user_answer}\n"""
+                info[question_id] = {
+                    'question_text': question_text,
+                    'user_answer': user_answer,
+                    'file_answer': file_answer,
+                    'score': score,
+                    'score_earned': score_earned
+                }
+                question_id += 1
             
+            logger.info(f'Успешно получили информацию об ответах пользователя на тест #{test_id}')
             return info
         
     except Exception as e:
+        logger.error(f"Ошибка получения информации об ответах пользователя: {e}")
+        return False
+    
+
+def update_test_start_time(test_id):
+    try:
+        with sqlite3.connect(DB_PATH) as db:
+            cursor = db.execute('UPDATE UserProgress SET start_time=? WHERE test_id=?', (datetime.now().strftime('%Y-%m-%d %H:%M:%S'), test_id,))
+            db.commit()
+            logger.info(f'Успешно занесли время начала тестирования #{test_id} в UserProgress.')
+            return True
+    
+    except Exception as e:
+        logger.error(f'Ошибка занесения времени начала тестирования: {e}')
+        return False
+    
+
+def update_test_end_time(test_id):
+    try:
+        with sqlite3.connect(DB_PATH) as db:
+            cursor = db.execute('UPDATE UserProgress SET end_time=? WHERE test_id=?', (datetime.now().strftime('%Y-%m-%d %H:%M:%S'), test_id,))
+            db.commit()
+            logger.info(f'Успешно занесли время окончания тестирования #{test_id} в UserProgress.')
+            return True
+    
+    except Exception as e:
+        logger.error(f'Ошибка занесения времени окончания тестирования: {e}')
+        return False
+    
+
+def get_question_type(question_id):
+    try:
+        with sqlite3.connect(DB_PATH) as db:
+            cursor = db.execute('SELECT type FROM TestQuestions WHERE question_id=?', (question_id,))
+            result = cursor.fetchone()[0]
+            return result
+    
+    except Exception as e:
+        logger.error(f'Ошибка определения типа вопроса: {e}')
         return False

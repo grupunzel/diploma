@@ -1,11 +1,9 @@
-from config.settings import logger, Settings
+from backend.config.settings import logger, Settings
 from langchain_gigachat.chat_models import GigaChat
 from langchain_core.messages import SystemMessage
-import json
-from agent3_prompt import prompt_for_agent_3
-from agent_2 import check_answers
-from agent_1 import topics
-from database_functions import update_user_progress
+import json, re
+from backend.agent3_prompt import prompt_for_agent_3
+from backend.database_functions import update_user_progress
 
 gigachat = GigaChat(temperature=0,
                     top_p=0.1,
@@ -14,9 +12,7 @@ gigachat = GigaChat(temperature=0,
                     verify_ssl_certs=False)
 
 
-def make_report():
-    content, user_id, test_id = check_answers()
-
+def make_report(test_id, content, topics):
     prompt = prompt_for_agent_3.format(
                         content=content,
                         topics=topics)
@@ -24,10 +20,22 @@ def make_report():
     try:
         response = gigachat.invoke([SystemMessage(content=prompt)])
         content = response.content.strip()
-        update_user_progress(user_id, test_id, content)
-        return
+        # content = re.sub(r'<[^>]+>', '', content)
+        # content = re.sub(r'^#{1,6}\s+', '', content, flags=re.MULTILINE)
+        # content = re.sub(r'\*\*(.*?)\*\*', r'\1', content)
+        # content = re.sub(r'__(.*?)__', r'\1', content)
+        # content = re.sub(r'\*(.*?)\*', r'\1', content)
+        # content = re.sub(r'_(.*?)_', r'\1', content)
+        # content = re.sub(r'^[-*_]{3,}\s*$', '', content, flags=re.MULTILINE)
+
+        if content.startswith('```json') and content.endswith('```'):
+            content = content[7:-3].strip()
+        elif content.startswith('```') and content.endswith('```'):
+            content = content[3:-3].strip()
+
+        report_dict = json.loads(content)
+        update_user_progress(test_id, json.dumps(report_dict, ensure_ascii=False))
+        return report_dict
     except Exception as e:
         logger.error('Error: ', e)
         return
-    
-    

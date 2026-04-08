@@ -29,7 +29,8 @@ def check_answers(test_id, content):
             result = json.loads(content)
         else:
             result = [json.loads(content)]
-        user_id = check_user_answer(result)
-        return [result, user_id, test_id]
+        check_user_answer(result)
+        return True
     except Exception as e:
         logger.error('Error: ', e)
+        return False
