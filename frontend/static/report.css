@@ -128,6 +128,7 @@ body {
     margin-top: 10px;
     color:#3d433d;
     text-align:justify;
+    margin-right: 200px;
 }
 
 .topics_grid_single, .topics_grid_multiple {
@@ -137,6 +138,16 @@ body {
     margin-top: 20px;
     width: fit-content;
     height: fit-content;
+}
+
+.topics_grid_single {
+    width: fit-content;
+    background-color: #fffdf9;
+    border-radius: 20px;
+    box-shadow: 1px 1px 10px rgb(220, 220, 220);
+    text-align:justify;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .topics_grid_multiple {

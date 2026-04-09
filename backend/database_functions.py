@@ -345,13 +345,14 @@ def get_test_questions(test_id):
 def get_questions_info(test_id):
     try:
         with sqlite3.connect(DB_PATH) as db:
-            cursor = db.execute("SELECT question_id, question, answers, right_answer, user_answer, file_answer, score FROM TestQuestions WHERE test_id=?", (test_id,))
+            cursor = db.execute("SELECT question_id, type, question, answers, right_answer, user_answer, file_answer, score FROM TestQuestions WHERE test_id=?", (test_id,))
             result = cursor.fetchall()
             all_questions = {}
             for question in result:
-                question_id, question_text, answers, right_answer, user_answer, file_answer, score = question
+                question_id, question_type, question_text, answers, right_answer, user_answer, file_answer, score = question
 
                 all_questions[question_id] = {
+                    'question_type': question_type,
                     'question_text': question_text,
                     'answers': answers,
                     'right_answer': right_answer,
@@ -393,16 +394,19 @@ def get_user_testing_info(user_id):
 def user_answers_info(test_id):
     try:
         with sqlite3.connect(DB_PATH) as db:
-            cursor = db.execute("SELECT question, user_answer, file_answer, score, score_earned FROM TestQuestions WHERE test_id=?", (test_id,))
+            cursor = db.execute("SELECT question, type, answers, right_answer, user_answer, file_answer, score, score_earned FROM TestQuestions WHERE test_id=?", (test_id,))
             result = cursor.fetchall()
 
             info = {}
             question_id = 1
             for question in result:
-                question_text, user_answer, file_answer, score, score_earned = question
+                question_text, question_type, answers, right_answer, user_answer, file_answer, score, score_earned = question
 
                 info[question_id] = {
                     'question_text': question_text,
+                    'question_type': question_type,
+                    'question_answers': answers,
+                    'right_answer': right_answer,
                     'user_answer': user_answer,
                     'file_answer': file_answer,
                     'score': score,

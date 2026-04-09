@@ -46,12 +46,32 @@ body {
     box-shadow: 0px 0px 20px #dfdbd4d3;
 }
 
+#logo {
+    transform: scale(0.6);
+    width: auto;
+    height: 50px;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+#profile_logo {
+    transform: scale(0.8);
+    width: auto;
+    height: 35px;
+    cursor: pointer;
+}
+
 #profile {
-    color: #3d433d;
+    text-decoration: none;
+    color: #004225;
+    font-weight: 600;
+    border-radius: 25px;
     padding-top: 7px;
-    width: 80px;
+    width: 60px;
     height: 30px;
     text-align: center;
+    justify-content: center;
+    padding-top: 7px;
 }
 
 .main_block {

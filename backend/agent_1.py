@@ -4,6 +4,7 @@ from langchain_core.messages import SystemMessage
 import json, re
 from backend.agent1_prompt import prompt_for_agent_1
 from backend.database_functions import database_fill
+from backend.agent_5 import process_user_input
 
 gigachat = GigaChat(temperature=0,
                     top_p=0.1,
@@ -12,8 +13,11 @@ gigachat = GigaChat(temperature=0,
                     verify_ssl_certs=False)
 
 def create_test(user_id, topics, user_info):
+
+    checked_topics = process_user_input(topics)
+
     prompt = prompt_for_agent_1.format(
-                        topics=topics,
+                        topics=checked_topics,
                         user_id=user_id,
                         user_info=user_info)
 

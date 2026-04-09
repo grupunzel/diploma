@@ -2368,3 +2368,174 @@ print(y)
 2026-04-08 13:26:36,721 - database_functions.py - backend.config.logger - INFO - Тест #7 успешно добавлен в UserProgress
 2026-04-08 13:26:36,737 - database_functions.py - backend.config.logger - INFO - Успешно получили информацию об ответах пользователя на тест #7
 2026-04-08 13:27:19,291 - database_functions.py - backend.config.logger - INFO - Успешно получили информацию об ответах пользователя на тест #7
+2026-04-09 11:09:48,986 - database_functions.py - backend.config.logger - INFO - Успешно получили информацию об ответах пользователя на тест #7
+2026-04-09 11:09:51,885 - database_functions.py - backend.config.logger - INFO - Тест #7 успешно добавлен в UserProgress
+2026-04-09 11:26:00,585 - database_functions.py - backend.config.logger - INFO - Успешно получили информацию об ответах пользователя на тест #7
+2026-04-09 11:26:10,943 - database_functions.py - backend.config.logger - INFO - Успешно получили информацию об ответах пользователя на тест #7
+2026-04-09 11:30:11,810 - database_functions.py - backend.config.logger - INFO - Успешно получили информацию об ответах пользователя на тест #7
+2026-04-09 11:30:36,480 - database_functions.py - backend.config.logger - INFO - Успешно получили информацию об ответах пользователя на тест #7
+2026-04-09 11:30:37,746 - database_functions.py - backend.config.logger - INFO - Тест #7 успешно добавлен в UserProgress
+2026-04-09 11:33:47,636 - database_functions.py - backend.config.logger - INFO - Успешно получили информацию об ответах пользователя на тест #7
+2026-04-09 11:34:15,126 - database_functions.py - backend.config.logger - INFO - Успешно получили информацию об ответах пользователя на тест #7
+2026-04-09 11:36:05,950 - database_functions.py - backend.config.logger - INFO - Успешно получили информацию об ответах пользователя на тест #7
+2026-04-09 11:37:30,618 - database_functions.py - backend.config.logger - INFO - Успешно получили информацию об ответах пользователя на тест #7
+2026-04-09 11:37:32,173 - database_functions.py - backend.config.logger - INFO - Тест #7 успешно добавлен в UserProgress
+2026-04-09 11:37:36,861 - database_functions.py - backend.config.logger - INFO - Успешно получили информацию об ответах пользователя на тест #7
+2026-04-09 11:37:39,236 - database_functions.py - backend.config.logger - INFO - Тест #7 успешно добавлен в UserProgress
+2026-04-09 11:38:29,306 - database_functions.py - backend.config.logger - INFO - Успешно получили информацию об ответах пользователя на тест #7
+2026-04-09 11:38:31,482 - database_functions.py - backend.config.logger - INFO - Тест #7 успешно добавлен в UserProgress
+2026-04-09 11:39:03,159 - database_functions.py - backend.config.logger - INFO - Успешно получили информацию об ответах пользователя на тест #7
+2026-04-09 11:40:53,500 - database_functions.py - backend.config.logger - INFO - Успешно получили информацию об ответах пользователя на тест #7
+2026-04-09 11:40:55,617 - database_functions.py - backend.config.logger - INFO - Тест #7 успешно добавлен в UserProgress
+2026-04-09 11:42:11,506 - database_functions.py - backend.config.logger - INFO - Успешно получили информацию об ответах пользователя на тест #7
+2026-04-09 11:47:45,660 - database_functions.py - backend.config.logger - INFO - Успешно получили информацию об ответах пользователя на тест #7
+2026-04-09 11:47:47,631 - database_functions.py - backend.config.logger - INFO - Тест #7 успешно добавлен в UserProgress
+2026-04-09 11:49:14,564 - database_functions.py - backend.config.logger - INFO - Успешно получили информацию об ответах пользователя на тест #7
+2026-04-09 11:49:15,760 - database_functions.py - backend.config.logger - INFO - Тест #7 успешно добавлен в UserProgress
+2026-04-09 12:05:03,639 - database_functions.py - backend.config.logger - INFO - Успешно вывели историю прошлах тестирований пользователя №1
+2026-04-09 12:05:06,471 - database_functions.py - backend.config.logger - INFO - Начало обработки 4 заданий
+2026-04-09 12:05:06,472 - database_functions.py - backend.config.logger - INFO - Обработка задания 1/4: Какой оператор используется в Python для проверки принадлежности элемента к коллекции?
+2026-04-09 12:05:06,472 - database_functions.py - backend.config.logger - INFO - Добавлено задание 1 для теста #8
+2026-04-09 12:05:06,472 - database_functions.py - backend.config.logger - INFO - Обработка задания 2/4: Напишите функцию на Python, принимающую два числа и возвращающую их сумму.
+2026-04-09 12:05:06,472 - database_functions.py - backend.config.logger - INFO - Добавлено задание 2 для теста #8
+2026-04-09 12:05:06,472 - database_functions.py - backend.config.logger - INFO - Обработка задания 3/4: Какие типы коллекций существуют в Python?
+2026-04-09 12:05:06,472 - database_functions.py - backend.config.logger - INFO - Добавлено задание 3 для теста #8
+2026-04-09 12:05:06,472 - database_functions.py - backend.config.logger - INFO - Обработка задания 4/4: Опишите разницу между списком и кортежем в Python.
+2026-04-09 12:05:06,472 - database_functions.py - backend.config.logger - INFO - Добавлено задание 4 для теста #8
+2026-04-09 12:05:06,474 - database_functions.py - backend.config.logger - INFO - Тест #8 успешно сохранен в БД (4 вопросов)
+2026-04-09 12:05:06,476 - database_functions.py - backend.config.logger - INFO - Успешно вывели историю прошлах тестирований пользователя №1
+2026-04-09 12:05:09,249 - database_functions.py - backend.config.logger - INFO - Начало обработки 5 заданий
+2026-04-09 12:05:09,249 - database_functions.py - backend.config.logger - INFO - Обработка задания 1/5: Какой оператор используется в Python для проверки принадлежности элемента к коллекции?
+2026-04-09 12:05:09,250 - database_functions.py - backend.config.logger - INFO - Добавлено задание 1 для теста #9
+2026-04-09 12:05:09,250 - database_functions.py - backend.config.logger - INFO - Обработка задания 2/5: Напишите функцию на Python, принимающую два числа и возвращающую их сумму.
+2026-04-09 12:05:09,250 - database_functions.py - backend.config.logger - INFO - Добавлено задание 2 для теста #9
+2026-04-09 12:05:09,250 - database_functions.py - backend.config.logger - INFO - Обработка задания 3/5: Опишите разницу между списком и кортежем в Python.
+2026-04-09 12:05:09,250 - database_functions.py - backend.config.logger - INFO - Добавлено задание 3 для теста #9
+2026-04-09 12:05:09,250 - database_functions.py - backend.config.logger - INFO - Обработка задания 4/5: Как называется цикл в Python, который выполняется определенное количество раз?
+2026-04-09 12:05:09,250 - database_functions.py - backend.config.logger - INFO - Добавлено задание 4 для теста #9
+2026-04-09 12:05:09,250 - database_functions.py - backend.config.logger - INFO - Обработка задания 5/5: Создайте скрипт на Python, выводящий первые 10 элементов последовательности Фибоначчи.
+2026-04-09 12:05:09,250 - database_functions.py - backend.config.logger - INFO - Добавлено задание 5 для теста #9
+2026-04-09 12:05:09,251 - database_functions.py - backend.config.logger - INFO - Тест #9 успешно сохранен в БД (5 вопросов)
+2026-04-09 12:05:09,257 - database_functions.py - backend.config.logger - INFO - Добавили запись о тесте #9 в UserProgress
+2026-04-09 12:05:09,257 - database_functions.py - backend.config.logger - INFO - Успешно вывели вопросы из теста №9
+2026-04-09 12:05:09,258 - database_functions.py - backend.config.logger - INFO - Успешно занесли время начала тестирования #9 в UserProgress.
+2026-04-09 12:05:44,306 - database_functions.py - backend.config.logger - INFO - Успешно занесли время окончания тестирования #9 в UserProgress.
+2026-04-09 12:05:44,307 - database_functions.py - backend.config.logger - INFO - Ответ пользователя успешно изменён
+2026-04-09 12:05:44,308 - database_functions.py - backend.config.logger - INFO - Ответ пользователя успешно изменён
+2026-04-09 12:05:44,308 - database_functions.py - backend.config.logger - INFO - Ответ пользователя успешно изменён
+2026-04-09 12:05:44,309 - database_functions.py - backend.config.logger - INFO - Ответ пользователя успешно изменён
+2026-04-09 12:05:44,310 - database_functions.py - backend.config.logger - INFO - Ответ пользователя успешно изменён
+2026-04-09 12:05:44,310 - database_functions.py - backend.config.logger - INFO - Успешно получили информацию о заданиях теста №9
+2026-04-09 12:05:46,260 - database_functions.py - backend.config.logger - INFO - Начало проверки заданий для теста #9
+2026-04-09 12:05:46,260 - database_functions.py - backend.config.logger - INFO - Проверка задания 1/5: Какой оператор используется в Python для проверки принадлежности элемента к коллекции?
+2026-04-09 12:05:46,260 - database_functions.py - backend.config.logger - INFO - Типы: user_id=<class 'str'>, test_id=<class 'str'>, question=<class 'str'>
+2026-04-09 12:05:46,261 - database_functions.py - backend.config.logger - INFO - Задание 1/5 успешно проверено
+2026-04-09 12:05:46,261 - database_functions.py - backend.config.logger - INFO - Проверка задания 2/5: Напишите функцию на Python, принимающую два числа и возвращающую их сумму.
+2026-04-09 12:05:46,262 - database_functions.py - backend.config.logger - INFO - Типы: user_id=<class 'str'>, test_id=<class 'str'>, question=<class 'str'>
+2026-04-09 12:05:46,262 - database_functions.py - backend.config.logger - INFO - Задание 2/5 успешно проверено
+2026-04-09 12:05:46,262 - database_functions.py - backend.config.logger - INFO - Проверка задания 3/5: Опишите разницу между списком и кортежем в Python.
+2026-04-09 12:05:46,262 - database_functions.py - backend.config.logger - INFO - Типы: user_id=<class 'str'>, test_id=<class 'str'>, question=<class 'str'>
+2026-04-09 12:05:46,262 - database_functions.py - backend.config.logger - INFO - Задание 3/5 успешно проверено
+2026-04-09 12:05:46,262 - database_functions.py - backend.config.logger - INFO - Проверка задания 4/5: Как называется цикл в Python, который выполняется определенное количество раз?
+2026-04-09 12:05:46,262 - database_functions.py - backend.config.logger - INFO - Типы: user_id=<class 'str'>, test_id=<class 'str'>, question=<class 'str'>
+2026-04-09 12:05:46,262 - database_functions.py - backend.config.logger - INFO - Задание 4/5 успешно проверено
+2026-04-09 12:05:46,263 - database_functions.py - backend.config.logger - INFO - Проверка задания 5/5: Создайте скрипт на Python, выводящий первые 10 элементов последовательности Фибоначчи.
+2026-04-09 12:05:46,263 - database_functions.py - backend.config.logger - INFO - Типы: user_id=<class 'str'>, test_id=<class 'str'>, question=<class 'str'>
+2026-04-09 12:05:46,263 - database_functions.py - backend.config.logger - INFO - Задание 5/5 успешно проверено
+2026-04-09 12:05:46,264 - database_functions.py - backend.config.logger - INFO - Тест #9 успешно проверен
+2026-04-09 12:05:46,269 - database_functions.py - backend.config.logger - INFO - Успешно получили информацию об ответах пользователя на тест #9
+2026-04-09 12:05:47,624 - database_functions.py - backend.config.logger - INFO - Успешно получили информацию об ответах пользователя на тест #9
+2026-04-09 12:05:48,853 - database_functions.py - backend.config.logger - INFO - Тест #9 успешно добавлен в UserProgress
+2026-04-09 12:07:05,096 - database_functions.py - backend.config.logger - INFO - Успешно получили информацию об ответах пользователя на тест #9
+2026-04-09 12:07:07,826 - database_functions.py - backend.config.logger - INFO - Успешно получили информацию об ответах пользователя на тест #9
+2026-04-09 12:07:16,575 - database_functions.py - backend.config.logger - INFO - Успешно получили информацию об ответах пользователя на тест #9
+2026-04-09 12:07:17,857 - database_functions.py - backend.config.logger - INFO - Тест #9 успешно добавлен в UserProgress
+2026-04-09 12:07:36,947 - database_functions.py - backend.config.logger - INFO - Успешно получили информацию об ответах пользователя на тест #9
+2026-04-09 12:07:40,976 - database_functions.py - backend.config.logger - INFO - Успешно получили информацию об ответах пользователя на тест #9
+2026-04-09 12:07:42,140 - database_functions.py - backend.config.logger - INFO - Тест #9 успешно добавлен в UserProgress
+2026-04-09 12:09:22,720 - database_functions.py - backend.config.logger - INFO - Успешно получили информацию об ответах пользователя на тест #9
+2026-04-09 12:09:24,222 - database_functions.py - backend.config.logger - INFO - Тест #9 успешно добавлен в UserProgress
+2026-04-09 12:10:14,321 - database_functions.py - backend.config.logger - INFO - Успешно получили информацию об ответах пользователя на тест #9
+2026-04-09 12:10:18,420 - database_functions.py - backend.config.logger - INFO - Успешно получили информацию об ответах пользователя на тест #9
+2026-04-09 12:10:19,802 - database_functions.py - backend.config.logger - INFO - Тест #9 успешно добавлен в UserProgress
+2026-04-09 12:10:33,422 - database_functions.py - backend.config.logger - INFO - Успешно получили информацию об ответах пользователя на тест #9
+2026-04-09 12:10:34,772 - database_functions.py - backend.config.logger - INFO - Тест #9 успешно добавлен в UserProgress
+2026-04-09 12:10:46,438 - database_functions.py - backend.config.logger - INFO - Успешно получили информацию об ответах пользователя на тест #9
+2026-04-09 12:10:50,040 - database_functions.py - backend.config.logger - INFO - Успешно получили информацию об ответах пользователя на тест #9
+2026-04-09 12:10:51,153 - database_functions.py - backend.config.logger - INFO - Тест #9 успешно добавлен в UserProgress
+2026-04-09 12:14:07,504 - database_functions.py - backend.config.logger - INFO - Успешно получили информацию об ответах пользователя на тест #9
+2026-04-09 12:14:08,910 - database_functions.py - backend.config.logger - INFO - Тест #9 успешно добавлен в UserProgress
+2026-04-09 12:14:18,279 - database_functions.py - backend.config.logger - INFO - Успешно получили информацию об ответах пользователя на тест #9
+2026-04-09 12:14:22,171 - database_functions.py - backend.config.logger - INFO - Успешно получили информацию об ответах пользователя на тест #9
+2026-04-09 12:14:26,345 - database_functions.py - backend.config.logger - INFO - Успешно получили информацию об ответах пользователя на тест #9
+2026-04-09 12:14:27,717 - database_functions.py - backend.config.logger - INFO - Тест #9 успешно добавлен в UserProgress
+2026-04-09 12:29:52,845 - database_functions.py - backend.config.logger - INFO - Пароль правильный
+2026-04-09 12:29:52,853 - database_functions.py - backend.config.logger - INFO - Успешно получили id пользователя
+2026-04-09 12:29:52,855 - database_functions.py - backend.config.logger - INFO - Пользователь существует
+2026-04-09 12:29:52,856 - database_functions.py - backend.config.logger - INFO - Успешно вывели информацию о пользователе
+2026-04-09 12:30:19,676 - database_functions.py - backend.config.logger - INFO - Успешно вывели историю прошлах тестирований пользователя №1
+2026-04-09 12:30:23,981 - database_functions.py - backend.config.logger - INFO - Начало обработки 4 заданий
+2026-04-09 12:30:23,982 - database_functions.py - backend.config.logger - INFO - Обработка задания 1/4: Какой оператор используется в SQL для соединения таблиц?
+2026-04-09 12:30:23,982 - database_functions.py - backend.config.logger - INFO - Добавлено задание 1 для теста #10
+2026-04-09 12:30:23,983 - database_functions.py - backend.config.logger - INFO - Обработка задания 2/4: Напишите SQL-запрос для получения всех сотрудников, работающих в отделе с номером 5.
+2026-04-09 12:30:23,983 - database_functions.py - backend.config.logger - INFO - Добавлено задание 2 для теста #10
+2026-04-09 12:30:23,983 - database_functions.py - backend.config.logger - INFO - Обработка задания 3/4: Какой оператор используется в Python для проверки принадлежности элемента к коллекции?
+2026-04-09 12:30:23,983 - database_functions.py - backend.config.logger - INFO - Добавлено задание 3 для теста #10
+2026-04-09 12:30:23,983 - database_functions.py - backend.config.logger - INFO - Обработка задания 4/4: Опишите разницу между списком и кортежем в Python.
+2026-04-09 12:30:23,983 - database_functions.py - backend.config.logger - INFO - Добавлено задание 4 для теста #10
+2026-04-09 12:30:23,986 - database_functions.py - backend.config.logger - INFO - Тест #10 успешно сохранен в БД (4 вопросов)
+2026-04-09 12:30:23,993 - database_functions.py - backend.config.logger - INFO - Добавили запись о тесте #10 в UserProgress
+2026-04-09 12:30:23,994 - database_functions.py - backend.config.logger - INFO - Успешно вывели вопросы из теста №10
+2026-04-09 12:30:23,995 - database_functions.py - backend.config.logger - INFO - Успешно занесли время начала тестирования #10 в UserProgress.
+2026-04-09 12:30:50,972 - database_functions.py - backend.config.logger - INFO - Успешно занесли время окончания тестирования #10 в UserProgress.
+2026-04-09 12:30:50,973 - database_functions.py - backend.config.logger - INFO - Ответ пользователя успешно изменён
+2026-04-09 12:30:50,974 - database_functions.py - backend.config.logger - INFO - Ответ пользователя успешно изменён
+2026-04-09 12:30:50,975 - database_functions.py - backend.config.logger - INFO - Ответ пользователя успешно изменён
+2026-04-09 12:30:50,976 - database_functions.py - backend.config.logger - INFO - Ответ пользователя успешно изменён
+2026-04-09 12:30:50,976 - database_functions.py - backend.config.logger - INFO - Успешно получили информацию о заданиях теста №10
+2026-04-09 12:30:52,618 - database_functions.py - backend.config.logger - INFO - Начало проверки заданий для теста #10
+2026-04-09 12:30:52,618 - database_functions.py - backend.config.logger - INFO - Проверка задания 1/4: Какой оператор используется в SQL для соединения таблиц?
+2026-04-09 12:30:52,618 - database_functions.py - backend.config.logger - INFO - Типы: user_id=<class 'str'>, test_id=<class 'int'>, question=<class 'str'>
+2026-04-09 12:30:52,619 - database_functions.py - backend.config.logger - INFO - Задание 1/4 успешно проверено
+2026-04-09 12:30:52,620 - database_functions.py - backend.config.logger - INFO - Проверка задания 2/4: Напишите SQL-запрос для получения всех сотрудников, работающих в отделе с номером 5.
+2026-04-09 12:30:52,620 - database_functions.py - backend.config.logger - INFO - Типы: user_id=<class 'str'>, test_id=<class 'int'>, question=<class 'str'>
+2026-04-09 12:30:52,620 - database_functions.py - backend.config.logger - INFO - Задание 2/4 успешно проверено
+2026-04-09 12:30:52,620 - database_functions.py - backend.config.logger - INFO - Проверка задания 3/4: Какой оператор используется в Python для проверки принадлежности элемента к коллекции?
+2026-04-09 12:30:52,620 - database_functions.py - backend.config.logger - INFO - Типы: user_id=<class 'str'>, test_id=<class 'int'>, question=<class 'str'>
+2026-04-09 12:30:52,620 - database_functions.py - backend.config.logger - INFO - Задание 3/4 успешно проверено
+2026-04-09 12:30:52,620 - database_functions.py - backend.config.logger - INFO - Проверка задания 4/4: Опишите разницу между списком и кортежем в Python.
+2026-04-09 12:30:52,620 - database_functions.py - backend.config.logger - INFO - Типы: user_id=<class 'str'>, test_id=<class 'int'>, question=<class 'str'>
+2026-04-09 12:30:52,620 - database_functions.py - backend.config.logger - INFO - Задание 4/4 успешно проверено
+2026-04-09 12:30:52,622 - database_functions.py - backend.config.logger - INFO - Тест #10 успешно проверен
+2026-04-09 12:30:52,627 - database_functions.py - backend.config.logger - INFO - Успешно получили информацию об ответах пользователя на тест #10
+2026-04-09 12:30:53,752 - database_functions.py - backend.config.logger - INFO - Тест #10 успешно добавлен в UserProgress
+2026-04-09 12:30:53,765 - database_functions.py - backend.config.logger - INFO - Успешно получили информацию об ответах пользователя на тест #10
+2026-04-09 12:30:54,799 - database_functions.py - backend.config.logger - INFO - Тест #10 успешно добавлен в UserProgress
+2026-04-09 13:44:37,924 - database_functions.py - backend.config.logger - INFO - Успешно вывели историю прошлах тестирований пользователя №1
+2026-04-09 13:44:42,610 - database_functions.py - backend.config.logger - INFO - Начало обработки 5 заданий
+2026-04-09 13:44:42,610 - database_functions.py - backend.config.logger - INFO - Обработка задания 1/5: Какие типы структур данных наиболее часто используются в алгоритмах обработки последовательностей?
+2026-04-09 13:44:42,611 - database_functions.py - backend.config.logger - INFO - Добавлено задание 1 для теста #11
+2026-04-09 13:44:42,611 - database_functions.py - backend.config.logger - INFO - Обработка задания 2/5: Опишите алгоритм поиска минимума в списке элементов.
+2026-04-09 13:44:42,611 - database_functions.py - backend.config.logger - INFO - Добавлено задание 2 для теста #11
+2026-04-09 13:44:42,611 - database_functions.py - backend.config.logger - INFO - Обработка задания 3/5: Создайте скрипт на Python, который выводит на экран список всех файлов и папок в текущей директории.
+2026-04-09 13:44:42,611 - database_functions.py - backend.config.logger - INFO - Добавлено задание 3 для теста #11
+2026-04-09 13:44:42,611 - database_functions.py - backend.config.logger - INFO - Обработка задания 4/5: Какой оператор используется для проверки принадлежности элемента к коллекции в Python?
+2026-04-09 13:44:42,612 - database_functions.py - backend.config.logger - INFO - Добавлено задание 4 для теста #11
+2026-04-09 13:44:42,612 - database_functions.py - backend.config.logger - INFO - Обработка задания 5/5: Объясните разницу между списком и кортежем в Python.
+2026-04-09 13:44:42,612 - database_functions.py - backend.config.logger - INFO - Добавлено задание 5 для теста #11
+2026-04-09 13:44:42,614 - database_functions.py - backend.config.logger - INFO - Тест #11 успешно сохранен в БД (5 вопросов)
+2026-04-09 13:44:42,620 - database_functions.py - backend.config.logger - INFO - Добавили запись о тесте #11 в UserProgress
+2026-04-09 13:44:42,622 - database_functions.py - backend.config.logger - INFO - Успешно вывели вопросы из теста №11
+2026-04-09 13:44:42,624 - database_functions.py - backend.config.logger - INFO - Успешно занесли время начала тестирования #11 в UserProgress.
+2026-04-09 13:46:23,319 - database_functions.py - backend.config.logger - INFO - Добавили запись о тесте #11 в UserProgress
+2026-04-09 13:46:23,320 - database_functions.py - backend.config.logger - INFO - Успешно вывели вопросы из теста №11
+2026-04-09 13:46:23,321 - database_functions.py - backend.config.logger - INFO - Успешно занесли время начала тестирования #11 в UserProgress.
+2026-04-09 13:46:25,380 - database_functions.py - backend.config.logger - INFO - Добавили запись о тесте #11 в UserProgress
+2026-04-09 13:46:25,380 - database_functions.py - backend.config.logger - INFO - Успешно вывели вопросы из теста №11
+2026-04-09 13:46:25,381 - database_functions.py - backend.config.logger - INFO - Успешно занесли время начала тестирования #11 в UserProgress.
+2026-04-09 13:46:26,605 - database_functions.py - backend.config.logger - INFO - Добавили запись о тесте #11 в UserProgress
+2026-04-09 13:46:26,606 - database_functions.py - backend.config.logger - INFO - Успешно вывели вопросы из теста №11
+2026-04-09 13:46:26,608 - database_functions.py - backend.config.logger - INFO - Успешно занесли время начала тестирования #11 в UserProgress.
+2026-04-09 13:47:39,869 - database_functions.py - backend.config.logger - INFO - Добавили запись о тесте #11 в UserProgress
+2026-04-09 13:47:39,871 - database_functions.py - backend.config.logger - INFO - Успешно вывели вопросы из теста №11
+2026-04-09 13:47:39,871 - database_functions.py - backend.config.logger - INFO - Успешно занесли время начала тестирования #11 в UserProgress.

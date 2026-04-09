@@ -8,25 +8,28 @@
 </head>
 <body>
     <div class = 'head'>
-        <a id="logo">Logo</a>
+        <a href="/"><img id="logo" src="frontend/static/pictures/logo.jpeg" alt="logo"></a>
         <div class = 'menu'>
-            <a class='menu_link' href="#">About</a>
-            <a class='menu_link' href="#">Test me</a>
-            <a class='menu_link' href="#">Create</a>
-            <a class='menu_link' href="#">Contacts</a>
-            <a class='menu_link' id="profile" href="/sign_in">Profile</a>
+            <button id="language_button">En/Ru</button>
+            <a class='menu_link' href="/">About</a>
+            <a class='menu_link' href="/pick_topics">Test me</a>
+            <a class='menu_link' href="/">Contacts</a>
+            <a class='profile_link' id="profile" href="/login">Profile</a>
+            <a id="profile_container" href="/login"><img id="profile_logo" src="frontend/static/pictures/profile_logo.jpeg" alt="profile_logo"></a>
         </div>
     </div>
 
     <div class="main_block">
         <div class="assistant_message">
+            <img id="robot_logo" src="frontend/static/pictures/robot_logo.jpeg" alt="robot_logo">
             <pre id="ai_message">Hi!&#128513; I'm your personal AI assistant. Feel free to choose topics 
 for your test or write them down!</pre>
         </div>
 
         <div class="user">
             <form action="/pick_topics" method="POST">
-                <input type="text" id="user_input" placeholder="Python, C++, SQL, . . ." name="user_topics">
+                <textarea id="user_input" placeholder="Python, C++, SQL, . . ." name="user_topics" required></textarea>
+                <hr id="horizontal_hr">
                 <div class="submit">
                     <input type="submit" id="submit_button" value="Create">
                 </div>
