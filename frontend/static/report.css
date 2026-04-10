@@ -46,9 +46,8 @@ body {
     border-bottom-left-radius: 25px;
     border-bottom-right-radius: 25px;
     position: sticky;
-    /* border: #002515 solid 0.5px; */
     border-top: none;
-    box-shadow: 1px 1px 10px rgb(220, 220, 220);
+    box-shadow: 1px 1px 10px rgb(182, 182, 182);
 }
 
 .menu {
@@ -75,6 +74,27 @@ body {
     box-shadow: 0px 0px 20px #dfdbd4d3;
 }
 
+#language_button {
+    border: none;
+    background-color: #fffdf9;
+    font-family: 'Gill Sans', sans-serif;
+    color: #004225;
+    font-weight: 400;
+    font-size: 17px;
+    width: 80px;
+    height: 30px;
+    text-align: center;
+    justify-content: center;
+    text-decoration: underline;
+    padding-top: 3px;
+    cursor: pointer;
+}
+
+#language_button:hover, .menu_link:hover, #profile:hover {
+    color: #066f42;
+    text-shadow: 1px 1px 1px rgb(176, 176, 176);
+}
+
 #logo {
     transform: scale(0.6);
     width: auto;
@@ -83,12 +103,24 @@ body {
     cursor: pointer;
 }
 
+#profile_logo {
+    transform: scale(0.8);
+    width: auto;
+    height: 35px;
+    cursor: pointer;
+}
+
 #profile {
-    color: #3d433d;
+    text-decoration: none;
+    color: #004225;
+    font-weight: 600;
+    border-radius: 25px;
     padding-top: 7px;
-    width: 80px;
+    width: 60px;
     height: 30px;
     text-align: center;
+    justify-content: center;
+    padding-top: 7px;
 }
 
 .report_container {

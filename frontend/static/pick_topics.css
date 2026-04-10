@@ -33,15 +33,13 @@ body {
     border-bottom-left-radius: 25px;
     border-bottom-right-radius: 25px;
     position: sticky;
-    /* border: #002515 solid 0.5px; */
     border-top: none;
-    box-shadow: 1px 1px 10px rgb(220, 220, 220);
+    box-shadow: 1px 1px 10px rgb(182, 182, 182);
 }
 
 .menu {
     display: flex;
     margin-top: 10px;
-    /* gap: 10px; */
     margin-right: 40px;
 }
 

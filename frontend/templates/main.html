@@ -8,38 +8,124 @@
 </head>
 <body>
     <div class = 'head'>
-        <a id="logo">Logo</a>
+        <a href="/"><img id="logo" src="frontend/static/pictures/logo.jpeg" alt="logo"></a>
         <div class = 'menu'>
+            <button id="language_button">En/Ru</button>
+            <a class='menu_link' href="/">Home</a>
             <a class='menu_link' href="#">About</a>
             <a class='menu_link' href="#">Test me</a>
-            <a class='menu_link' href="#">Create</a>
             <a class='menu_link' href="#">Contacts</a>
-            <a class='menu_link' id="profile" href="/sign_in">Profile</a>
+            <a class='profile_link' id="profile" href="/login">Profile</a>
+            <a id="profile_container" href="/login"><img id="profile_logo" src="frontend/static/pictures/profile_logo.jpeg" alt="profile_logo"></a>
         </div>
     </div>
 
-    <div class="main_photo">
-        <div class="'main_text">
-            <pre id="head_text">Want to test your
-IT skills?</pre>
-            <pre id="second_text">Level up your coding resume. Dive into a set of challenges and see how you stack up.
-Get detailed feedback to strengthen your weak spots!</pre>
-            <form action="/pick_topics" method="GET">
-                <button id="start_button">Start</button>
-            </form>
-            <h3 id="slogan">Pick a topic. Face the challenge. Unlock your level.</h3>
+    <div class="main_block">
+        <div class="above_photo">
+            <h1 id="main_slogan">Test. Learn. Grow.</h1>
+        </div>
+        <div class="main_photo">
+            <div class="main_text">
+                <pre id="head_text">Want to test your IT skills?</pre>
+                <pre id="second_text">Level up your coding resume. Dive into a set of challenges and see how 
+you stack up!</pre>
+                <h3 id="slogan">Pick a topic. Face the challenge. Unlock your level.</h3>
+                <div class="button_block">
+                    <form action="/pick_topics" method="GET">
+                        <button id="start_button">Start</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 
     <div class="info_text">
-        <a id="info_title_text">Choose your way in IT sphere. Don't know how? Your journey starts here.</a>
+        <div id="info_title_text">
+            <a>Choose your way in IT sphere. Don't know how? Your journey starts here.</a>
+        </div>
         <pre id="info_main_text">Our platform is here to help you start your career in Information Technology. From algorithms and data structures 
 to front-end frameworks and system design — we cover what really matters in the IT industry. How to get started?</pre>
-        <pre class="steps" id="first_step">1. Click on the start button and meet your personal assistant. He will create a test for you,
-check your answers, explain all the mistakes and make a full test report.</pre>
-        <pre class="steps" id="second_step">2. Choose topics in which you want to test yourself and press a start button to begin your testing.</pre>
-        <pre class="steps" id="third_step">3. Try too solve all the questions in the test or let your personal assistant help you.</pre>
-        <pre class="steps" id="fourth_step">4. Get your results with the full statistics of your knowledge and see your best and bad sides.</pre>
+        <div class="steps">
+            <div id="first_step">
+                <div class="header">
+                    <img id="step_image" src="frontend/static/pictures/first_step.jpg" alt="first_step_logo">
+                    <p id="first_step_head">Press start</p>
+                </div>
+                <p id="first_step_body">Click on the start button and meet your personal assistant. Choose topics in which you want to test yourself and press a start button to begin your testing.</p>
+            </div>
+            <div id="second_step">
+                <div class="header">
+                    <img id="step_image" src="frontend/static/pictures/second_step.jpg" alt="second_step_logo">
+                    <p id="second_step_head">Take the test</p>
+                </div>
+                <p id="second_step_body">Try to solve all the questions in the test or let your personal assistant help you. Show everyone what you are capable of!</p>
+            </div>
+            <div id="third_step">
+                <div class="header">
+                    <img id="step_image" src="frontend/static/pictures/third_step.jpg" alt="third_step_logo">
+                    <p id="third_step_head">Get results</p>
+                </div>
+                <p id="third_step_body">Recieve your results with the full statistics of your knowledge and see your best and bad sides. Get useful recommendations for your further studies.</p>
+            </div>
+        </div>
+        <div class="analys">
+            <div id="first_column">
+                <p id="first_text">30 min</p>
+                <p id="second_text">Needed For Test</p>
+            </div>
+            <div id="second_column">
+                <p id="first_text">200+</p>
+                <p id="second_text">Tests Available</p>
+            </div>
+            <div id="third_column">
+                <p id="first_text">15+</p>
+                <p id="second_text">IT Domains Covered</p>
+            </div>
+            <div id="fourth_column">
+                <p id="first_text">95%</p>
+                <p id="second_text">Satisfaction Rate</p>
+            </div>
+        </div>
+    </div>
+    <div class="contacts">
+        <div class="first_column_contact">
+            <a href="/"><img id="logo" src="frontend/static/pictures/white_logo.jpg" alt="logo"></a>
+            <p id="contact_text">Your go-to platform for professional IT skill assessments. Test yourself, grow faster.</p>
+            <div class="three_logos">
+                <img id="instagram_logo" src="frontend/static/pictures/instagram_logo.jpg" alt="instagram_logo">
+                <img id="facebook_logo" src="frontend/static/pictures/facebook_logo.jpg" alt="facebook_logo">
+                <img id="youtube_logo" src="frontend/static/pictures/youtube_logo.jpg" alt="youtube_logo">
+            </div>
+        </div>
+        <div class="second_column_contact">
+            <p id="platform">PLATFORM</p>
+            <p id="enter"><a class='link' href="/">Home</a></p>
+            <p id="enter"><a class='link' href="#">About</a></p>
+            <p id="enter"><a class='link' href="/pick_topics">Test me</a></p>
+            <p id="enter"><a class='link' href="#">Contacts</a></p>
+        </div>
+        <div class="third_column_contact">
+            <p id="contacts">CONTACTS</p>
+            <div class="contacts_logos">
+                <div class="logos">
+                    <p id="enter"><img id="telephone_logo" src="frontend/static/pictures/telephone.jpg" alt="telephone_logo"></p>
+                    <p id="enter"></p><img id="email_logo" src="frontend/static/pictures/email.jpg" alt="email_logo"></p>
+                    <p id="enter"></p><img id="github_logo" src="frontend/static/pictures/github.jpg" alt="github_logo"></p>
+                </div>
+                <div class="contacts_text">
+                    <p id="telephone_number">+7 931 354 85 05</p>
+                    <p id="email_text">maria.yu.nikitina@icloud.com</p>
+                    <p id="github_text">https://github.com/grupunzel</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="rights">
+        <hr id="horizontal_hr">
+        <div class="two_columns">
+            <p id="left_text">© 2026 ITest.ai. All rights reserved.</p>
+            <p id="right_text">Made with passion for IT professionals.</p>
+        </div>
     </div>
 </body>
 </html>
