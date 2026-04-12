@@ -21,6 +21,7 @@ class Settings:
     SALUTE_CREDENTIALS = os.getenv("SALUTE_CREDENTIALS")
     FFMPEG_PATH = os.getenv("FFMPEG_PATH", "/opt/homebrew/bin/ffmpeg")
     FFPROBE_PATH = os.getenv("FFPROBE_PATH", "/opt/homebrew/bin/ffprobe")
+    SESSION_KEY = os.getenv("SESSION_KEY")
 
     def __init__(self):
         """Initializing instruments for audio handling"""

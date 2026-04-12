@@ -6,14 +6,13 @@ from fastapi.middleware import Middleware
 from starlette.middleware.sessions import SessionMiddleware
 import hashlib
 from typing import List, Tuple, Optional
-from backend.database_functions import sign_up_check, sign_in_check, add_user, get_user_id, check_user_exists, get_user_info, get_test_questions, update_user_answer, get_questions_info, user_answers_info, get_user_testing_info, update_test_start_time, update_test_end_time, get_question_type, update_file_answer, create_user_progress
+from backend.database_functions import sign_up_check, sign_in_check, add_user, get_user_id, check_user_exists, get_user_info, get_test_questions, update_user_answer, get_questions_info, user_answers_info, get_user_testing_info, update_test_start_time, update_test_end_time, get_question_type, update_file_answer, create_user_progress, update_user, delete_user
 from backend.agent_1 import create_test
 from backend.agent_2 import check_answers
 from backend.agent_3 import make_report
 from backend.agent_4 import get_explanation
-from backend.config.settings import settings
+from backend.config.settings import Settings
 from backend.config.logger import logger
-import uuid
 import os
 import sqlite3
 import io
@@ -25,7 +24,7 @@ app = FastAPI()
 templates = Jinja2Templates(directory="frontend/templates")
 app.mount("/frontend/static", StaticFiles(directory="frontend/static"), name="static")
 
-app.add_middleware(SessionMiddleware, secret_key="your-secret-key")
+app.add_middleware(SessionMiddleware, secret_key=Settings.SESSION_KEY)
 
 allowed_extensions = ['.txt', '.py', '.js', '.html', '.css', '.json', '.c', '.ts', '.java', '.go', '.rs', '.rb', '.swift', '.kt', '.sql', '.log', '.docx']
 
@@ -51,7 +50,7 @@ async def register_user(request: Request, first_name: str=Form(...), last_name: 
     if if_new_user:
         user_id = add_user(first_name=first_name, last_name=last_name, email=email, password=real_password, is_anonymous=False)
         request.session["user_id"] = user_id
-        return RedirectResponse(url="/login?registered=1", status_code=303)
+        return RedirectResponse(url="/", status_code=303)
     else:
         return templates.TemplateResponse(
             "sign_up.html",
@@ -60,12 +59,8 @@ async def register_user(request: Request, first_name: str=Form(...), last_name: 
     
 
 @app.get("/login", response_class=HTMLResponse)
-async def login_page(request: Request, registered: int = 0):
-    message = "You signed in successfully!" if registered == 1 else ""
-    return templates.TemplateResponse(
-        "sign_in.html", 
-        {"request": request, "message": message}
-    )
+async def login_page(request: Request):
+    return templates.TemplateResponse("sign_in.html", {"request": request})
 
 
 @app.post("/login")
@@ -88,14 +83,13 @@ async def dashboard(request: Request):
     user_id = request.session.get("user_id")
     if_user_exists = check_user_exists(user_id)
     if if_user_exists:
-        user_info, test_info = get_user_info(user_id)
-        tests = ""
-        for test in test_info:
-            tests += test
-        return templates.TemplateResponse(
-        "profile.html",
-        {"request": request, "user_id": user_id, "user_info": user_info, "tests": tests}
-    )
+        if user_id:
+            user_info, test_info = get_user_info(user_id)
+            return templates.TemplateResponse(
+            "profile.html",
+            {"request": request, "user_info": user_info, "test_info": test_info})
+        else:
+            return RedirectResponse(url="/login", status_code=303)    
     else:
         return RedirectResponse(url="/register", status_code=303)
 
@@ -138,6 +132,26 @@ async def upload_file_answer(request: Request, file: UploadFile = File(...), que
         return {'success': False, 'error': parse_error}
     
     return {'success': True, 'parsed_text': parsed_text}
+
+@app.post("/change_user_info")
+async def change_user_info(request: Request):
+    changed_user_info = await request.json()
+    user_id = request.session.get("user_id")
+    update_user(user_id, changed_user_info['first_name'], changed_user_info['last_name'], changed_user_info['email'], changed_user_info['password'])
+    return RedirectResponse(url=f"/profile", status_code=303)
+
+
+@app.get("/log_out", response_class=HTMLResponse)
+async def log_out(request: Request):
+    request.session["user_id"] = None
+    return templates.TemplateResponse("main.html", {"request": request})
+
+
+@app.get("/delete_account", response_class=HTMLResponse)
+async def delete_account(request: Request):
+    user_id = request.session.get("user_id")
+    delete_user(user_id)
+    return templates.TemplateResponse("main.html", {"request": request})
 
 
 @app.get("/test", response_class=HTMLResponse)

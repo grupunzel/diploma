@@ -251,8 +251,13 @@ def get_user_id(email):
     try:
         with sqlite3.connect(DB_PATH) as db:
             cursor = db.execute("SELECT user_id FROM Users WHERE email=?", (email,))
-            logger.info("Успешно получили id пользователя")
-            return cursor.fetchone()[0]
+            user_id = cursor.fetchone()[0]
+            if user_id:
+                logger.info("Успешно получили id пользователя")
+                return user_id
+            else:
+                logger.error("Не удалось получить user_id")
+                return False
     
     except Exception as e:
         logger.error(f"Ошибка получения id пользователя: {e}")
@@ -282,24 +287,25 @@ def get_user_info(user_id):
             result = cursor.fetchone()
             first_name, last_name, email = result
 
-            user_info = f"""
-            {first_name} {last_name} \n
-            {email}
-            """
+            user_info = {
+                'first_name': first_name,
+                'last_name': last_name,
+                'email': email
+            }
 
             cursor = db.execute("SELECT test_id, total_score, max_score, percentage, report FROM UserProgress WHERE user_id=?", (user_id,))
             result = cursor.fetchall()
 
-            tests_info = []
+            tests_info = {}
             for test in result:
                 test_id, total_score, max_score, percentage, report = test
 
-                test_info = f"""
-                {test_id}: {total_score}/{max_score} ({percentage})
-
-                Отчёт: {report}\n\n
-                """
-                tests_info.append(test_info)
+                tests_info[test_id] = {
+                    'total_score': total_score,
+                    'max_score': max_score,
+                    'percentage': percentage,
+                    'report': report
+                }
 
             logger.info("Успешно вывели информацию о пользователе")
             return user_info, tests_info

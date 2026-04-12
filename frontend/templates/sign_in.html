@@ -8,25 +8,29 @@
 </head>
 <body>
     <div class="title">
-        <h3>Sign in</h3>
+        <h3 id="title_text_head">Sign In</h3>
+        <p id="title_text_body">Login to your account to save your progress and track results.</p>
     </div>
+    <div class="main_block">
+        <p id="main_block_head">Access your learning journey</p>
+        <form action="/login" method="POST" enctype="application/x-www-form-urlencoded">
+            <div class="email_input">
+                <p id="email_text">Your email</p>
+                <input id="email" type="text" placeholder="john@example.com" name="email" required>
+            </div>
+            <div class="password_input">
+                <p id="password_text">Your password</p>
+                <input id="password" type="password" placeholder="password" name="password" required>
+            </div>
+            <hr id="horizontal_hr">
+            <div class="submit">
+                <button id="submit_button" type="submit"><img id="sign_in_logo" src="frontend/static/pictures/sign_in_logo.jpg" alt="sign_in_logo">Sign In</button>
+            </div>
+        </form>
 
-    <form action="/login" method="POST" enctype="application/x-www-form-urlencoded">
-        <div class="email_input">
-            <input type="text" placeholder="email" name="email" required>
+        <div class="link">
+            <p id="link_text">Don't have an account? <a id="sign_up" href="/register">Create it</a></p>
         </div>
-        <div class="password_input">
-            <input type="password" placeholder="password" name="password" required>
-        </div>
-        <div class="submit">
-            <input type="submit" value="Sign in">
-        </div>
-    </form>
-
-    <div class="link">
-        <pre>
-            Don't have an account? <a id="sign_up" href="/register">Create it</a>
-        </pre>
     </div>
 </body>
 </html>

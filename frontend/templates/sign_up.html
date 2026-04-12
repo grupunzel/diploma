@@ -8,31 +8,37 @@
 </head>
 <body>
     <div class="title">
-        <h3>Sign up</h3>
+        <h3 id="title_text_head">Sign up</h3>
+        <p id="title_text_body">Create an account to track your progress and unlock your potential.</p>
     </div>
 
-    <form action="/register" method="POST" enctype="application/x-www-form-urlencoded">
-        <div class="first_name_input">
-            <input type="text" id="first_name" name="first_name" placeholder="First name">
-        </div>
-        <div class="last_name_input">
-            <input type="text" id="last_name" name="last_name" placeholder="Last name">
-        </div>
-        <div class="email_input">
-            <input type="text" id="email" name="email" placeholder="email" required>
-        </div>
-        <div class="password_input">
-            <input type="password" id="password" name="password" placeholder="password" required>
-        </div>
-        <div class="submit">
-            <input type="submit" value="Sign up">
-        </div>
-    </form>
+    <div class="main_block">
+        <p id="main_block_head">Start your journey today</p>
+        <form action="/register" method="POST" enctype="application/x-www-form-urlencoded">
+            <div class="first_name_input">
+                <p id="first_name_text">First name</p>
+                <input id="first_name" type="text" placeholder="John" name="first_name" required>
+            </div>
+            <div class="last_name_input">
+                <p id="last_name_text">Last name</p>
+                <input id="last_name" type="text" placeholder="Smith" name="last_name" required>
+            </div>
+            <div class="email_input">
+                <p id="email_text">Your email</p>
+                <input id="email" type="text" placeholder="john@example.com" name="email" required>
+            </div>
+            <div class="password_input">
+                <p id="password_text">Your password</p>
+                <input id="password" type="password" placeholder="password" name="password" required>
+            </div>
+            <hr id="horizontal_hr">
+            <div class="submit">
+                <button id="submit_button" type="submit"><img id="sign_up_logo" src="frontend/static/pictures/sign_up_logo.jpg" alt="sign_up_logo">Sign Up</button>
+            </div>
+        </form>
 
-    <div class="link">
-        <pre>
-            Already have an account? <a id="sign_in" href="/login">Sign in</a>
-        </pre>
-    </div>
+        <div class="link">
+            <p id="link_text">Already have an account? <a id="sign_in" href="/login">Sign in</a></p>
+        </div>
 </body>
 </html>
