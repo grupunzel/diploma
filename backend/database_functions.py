@@ -1,6 +1,6 @@
 import sqlite3
 from backend.config.logger import logger
-import os
+import os, json
 from datetime import datetime
 
 THIS_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -163,8 +163,10 @@ def update_user_progress(test_id, report):
             total_score = cursor.fetchone()[0]
 
             percentage = int((total_score / max_score)*100)
+
+            report_json = json.dumps(report, ensure_ascii=False)
     
-            cursor = db.execute("UPDATE UserProgress SET total_score=?, max_score=?, percentage=?, report=? WHERE test_id=?", (total_score, max_score, percentage, report, test_id))
+            cursor = db.execute("UPDATE UserProgress SET total_score=?, max_score=?, percentage=?, report=? WHERE test_id=?", (total_score, max_score, percentage, report_json, test_id))
             db.commit()
             logger.info(f"Тест #{test_id} успешно добавлен в UserProgress")
             return True
@@ -300,11 +302,13 @@ def get_user_info(user_id):
             for test in result:
                 test_id, total_score, max_score, percentage, report = test
 
+                report_object = json.loads(report)
+
                 tests_info[test_id] = {
                     'total_score': total_score,
                     'max_score': max_score,
                     'percentage': percentage,
-                    'report': report
+                    'report': report_object
                 }
 
             logger.info("Успешно вывели информацию о пользователе")

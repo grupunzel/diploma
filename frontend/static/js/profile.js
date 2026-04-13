@@ -89,7 +89,7 @@ function change_user_info() {
     save_button.innerHTML = 'Save ✔';
     const cancel_button = document.createElement('button');
     cancel_button.className = 'cancel_button';
-    cancel_button.innerHTML = 'Cancel ✗'
+    cancel_button.innerHTML = 'Cancel ✗';
 
     first_name_block.appendChild(first_name_input);
     last_name_block.appendChild(last_name_input);
@@ -147,7 +147,74 @@ function tests_info() {
 }
 
 function show_test_info(test_info) {
-    
+    const show_button = document.getElementsByClassName('test_show_button')[0];
+    show_button.disabled = true;
+    const test_block = document.getElementsByClassName('test_block')[0];
+    const test_block_header = document.createElement('div');
+    test_block_header.className = 'test_block_header';
+    const test_block_header_points = document.createElement('p');
+    test_block_header_points.className = 'test_block_header_points';
+    test_block_header_points.innerHTML = `${test_info.total_score}/${test_info.max_score}  (${test_info.percentage}%)`;
+    const test_block_body = document.createElement('div');
+    test_block_body.className = 'test_block_body';
+
+    test_block_header.appendChild(test_block_header_points);
+    test_block.appendChild(test_block_header);
+    test_block.appendChild(test_block_body);
+
+    render_total_analys(test_info.report);
+    render_each_topic(test_info.report);
+    render_recomendations(test_info.report);
+}
+
+function render_total_analys(report) {
+    const test_block_body = document.getElementsByClassName('test_block_body')[0];
+    const total_analys_block = document.createElement('div');
+    total_analys_block.className = 'total_analys_block';
+    const overall = document.createElement('p');
+    overall.className = 'overall';
+    overall.innerHTML = report.total_analys;
+
+    total_analys_block.appendChild(overall);
+    test_block_body.appendChild(total_analys_block);
+}
+
+function render_each_topic(report) {
+    const test_block_body = document.getElementsByClassName('test_block_body')[0];
+    const analys_topic_block = document.createElement('div');
+    analys_topic_block.className = 'analys_topic_block'
+    const topics_array = Object.entries(report.topics);
+
+    for ([topic_name_text, topic_report] of topics_array) {
+        const topic_name = document.createElement('p');
+        topic_name.className = 'topic_name';
+        topic_name.innerHTML = topic_name_text;
+
+        const topic_body = document.createElement('p');
+        topic_body.className = 'topic_body';
+        topic_body.innerHTML = topic_report;
+
+        analys_topic_block.appendChild(topic_name);
+        analys_topic_block.appendChild(topic_body);
+        test_block_body.appendChild(analys_topic_block)
+    }
+}
+
+function render_recomendations(report) {
+    recomendations = report.recomendations;
+    const test_block_body = document.getElementsByClassName('test_block_body')[0];
+    const recomendations_block = document.createElement('div');
+    recomendations_block.className = 'recomendations_block';
+    const recomendations_block_header = document.createElement('p');
+    recomendations_block_header.className = 'recomendations_block_header';
+    recomendations_block_header.innerHTML = 'Recommendations';
+    const recomendations_report = document.createElement('p');
+    recomendations_report.className = 'recomendations_block';
+    recomendations_report.innerHTML = recomendations;
+
+    recomendations_block.appendChild(recomendations_block_header);
+    recomendations_block.appendChild(recomendations_report);
+    test_block_body.appendChild(recomendations_block);
 }
 
 document.addEventListener('DOMContentLoaded', () => {

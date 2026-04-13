@@ -297,3 +297,39 @@ body {
     text-decoration: underline;
     transition: all .35s;
 }
+
+.test_block_header_points {
+    font-size: 18px;
+    color: #004225;
+    font-weight: 600;
+}
+
+.overall {
+    color: #004225;
+    font-size: 17px;
+}
+
+.topic_name {
+    color: #004225;
+    font-size: 25px;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.topic_body {
+    color: #004225;
+    font-size: 17px;
+    text-align: justify;
+}
+
+.recomendations_block_header {
+    color: #004225;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.recomendations_block {
+    color: #004225;
+    font-size: 17px;    
+    text-align: justify;
+}
