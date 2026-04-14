@@ -10,12 +10,12 @@
     <div class = 'head'>
         <a href="/"><img id="logo" src="frontend/static/pictures/logo.jpeg" alt="logo"></a>
         <div class = 'menu'>
-            <button id="language_button">En/Ru</button>
-            <a class='menu_link' href="/">Home</a>
-            <a class='menu_link' href="/#info_text_block">About</a>
-            <a class='menu_link' href="/pick_topics">Test me</a>
-            <a class='menu_link' href="/#contacts">Contacts</a>
-            <a class='profile_link' id="profile" href="/profile">Profile</a>
+            <a id="language_button" href="/set_language">En/Ru</a>
+            <a class='menu_link' href="/">{{ t('pick_topics.header.home') }}</a>
+            <a class='menu_link' href="#info_text_block">{{ t('pick_topics.header.about') }}</a>
+            <a class='menu_link' href="/pick_topics">{{ t('pick_topics.header.test_me') }}</a>
+            <a class='menu_link' href="#contacts_block">{{ t('pick_topics.header.contact') }}</a>
+            <a class='profile_link' id="profile" href="/profile">{{ t('pick_topics.header.profile') }}</a>
             <a id="profile_container" href="/profile"><img id="profile_logo" src="frontend/static/pictures/profile_logo.jpeg" alt="profile_logo"></a>
         </div>
     </div>
@@ -23,8 +23,7 @@
     <div class="main_block">
         <div class="assistant_message">
             <img id="robot_logo" src="frontend/static/pictures/robot.jpeg" alt="robot_logo">
-            <pre id="ai_message">Hi!&#128513; I'm your personal AI assistant. Feel free to choose topics 
-for your test or write them down!</pre>
+            <p id="ai_message">{{ t('pick_topics.main_block.ai_message_first') }}&#128513; {{ t('pick_topics.main_block.ai_message_second') }}</p>
         </div>
 
         <div class="user">
@@ -32,7 +31,7 @@ for your test or write them down!</pre>
                 <textarea id="user_input" placeholder="Python, C++, SQL, . . ." name="user_topics" required></textarea>
                 <hr id="horizontal_hr">
                 <div class="submit">
-                    <input type="submit" id="submit_button" value="Create">
+                    <button id="submit_button">{{ t('pick_topics.main_block.create_button') }}</button>
                 </div>
             </form>
         </div>

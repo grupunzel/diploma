@@ -1,5 +1,20 @@
 const user_data = JSON.parse(document.getElementById('user_data').textContent);
-const test_data = JSON.parse(document.getElementById('test_data').textContent);
+const test_data_element = document.getElementById('test_data');
+let test_data = {};
+
+if (test_data_element && test_data_element.textContent) {
+    try {
+        test_data = JSON.parse(test_data_element.textContent);
+        console.log('Parsed test_data:', test_data);
+    }
+    catch (error) {
+        console.error('Failed to parse test_data:', error);
+        test_data = {};
+    }
+}
+else {
+    console.warn('test_data element not found or empty');
+}
 
 function render_user_info() {
     const left_block_body = document.getElementsByClassName("left_block_body")[0];
@@ -14,26 +29,26 @@ function render_user_info() {
     first_name_text.className = 'first_name_text';
     const first_name_user = document.createElement('p');
     first_name_user.className = 'first_name_user';
-    first_name_text.innerHTML = 'First name:';
+    first_name_text.innerHTML = `${window.translations.first_name_text}`;
     first_name_user.innerHTML = user_data.first_name;
     const last_name_text = document.createElement('p');
     last_name_text.className = 'last_name_text';
     const last_name_user = document.createElement('p');
     last_name_user.className = 'last_name_user';
-    last_name_text.innerHTML = 'Last name:';
+    last_name_text.innerHTML = `${window.translations.last_name_text}`;
     last_name_user.innerHTML = user_data.last_name;
     const email_text = document.createElement('p');
     email_text.className = 'email_text';
     const email_user = document.createElement('p');
     email_user.className = 'email_user';
-    email_text.innerHTML = 'Email:';
+    email_text.innerHTML = `${window.translations.email_text}`;
     email_user.innerHTML = user_data.email;
 
     const change_button_block = document.createElement('div');
     change_button_block.className = 'change_button_block';
     change_button = document.createElement('button');
     change_button.className = 'change_button';
-    change_button.innerHTML = '✎ Change';
+    change_button.innerHTML = `${window.translations.change_button}`;
 
     first_name_block.appendChild(first_name_text);
     first_name_block.appendChild(first_name_user);
@@ -78,7 +93,7 @@ function change_user_info() {
     left_block_body.appendChild(password_input_block);
     const password_text = document.createElement('p');
     password_text.className = 'password_text';
-    password_text.innerHTML = 'Password:';
+    password_text.innerHTML = `${window.translations.password_text}`;
     const password_input = document.createElement('input');
     password_input.className = 'password_input';
     const save_button_block = document.createElement('div');
@@ -86,10 +101,10 @@ function change_user_info() {
     left_block_body.appendChild(save_button_block);
     const save_button = document.createElement('button');
     save_button.className = 'save_button';
-    save_button.innerHTML = 'Save ✔';
+    save_button.innerHTML = `${window.translations.save_button}`;
     const cancel_button = document.createElement('button');
     cancel_button.className = 'cancel_button';
-    cancel_button.innerHTML = 'Cancel ✗';
+    cancel_button.innerHTML = `${window.translations.cancel_button}`;
 
     first_name_block.appendChild(first_name_input);
     last_name_block.appendChild(last_name_input);
@@ -131,44 +146,59 @@ function save_user_changes(first_name, last_name, email, password) {
 
 function tests_info() {
     const right_block_body = document.getElementsByClassName('right_block_body')[0];
+    if (!test_data || Object.keys(test_data).length === 0) {
+        right_block_body.innerHTML = '<p class="no-tests">No tests completed yet.</p>';
+        return;
+    }
     for (const [test_id, test_info] of Object.entries(test_data)) {
         const test_block = document.createElement('div');
         test_block.className = 'test_block';
+        test_block.dataset.testId = test_id;
         const test_show_button = document.createElement('button');
         test_show_button.className = 'test_show_button';
-        test_show_button.innerHTML = `▿ Test #${test_id} (${test_info.total_score}/${test_info.max_score})`;
+        test_show_button.innerHTML = `▹ ${window.translations.test_show_button} #${test_id} (${test_info.total_score}/${test_info.max_score})`;
+        const report_container = document.createElement('div');
+        report_container.className = 'report_container';
+        report_container.style.display = 'none';
+
+        let report_data = test_info.report;
+        if (typeof report_data === 'string') {
+            try {
+                report_data = JSON.parse(report_data);
+            }
+            catch (error) {
+                report_data = {};
+            }
+        }
+
+        if (report_data && Object.keys(report_data).length > 0) {
+            render_total_analys(report_container, report_data);
+            render_each_topic(report_container, report_data);
+            render_recomendations(report_container, report_data);
+        }
+
         test_block.appendChild(test_show_button);
+        test_block.appendChild(report_container);
         right_block_body.appendChild(test_block);
 
-        if (test_show_button) {
-            test_show_button.addEventListener('click', () => show_test_info(test_info));
-        }
+        let isOpen = false;
+
+        test_show_button.addEventListener('click', () => {
+            if (isOpen) {
+                report_container.style.display = 'none';
+                test_show_button.innerHTML = `▹ ${window.translations.test_show_button} #${test_id} (${test_info.total_score}/${test_info.max_score})`;
+                isOpen = false;
+            }
+            else {
+                report_container.style.display = 'block';
+                test_show_button.innerHTML = `▿ ${window.translations.test_show_button} #${test_id} (${test_info.total_score}/${test_info.max_score})`;
+                isOpen = true;
+            }
+        });
     }
 }
 
-function show_test_info(test_info) {
-    const show_button = document.getElementsByClassName('test_show_button')[0];
-    show_button.disabled = true;
-    const test_block = document.getElementsByClassName('test_block')[0];
-    const test_block_header = document.createElement('div');
-    test_block_header.className = 'test_block_header';
-    const test_block_header_points = document.createElement('p');
-    test_block_header_points.className = 'test_block_header_points';
-    test_block_header_points.innerHTML = `${test_info.total_score}/${test_info.max_score}  (${test_info.percentage}%)`;
-    const test_block_body = document.createElement('div');
-    test_block_body.className = 'test_block_body';
-
-    test_block_header.appendChild(test_block_header_points);
-    test_block.appendChild(test_block_header);
-    test_block.appendChild(test_block_body);
-
-    render_total_analys(test_info.report);
-    render_each_topic(test_info.report);
-    render_recomendations(test_info.report);
-}
-
-function render_total_analys(report) {
-    const test_block_body = document.getElementsByClassName('test_block_body')[0];
+function render_total_analys(test_block_body, report) {
     const total_analys_block = document.createElement('div');
     total_analys_block.className = 'total_analys_block';
     const overall = document.createElement('p');
@@ -179,8 +209,7 @@ function render_total_analys(report) {
     test_block_body.appendChild(total_analys_block);
 }
 
-function render_each_topic(report) {
-    const test_block_body = document.getElementsByClassName('test_block_body')[0];
+function render_each_topic(test_block_body, report) {
     const analys_topic_block = document.createElement('div');
     analys_topic_block.className = 'analys_topic_block'
     const topics_array = Object.entries(report.topics);
@@ -200,14 +229,13 @@ function render_each_topic(report) {
     }
 }
 
-function render_recomendations(report) {
+function render_recomendations(test_block_body, report) {
     recomendations = report.recomendations;
-    const test_block_body = document.getElementsByClassName('test_block_body')[0];
     const recomendations_block = document.createElement('div');
     recomendations_block.className = 'recomendations_block';
     const recomendations_block_header = document.createElement('p');
     recomendations_block_header.className = 'recomendations_block_header';
-    recomendations_block_header.innerHTML = 'Recommendations';
+    recomendations_block_header.innerHTML = `${window.translations.recomendations_block_header}`;
     const recomendations_report = document.createElement('p');
     recomendations_report.className = 'recomendations_block';
     recomendations_report.innerHTML = recomendations;

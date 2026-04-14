@@ -51,7 +51,9 @@ languages = {
                 "profile": "Profile"
             },
             "main_block": {
-                "ai_message": "Hi!&#128513; I'm your personal AI assistant. Feel free to choose topics for your test and write them down!"
+                "ai_message_first": "Hi!",
+                "ai_message_second": "I'm your personal AI assistant. Feel free to choose topics for your test and write them down!",
+                "create_button": "Create"
             }
         },
 
@@ -99,7 +101,8 @@ languages = {
                 "password_text": "Your password",
                 "sign_in_button": "Sign In",
                 "link_text": "Don't have an account?",
-                "sign_up": "Create it"
+                "sign_up": "Create it",
+                "error_text": "Your email or password is incorrect."
             }
         },
 
@@ -116,7 +119,8 @@ languages = {
                 "password_text": "Your password",
                 "sign_up_button": "Sign Up",
                 "link_text": "Already have an account?",
-                "sign_in": "Sign in"
+                "sign_in": "Sign in",
+                "error_text": "User with this email already exists! Try another adress."
             }
         },
 
@@ -136,7 +140,7 @@ languages = {
             }
         },
 
-        "profile.js": {
+        "profile_js": {
             "first_name_text": "First name:",
             "last_name_text": "Last name:",
             "email_text": "Email:",
@@ -144,18 +148,23 @@ languages = {
             "password_text": "Password:",
             "save_button": "Save ✔",
             "cancel_button": "Cancel ✗",
-            "test_chow_button": "▿ Test"
+            "test_show_button": "Test",
+            "recomendations_block_header": "Recommendations"
         },
 
-        "test.js": {
+        "test_js": {
+            "question_index": "QUESTION",
+            "question_module": "Module",
+            "question_score": "points",
             "uploading_text": "Uploading and parsing file...",
             "success_text_1": "File",
             "success_text_2": "attached.",
             "you_answered_only": "You answered only",
             "questions_from": "questions from",
             "are_you_sure": "Are you sure you want to finish?",
-            "alert": "Test is completed! Your answers have been saved.",
-            "hint_content": "Hint is loading..."
+            "alert_text": "Test is completed! Your answers have been saved.",
+            "hint_content": "Hint is loading...",
+            "hint": "Hint"
         }
     },
 
@@ -214,7 +223,9 @@ languages = {
                 "profile": "Профиль"
             },
             "main_block": {
-                "ai_message": "Привет!&#128513; Я твой персональный ИИ-ассистент. Выбери темы для твоего теста и отправь их мне!"
+                "ai_message_first": "Привет!",
+                "ai_message_second": "Я твой персональный ИИ-ассистент. Выбери темы для твоего теста и отправь их мне!",
+                "create_button": "Создать"
             }
         },
 
@@ -262,7 +273,8 @@ languages = {
                 "password_text": "Твой пароль",
                 "sign_in_button": "Войти",
                 "link_text": "Нет аккаунта?",
-                "sign_up": "Создай его"
+                "sign_up": "Создай его",
+                "error_text": "Неверный email иил пароль."
             }
         },
 
@@ -279,7 +291,8 @@ languages = {
                 "password_text": "Твой пароль",
                 "sign_up_button": "Создать",
                 "link_text": "Уже есть аккаунт?",
-                "sign_in": "Войти"
+                "sign_in": "Войти",
+                "error_text": "Пользователь с такой почтой уже существует!"
             }
         },
 
@@ -299,7 +312,7 @@ languages = {
             }
         },
 
-        "profile.js": {
+        "profile_js": {
             "first_name_text": "Имя:",
             "last_name_text": "Фамилия:",
             "email_text": "Почта:",
@@ -307,18 +320,36 @@ languages = {
             "password_text": "Пароль:",
             "save_button": "Сохранить ✔",
             "cancel_button": "Отменить ✗",
-            "test_chow_button": "▿ Тест"
+            "test_show_button": "Тест",
+            "recomendations_block_header": "Рекомендации"
         },
 
-        "test.js": {
+        "test_js": {
+            "question_index": "ВОПРОС",
+            "question_module": "Модуль",
+            "question_score": "балл",
             "uploading_text": "Загружаем и парсим файл...",
             "success_text_1": "Файл",
             "success_text_2": "прикреплен.",
             "you_answered_only": "Ты ответил только на",
             "questions_from": "вопросов из",
             "are_you_sure": "Ты уверен, что хочешь закончить?",
-            "alert": "Тест завершен! Твои ответы успешно сохранены.",
-            "hint_content": "Подсказка загружается..."
+            "alert_text": "Тест завершен! Твои ответы успешно сохранены.",
+            "hint_content": "Подсказка загружается...",
+            "hint": "Подсказка"
         }
     }
 }
+
+
+def get_translation(lang: str, key: str, default: str = "") -> str:
+    keys = key.split('.')
+    current = languages.get(lang, {})
+    
+    for k in keys:
+        if isinstance(current, dict):
+            current = current.get(k, default)
+        else:
+            return default
+    
+    return current if isinstance(current, str) else default

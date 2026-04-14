@@ -6,13 +6,14 @@ from fastapi.middleware import Middleware
 from starlette.middleware.sessions import SessionMiddleware
 import hashlib
 from typing import List, Tuple, Optional
-from backend.database_functions import sign_up_check, sign_in_check, add_user, get_user_id, check_user_exists, get_user_info, get_test_questions, update_user_answer, get_questions_info, user_answers_info, get_user_testing_info, update_test_start_time, update_test_end_time, get_question_type, update_file_answer, create_user_progress, update_user, delete_user
+from backend.database_functions import sign_up_check, sign_in_check, add_user, get_user_id, check_user_exists, get_user_info, get_test_questions, update_user_answer, get_questions_info, user_answers_info, get_user_testing_info, update_test_start_time, update_test_end_time, get_question_type, update_file_answer, create_user_progress, update_user, delete_user, is_user_anonym, if_user_progress_exists
 from backend.agent_1 import create_test
 from backend.agent_2 import check_answers
 from backend.agent_3 import make_report
 from backend.agent_4 import get_explanation
 from backend.config.settings import Settings
 from backend.config.logger import logger
+from frontend.languages import get_translation
 import os
 import sqlite3
 import io
@@ -22,15 +23,42 @@ import docx
 app = FastAPI()
 
 templates = Jinja2Templates(directory="frontend/templates")
-app.mount("/frontend/static", StaticFiles(directory="frontend/static"), name="static")
 
 app.add_middleware(SessionMiddleware, secret_key=Settings.SESSION_KEY)
+app.mount("/frontend/static", StaticFiles(directory="frontend/static"), name="static")
 
 allowed_extensions = ['.txt', '.py', '.js', '.html', '.css', '.json', '.c', '.ts', '.java', '.go', '.rs', '.rb', '.swift', '.kt', '.sql', '.log', '.docx']
 
+
+@app.middleware("http")
+async def set_default_language(request: Request, call_next):
+    if "session" not in request.scope:
+        response = await call_next(request)
+        return response
+
+    if "language" not in request.session:
+        request.session["language"] = 'en'
+    
+    response = await call_next(request)
+    return response
+
+
 @app.get("/", response_class=HTMLResponse)
 async def home(request: Request):
-    return templates.TemplateResponse("main.html", {"request": request})
+    lang = request.session.get("language", "en")
+    return templates.TemplateResponse("main.html", {"request": request, "lang": lang, "t": lambda key: get_translation(lang, key)})
+
+
+@app.get("/set_language", response_class=HTMLResponse)
+async def set_language(request: Request):
+    lang = request.session.get("language", "en")
+    if lang == 'ru':
+        request.session["language"] = 'en'
+    else:
+        request.session["language"] = 'ru'
+    
+    referer = request.headers.get("referer", "/")
+    return RedirectResponse(url=referer, status_code=303)
 
 
 @app.get("/sign_in", response_class=HTMLResponse)
@@ -40,11 +68,13 @@ async def profile_redirect(request: Request):
 
 @app.get("/register", response_class=HTMLResponse)
 async def register_page(request: Request):
-    return templates.TemplateResponse("sign_up.html", {"request": request})
+    lang = request.session.get("language", "en")
+    return templates.TemplateResponse("sign_up.html", {"request": request, "lang": lang, "t": lambda key: get_translation(lang, key)})
 
 
 @app.post("/register")
 async def register_user(request: Request, first_name: str=Form(...), last_name: str=Form(...), email: str=Form(...), password: str=Form(...)):
+    lang = request.session.get("language", "en")
     real_password = hashlib.sha256(password.encode()).hexdigest()
     if_new_user = sign_up_check(email)
     if if_new_user:
@@ -54,17 +84,19 @@ async def register_user(request: Request, first_name: str=Form(...), last_name: 
     else:
         return templates.TemplateResponse(
             "sign_up.html",
-            {"request": request, "error": "Email уже используется"}
+            {"request": request, "error": f"{get_translation(lang, 'sign_up.main_block.error_text')}", "lang": lang, "t": lambda key: get_translation(lang, key)}
         )
     
 
 @app.get("/login", response_class=HTMLResponse)
 async def login_page(request: Request):
-    return templates.TemplateResponse("sign_in.html", {"request": request})
+    lang = request.session.get("language", "en")
+    return templates.TemplateResponse("sign_in.html", {"request": request, "lang": lang, "t": lambda key: get_translation(lang, key)})
 
 
 @app.post("/login")
 async def login_user(request: Request, email: str=Form(...), password: str=Form(...)):
+    lang = request.session.get("language", "en")
     real_password = hashlib.sha256(password.encode()).hexdigest()
     check = sign_in_check(email, real_password)
     if check:
@@ -74,12 +106,13 @@ async def login_user(request: Request, email: str=Form(...), password: str=Form(
     else:
         return templates.TemplateResponse(
             "sign_in.html",
-            {"request": request, "error": "Неверный email или пароль"}
+            {"request": request, "error": f"{get_translation(lang, 'sign_in.main_block.error_text')}", "lang": lang, "t": lambda key: get_translation(lang, key)}
         )
     
 
 @app.get("/profile", response_class=HTMLResponse)
 async def dashboard(request: Request):
+    lang = request.session.get("language", "en")
     user_id = request.session.get("user_id")
     if_user_exists = check_user_exists(user_id)
     if if_user_exists:
@@ -87,7 +120,7 @@ async def dashboard(request: Request):
             user_info, test_info = get_user_info(user_id)
             return templates.TemplateResponse(
             "profile.html",
-            {"request": request, "user_info": user_info, "test_info": test_info})
+            {"request": request, "user_info": user_info, "test_info": test_info, "lang": lang, "t": lambda key: get_translation(lang, key)})
         else:
             return RedirectResponse(url="/login", status_code=303)    
     else:
@@ -96,17 +129,19 @@ async def dashboard(request: Request):
 
 @app.get("/pick_topics", response_class=HTMLResponse)
 async def pick_topics(request: Request):
-    return templates.TemplateResponse("pick_topics.html", {"request": request})
+    lang = request.session.get("language", "en")
+    return templates.TemplateResponse("pick_topics.html", {"request": request, "lang": lang, "t": lambda key: get_translation(lang, key)})
 
 
 @app.post("/pick_topics")
 async def submitting_topics(request: Request, user_topics: str=Form(...)):
+    lang = request.session.get("language", "en")
     user_id = request.session.get("user_id")
     if not user_id:
         user_id = add_user(is_anonymous=True)
         request.session["user_id"] = user_id
     user_test_info = get_user_testing_info(user_id)
-    test_id, topics = create_test(user_id, user_topics, user_test_info)
+    test_id, topics = create_test(lang, user_id, user_topics, user_test_info)
     request.session["test_id"] = test_id
     request.session["topics"] = topics
     return RedirectResponse(url=f"/test", status_code=303)
@@ -143,25 +178,31 @@ async def change_user_info(request: Request):
 
 @app.get("/log_out", response_class=HTMLResponse)
 async def log_out(request: Request):
+    lang = request.session.get("language", "en")
     request.session["user_id"] = None
-    return templates.TemplateResponse("main.html", {"request": request})
+    return templates.TemplateResponse("main.html", {"request": request, "lang": lang, "t": lambda key: get_translation(lang, key)})
 
 
 @app.get("/delete_account", response_class=HTMLResponse)
 async def delete_account(request: Request):
+    lang = request.session.get("language", "en")
     user_id = request.session.get("user_id")
     delete_user(user_id)
-    return templates.TemplateResponse("main.html", {"request": request})
+    request.session['user_id'] = None
+    return templates.TemplateResponse("main.html", {"request": request, "lang": lang, "t": lambda key: get_translation(lang, key)})
 
 
 @app.get("/test", response_class=HTMLResponse)
 async def test(request: Request):
+    lang = request.session.get("language", "en")
     user_id = request.session.get("user_id")
     test_id = request.session.get("test_id")
-    create_user_progress(user_id, test_id)
+    if not is_user_anonym(user_id):
+        if not if_user_progress_exists(test_id):
+            create_user_progress(user_id, test_id)
+            update_test_start_time(test_id)
     test_questions = get_test_questions(test_id)
-    update_test_start_time(test_id)
-    return templates.TemplateResponse("test.html", {"request": request, "questions": test_questions})
+    return templates.TemplateResponse("test.html", {"request": request, "questions": test_questions, "lang": lang, "t": lambda key: get_translation(lang, key)})
 
 
 @app.post("/test")
@@ -172,35 +213,38 @@ async def test_post(request: Request):
         raise HTTPException(status_code=401, detail="Session expired")
     
     answers = await request.json()
-    update_test_end_time(test_id)
+    if not is_user_anonym(user_id):
+        update_test_end_time(test_id)
     for q_id, answer in answers.items():
         question_type = get_question_type(int(q_id))
         if question_type == 'file_question':
             update_file_answer(q_id, answer)
         else:
             update_user_answer(q_id, answer)
-    
-    all_questions = get_questions_info(test_id)
-    check_answers(test_id, all_questions)
     return RedirectResponse(url=f"/report", status_code=303)
 
 
 @app.post("/get_hint")
 async def get_question_hint(request: Request):
+    lang = request.session.get("language", "en")
     data = await request.json()
     question_text = data.get('question_text')
 
-    hint = get_explanation(question_text)
+    hint = get_explanation(lang, question_text)
     return {"hint": hint}
 
 
 @app.get("/report", response_class=HTMLResponse)
 async def report(request: Request):
+    lang = request.session.get("language", "en")
     test_id = request.session.get("test_id")
+    user_id = request.session.get("user_id")
     topics = request.session.get("topics")
+    all_questions = get_questions_info(test_id)
+    check_answers(user_id, test_id, all_questions)
     test_answers = user_answers_info(test_id)
-    report_text = make_report(test_id, test_answers, topics)
-    return templates.TemplateResponse("report.html", {"request": request, "report": report_text})
+    report_text = make_report(lang, test_id, test_answers, topics, is_user_anonym(user_id))
+    return templates.TemplateResponse("report.html", {"request": request, "report": report_text, "lang": lang, "t": lambda key: get_translation(lang, key)})
 
 
 def parse_file(file_content: bytes, filename: str) -> Tuple[str, Optional[str]]:
@@ -290,9 +334,9 @@ def init_db():
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         user_id INTEGER,
         test_id INTEGER,
-        total_score INTEGER,
-        max_score INTEGER,
-        percentage INTEGER,
+        total_score INTEGER DEFAULT 0,
+        max_score INTEGER DEFAULT 0,
+        percentage INTEGER DEFAULT 0,
         report TEXT,
         start_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         end_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,

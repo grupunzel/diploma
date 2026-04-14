@@ -8,28 +8,33 @@
 </head>
 <body>
     <div class="title">
-        <h3 id="title_text_head">Sign In</h3>
-        <p id="title_text_body">Login to your account to save your progress and track results.</p>
+        <h3 id="title_text_head">{{ t('sign_in.header.title_text_head') }}</h3>
+        <p id="title_text_body">{{ t('sign_in.header.title_text_body') }}</p>
     </div>
     <div class="main_block">
-        <p id="main_block_head">Access your learning journey</p>
+        <p id="main_block_head">{{ t('sign_in.main_block.main_block_head') }}</p>
         <form action="/login" method="POST" enctype="application/x-www-form-urlencoded">
             <div class="email_input">
-                <p id="email_text">Your email</p>
+                <p id="email_text">{{ t('sign_in.main_block.email_text') }}</p>
                 <input id="email" type="text" placeholder="john@example.com" name="email" required>
             </div>
             <div class="password_input">
-                <p id="password_text">Your password</p>
+                <p id="password_text">{{ t('sign_in.main_block.password_text') }}</p>
                 <input id="password" type="password" placeholder="password" name="password" required>
             </div>
+            {% if error %}
+                <div id="error_block">
+                    <p id="error_text">{{error}}</p>
+                </div>
+            {% endif %}
             <hr id="horizontal_hr">
             <div class="submit">
-                <button id="submit_button" type="submit"><img id="sign_in_logo" src="frontend/static/pictures/sign_in_logo.jpg" alt="sign_in_logo">Sign In</button>
+                <button id="submit_button" type="submit"><img id="sign_in_logo" src="frontend/static/pictures/sign_in_logo.jpg" alt="sign_in_logo">{{ t('sign_in.main_block.sign_in_button') }}</button>
             </div>
         </form>
 
         <div class="link">
-            <p id="link_text">Don't have an account? <a id="sign_up" href="/register">Create it</a></p>
+            <p id="link_text">{{ t('sign_in.main_block.link_text') }} <a id="sign_up" href="/register">{{ t('sign_in.main_block.sign_up') }}</a></p>
         </div>
     </div>
 </body>

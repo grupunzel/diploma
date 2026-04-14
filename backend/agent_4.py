@@ -14,9 +14,10 @@ THIS_DIR = os.path.dirname(os.path.abspath(__file__))
 DB_PATH = os.path.join(os.path.dirname(THIS_DIR), 'ITest.db')
 
 
-def get_explanation(question_text):
+def get_explanation(lang, question_text):
 
     prompt = prompt_for_agent_4.format(
+                        lang=lang,
                         question=question_text)
 
     try:

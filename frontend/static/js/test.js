@@ -1,5 +1,4 @@
 const questions_data = JSON.parse(document.getElementById('questions_data').textContent);
-
 const questions = Object.entries(questions_data).map(([id, data]) => ({
     id: parseInt(id),
     text: data.question_text,
@@ -48,17 +47,17 @@ function render_quick_nav() {
 function render_current_question() {
     const question = questions[current_index];
 
-    document.getElementById('question_index').innerHTML = `QUESTION ${current_index + 1}`;
+    document.getElementById('question_index').innerHTML = `${window.translations.question_index} ${current_index + 1}`;
     document.getElementById('question_text').innerHTML = `${question.text}`;
-    document.getElementById('question_module').innerHTML = `Module: ${question.module}`;
-    document.getElementById('question_score').innerHTML = `${question.score} points`;
+    document.getElementById('question_module').innerHTML = `${window.translations.question_module}: ${question.module}`;
+    document.getElementById('question_score').innerHTML = `${question.score} ${window.translations.question_score}`;
     const text_input_block = document.getElementById('answer_input_block');
     const file_input_block = document.getElementById('file_answer_input_block');
 
     const answers_list = document.getElementById('answers_list');
     answers_list.innerHTML = '';
 
-    if (question.answers && question.answers.length > 0) {
+    if (question.answers && (question.answers != "open question, no answer choice")) {
         if (question.type === 'multiple_choice') {
             const saved_value = saved_answers[question.id] || '';
             const selected_answers = saved_value ? saved_value.split(', ') : [];
@@ -95,14 +94,6 @@ function render_current_question() {
             }
             if (file_input_block) {
                 file_input_block.style.disply = 'none';
-            }
-        }
-        else{
-            for (let i = 0; i < question.answers.length; i++) {
-                const answer_div = document.createElement('p');
-                answer_div.className = 'question_info';
-                answer_div.textContent = question.answers[i];
-                answers_list.appendChild(answer_div);
             }
         }
     }
@@ -184,16 +175,15 @@ async function save_current_answer() {
             const success_text = document.createElement('p');
             success_text.className = `success_text`;
             success_text.style.display = 'block';
-            success_text.innerHTML = '⏳ Uploading and parsing file...';
+            success_text.innerHTML = '⏳ ${window.translations.uploading_text}';
             file_status.appendChild(success_text);
 
             const result = await upload_file(question.id, file_input.files[0]);
             file_status.innerHTML = '';
 
             if (result[0]) {
-                success_text.innerHTML = `File "${file_input.files[0].name}" attached.`;
+                success_text.innerHTML = `${window.translations.success_text_1} "${file_input.files[0].name}" ${window.translations.success_text_2}`;
                 answer = result[1];
-                console.log(answer);
             }
             else {
                 answer = '';
@@ -318,7 +308,7 @@ function finish_test() {
 
     const total = questions.length;
     if (answer_count < total) {
-        if (confirm(`You answered only ${answer_count} questions from ${total}. Are you sure you want to finish?`)) {
+        if (confirm(`${window.translations.you_answered_only} ${answer_count} ${window.translations.questions_from} ${total}. ${window.translations.are_you_sure}`)) {
             submit_answers();
         }
     }
@@ -328,7 +318,7 @@ function finish_test() {
 }
 
 function submit_answers() {
-    alert('Test is completed! Your answers have been saved.');
+    alert(`${window.translations.alert_text}`);
 
     fetch('/test', {
         method: 'POST',
@@ -352,7 +342,7 @@ async function help_with_task() {
     }
 
     help_content.style.display = 'block';
-    help_content.innerHTML = '⏳ Hint is loading...';
+    help_content.innerHTML = `⏳ ${window.translations.help_content}`;
 
     is_loading_hint = true;
 
@@ -371,7 +361,7 @@ async function help_with_task() {
 
         help_content.innerHTML = `
             <div class="help_header">
-                <span>Hint:</span>
+                <span>${window.translations.hint}:</span>
             </div>
             <p class="help_text">${data.hint}</p>`;
     }

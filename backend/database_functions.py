@@ -143,7 +143,7 @@ def update_file_answer(question_id, file_answer):
 def create_user_progress(user_id, test_id):
     try:
         with sqlite3.connect(DB_PATH) as db:
-            cursor = db.execute('INSERT INTO UserProgress (user_id, test_id) VALUES (?, ?)', (user_id, test_id))
+            cursor = db.execute('INSERT INTO UserProgress (user_id, test_id, total_score, max_score, percentage, report) VALUES (?, ?, ?, ?, ?, ?)', (user_id, test_id, 0, 0, 0, '{}'))
             db.commit()
             logger.info(f'Добавили запись о тесте #{test_id} в UserProgress')
             return True
@@ -156,6 +156,14 @@ def create_user_progress(user_id, test_id):
 def update_user_progress(test_id, report):
     try:
         with sqlite3.connect(DB_PATH) as db:
+            cursor = db.execute("SELECT user_id FROM TestQuestions WHERE test_id=? LIMIT 1", (test_id,))
+            user_result = cursor.fetchone()
+            user_id = user_result[0] if user_result else None
+            
+            if user_id is None:
+                logger.error(f"Не удалось найти user_id для test_id {test_id}")
+                return False
+            
             cursor = db.execute("SELECT SUM(score) FROM TestQuestions WHERE test_id=?", (test_id,))
             max_score = cursor.fetchone()[0]
 
@@ -301,14 +309,12 @@ def get_user_info(user_id):
             tests_info = {}
             for test in result:
                 test_id, total_score, max_score, percentage, report = test
-
-                report_object = json.loads(report)
-
+                
                 tests_info[test_id] = {
                     'total_score': total_score,
                     'max_score': max_score,
                     'percentage': percentage,
-                    'report': report_object
+                    'report': report
                 }
 
             logger.info("Успешно вывели информацию о пользователе")
@@ -316,7 +322,7 @@ def get_user_info(user_id):
     
     except Exception as e:
         logger.error(f"Ошибка вывода информации о пользователе: {e}")
-        return False
+        return None, {}
 
 
 def get_test_questions(test_id):
@@ -357,11 +363,12 @@ def get_questions_info(test_id):
         with sqlite3.connect(DB_PATH) as db:
             cursor = db.execute("SELECT question_id, type, question, answers, right_answer, user_answer, file_answer, score FROM TestQuestions WHERE test_id=?", (test_id,))
             result = cursor.fetchall()
-            all_questions = {}
+            all_questions = []
             for question in result:
                 question_id, question_type, question_text, answers, right_answer, user_answer, file_answer, score = question
 
-                all_questions[question_id] = {
+                all_questions.append({
+                    'question_id': question_id,
                     'question_type': question_type,
                     'question_text': question_text,
                     'answers': answers,
@@ -369,13 +376,13 @@ def get_questions_info(test_id):
                     'user_answer': user_answer,
                     'file_answer': file_answer,
                     'score': score
-                }
+                })
             logger.info(f"Успешно получили информацию о заданиях теста №{test_id}")
             return all_questions
     
     except Exception as e:
         logger.error(f'Ошибка получения информации о заданиях теста №{test_id}: {e}')
-        return False
+        return []
     
 
 def get_user_testing_info(user_id):
@@ -407,12 +414,18 @@ def user_answers_info(test_id):
             cursor = db.execute("SELECT question, type, answers, right_answer, user_answer, file_answer, score, score_earned FROM TestQuestions WHERE test_id=?", (test_id,))
             result = cursor.fetchall()
 
-            info = {}
+            info = []
+            total_score_earned = 0
+            total_score_max = 0
             question_id = 1
             for question in result:
                 question_text, question_type, answers, right_answer, user_answer, file_answer, score, score_earned = question
 
-                info[question_id] = {
+                total_score_earned += score_earned if score_earned else 0
+                total_score_max += score if score else 0
+
+                info.append({
+                    'question_id': question_id,
                     'question_text': question_text,
                     'question_type': question_type,
                     'question_answers': answers,
@@ -421,11 +434,18 @@ def user_answers_info(test_id):
                     'file_answer': file_answer,
                     'score': score,
                     'score_earned': score_earned
-                }
+                })
                 question_id += 1
+
+            percentage = int((total_score_earned / total_score_max) * 100) if total_score_max > 0 else 0
             
             logger.info(f'Успешно получили информацию об ответах пользователя на тест #{test_id}')
-            return info
+            return {
+                'questions': info,
+                'total_score_earned': total_score_earned,
+                'total_score_max': total_score_max,
+                'percentage': percentage
+            }
         
     except Exception as e:
         logger.error(f"Ошибка получения информации об ответах пользователя: {e}")
@@ -468,3 +488,33 @@ def get_question_type(question_id):
     except Exception as e:
         logger.error(f'Ошибка определения типа вопроса: {e}')
         return False
+    
+
+def is_user_anonym(user_id): 
+    try:
+        with sqlite3.connect(DB_PATH) as db:
+            cursor = db.execute("SELECT first_name FROM Users WHERE user_id=?", (user_id,))
+            result = cursor.fetchone()[0]
+            if result == "Аноним _":
+                return True
+            else:
+                return False
+            
+    except Exception as e:
+        logger.error(f'Ошибка определения анонимности пользователя: {e}')
+        return None
+    
+def if_user_progress_exists(test_id):
+    try:
+        with sqlite3.connect(DB_PATH) as db:
+            cursor = db.execute("SELECT test_id FROM UserProgress WHERE test_id=?", (test_id,))
+            result = cursor.fetchone()
+
+            if result:
+                return True
+            else:
+                return False
+    
+    except Exception as e:
+        logger.error(f'Ошибка проверки наличия записи в UserProgress: {e}')
+        return None

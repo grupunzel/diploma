@@ -1,3 +1,14 @@
+@keyframes fadeIn_from_bottom {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+}
+
 body {
     background-color: #f9f0e9;
     font-family: 'Gill Sans', sans-serif;
@@ -20,6 +31,7 @@ body {
     position: sticky;
     border-top: none;
     box-shadow: 1px 1px 10px rgb(182, 182, 182);
+    animation: fadeIn_from_bottom 1s ease-out;
 }
 
 .menu {
@@ -52,7 +64,7 @@ body {
     text-align: center;
     justify-content: center;
     text-decoration: underline;
-    padding-top: 3px;
+    padding-top: 6px;
     cursor: pointer;
 }
 
@@ -159,10 +171,6 @@ body {
     font-weight: 600;
 }
 
-.email_user, .email_input {
-    margin-left: 31px;
-}
-
 .change_button_block {
     justify-self: center;
     margin-bottom: 20px;
@@ -172,7 +180,7 @@ body {
     margin-top: 20px;
     font-family: 'Gill Sans', sans-serif;
     font-weight: 600;
-    width: 100px;
+    width: 120px;
     padding-top: 5px;
     padding-bottom: 5px;
     border-radius: 8px;
@@ -254,7 +262,7 @@ body {
     margin-top: 20px;
     font-family: 'Gill Sans', sans-serif;
     font-weight: 600;
-    width: 100px;
+    width: 120px;
     padding-top: 5px;
     padding-bottom: 5px;
     border-radius: 8px;

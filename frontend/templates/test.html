@@ -10,7 +10,7 @@
     <div class = 'head'>
         <a href="/"><img id="logo" src="frontend/static/pictures/logo.jpeg" alt="logo"></a>
         <div class = 'menu'>
-            <a class='profile_link' id="profile" href="/profile">Profile</a>
+            <a class='profile_link' id="profile" href="/profile">{{ t('test.header.profile') }}</a>
             <a id="profile_container" href="/profile"><img id="profile_logo" src="frontend/static/pictures/profile_logo.jpeg" alt="profile_logo"></a>
         </div>
     </div>
@@ -19,18 +19,18 @@
         <div class="left_block">
             <div class="navigation">
                 <img id="navigation_logo" src="frontend/static/pictures/Navigation_logo.png" alt="navigation_log">
-                <a id="navigation_text">Navigation</a><br><br>
+                <a id="navigation_text">{{ t('test.main_block.navigation_text') }}</a><br><br>
             </div>
             <hr id="'left_hr">
             <div class="buttons" id="quick_navigation"></div>
             <div class="if_answered">
                 <div id="green_block">
                     <img id="green_square" src="frontend/static/pictures/green_square.jpg" alt="green_square">
-                    <a id="green_text">Answered</a>
+                    <a id="green_text">{{ t('test.main_block.green_text') }}</a>
                 </div>
                 <div id="grey_block">
                     <img id="grey_square" src="frontend/static/pictures/grey_square.jpg" alt="grey_square">
-                    <a id="grey_text">Not answered</a>
+                    <a id="grey_text">{{ t('test.main_block.grey_text') }}</a>
                 </div>
             </div>
         </div>
@@ -44,13 +44,13 @@
 
                     <div id="answers_list"></div>
                     <div id="answer_input_block">
-                        <a id="answer_text">Your answer: <br><br><textarea id="answer_input" name="answers" placeholder="Write your answer here."></textarea></a>
+                        <a id="answer_text">{{ t('test.main_block.answer_text_text') }} <br><br><textarea id="answer_input" name="answers" placeholder="Write your answer here."></textarea></a>
                     </div>
                     <div id="file_answer_input_block">
-                        <a id="answer_text">Attach your file here: <br><input type="file" id="file_answer_input" name="file_answer_path" multiple hidden>
+                        <a id="answer_text">{{ t('test.main_block.answer_text_file') }} <br><input type="file" id="file_answer_input" name="file_answer_path" multiple hidden>
                             <label for="file_answer_input" id="file_upload_block">
                                 <span class="file_upload_logo"><img id="upload_logo" src="frontend/static/pictures/upload_logo.jpg" alt="upload_logo"></span>
-                                <span class="file_answer_text">Choose file</span>
+                                <span class="file_answer_text">{{ t('test.main_block.file_answer_text') }}</span>
                             </label>
                             <div id="file_status"></div>
                         </a>
@@ -63,23 +63,23 @@
             <div class="nav_buttons">
                 <button id="previous_button" class="navigation_buttons" disabled>
                     <div class="navigation">
-                        <span>&lt; Previous</span>
+                        <span>&lt; {{ t('test.main_block.previous_button') }}</span>
                     </div>
                 </button>
                 <button id="help_button" class="navigation_buttons">
                     <div class="navigation">
-                        <span>Want help?</span>
+                        <span>{{ t('test.main_block.help_button') }}</span>
                     </div>
                 </button>
                 <button id="next_button" class="navigation_buttons">
                     <div class="navigation">
-                        <span>Next &gt;</span>
+                        <span>{{ t('test.main_block.next_button') }} &gt;</span>
                     </div>
                 </button>
             </div>
 
             <div id="finish_block" style="display: none;">
-                <button id="finish_button" class="finish">Finish test</button>
+                <button id="finish_button" class="finish">{{ t('test.main_block.finish_button') }}</button>
             </div>
 
             <div id="help_content" class="help"></div>
@@ -88,6 +88,24 @@
     
     <script type="application/json" id="questions_data">
         {{ questions | tojson }}
+    </script>
+
+    <script>
+        window.translations = {
+            question_index: "{{ t('test_js.question_index') }}",
+            question_module: "{{ t('test_js.question_module') }}",
+            question_score: "{{ t('test_js.question_score') }}",
+            uploading_text: "{{ t('test_js.uploading_text') }}",
+            success_text_1: "{{ t('test_js.success_text_1') }}",
+            success_text_2: "{{ t('test_js.success_text_2') }}",
+            you_answered_only: "{{ t('test_js.you_answered_only') }}",
+            questions_from: "{{ t('test_js.questions_from') }}",
+            are_you_sure: "{{ t('test_js.are_you_sure') }}",
+            alert_text: "{{ t('test_js.alert_text') }}",
+            hint_content: "{{ t('test_js.hint_content') }}",
+            hint: "{{ t('test_js.hint') }}"
+        }
+        window.currentLang = "{{ lang }}";
     </script>
     
     <script src="/frontend/static/js/test.js"></script>

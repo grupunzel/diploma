@@ -12,11 +12,12 @@ gigachat = GigaChat(temperature=0,
                     model="GigaChat-2",
                     verify_ssl_certs=False)
 
-def create_test(user_id, topics, user_info):
+def create_test(lang, user_id, topics, user_info):
 
     checked_topics = process_user_input(topics)
 
     prompt = prompt_for_agent_1.format(
+                        lang=lang,
                         topics=checked_topics,
                         user_id=user_id,
                         user_info=user_info)

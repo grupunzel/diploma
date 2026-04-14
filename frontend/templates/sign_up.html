@@ -8,37 +8,42 @@
 </head>
 <body>
     <div class="title">
-        <h3 id="title_text_head">Sign Up</h3>
-        <p id="title_text_body">Create an account to track your progress and unlock your potential.</p>
+        <h3 id="title_text_head">{{ t('sign_up.header.title_text_head') }}</h3>
+        <p id="title_text_body">{{ t('sign_up.header.title_text_body') }}</p>
     </div>
 
     <div class="main_block">
-        <p id="main_block_head">Start your journey today</p>
+        <p id="main_block_head">{{ t('sign_up.main_block.main_block_head') }}</p>
         <form action="/register" method="POST" enctype="application/x-www-form-urlencoded">
             <div class="first_name_input">
-                <p id="first_name_text">First name</p>
+                <p id="first_name_text">{{ t('sign_up.main_block.first_name_text') }}</p>
                 <input id="first_name" type="text" placeholder="John" name="first_name" required>
             </div>
             <div class="last_name_input">
-                <p id="last_name_text">Last name</p>
+                <p id="last_name_text">{{ t('sign_up.main_block.last_name_text') }}</p>
                 <input id="last_name" type="text" placeholder="Smith" name="last_name" required>
             </div>
             <div class="email_input">
-                <p id="email_text">Your email</p>
+                <p id="email_text">{{ t('sign_up.main_block.email_text') }}</p>
                 <input id="email" type="text" placeholder="john@example.com" name="email" required>
             </div>
+            {% if error %}
+                <div id="error_block">
+                    <p id="error_text">{{error}}</p>
+                </div>
+            {% endif %}
             <div class="password_input">
-                <p id="password_text">Your password</p>
+                <p id="password_text">{{ t('sign_up.main_block.password_text') }}</p>
                 <input id="password" type="password" placeholder="password" name="password" required>
             </div>
             <hr id="horizontal_hr">
             <div class="submit">
-                <button id="submit_button" type="submit"><img id="sign_up_logo" src="frontend/static/pictures/sign_up_logo.jpg" alt="sign_up_logo">Sign Up</button>
+                <button id="submit_button" type="submit"><img id="sign_up_logo" src="frontend/static/pictures/sign_up_logo.jpg" alt="sign_up_logo">{{ t('sign_up.main_block.sign_up_button') }}</button>
             </div>
         </form>
 
         <div class="link">
-            <p id="link_text">Already have an account? <a id="sign_in" href="/login">Sign in</a></p>
+            <p id="link_text">{{ t('sign_up.main_block.link_text') }} <a id="sign_in" href="/login">{{ t('sign_up.main_block.sign_in') }}</a></p>
         </div>
 </body>
 </html>

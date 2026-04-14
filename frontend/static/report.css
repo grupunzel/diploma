@@ -48,6 +48,7 @@ body {
     position: sticky;
     border-top: none;
     box-shadow: 1px 1px 10px rgb(182, 182, 182);
+    animation: fadeIn_from_bottom 1s ease-out;
 }
 
 .menu {
@@ -86,7 +87,7 @@ body {
     text-align: center;
     justify-content: center;
     text-decoration: underline;
-    padding-top: 3px;
+    padding-top: 6px;
     cursor: pointer;
 }
 
@@ -168,7 +169,7 @@ body {
     margin-left: 25px;
     margin-right: 25px;
     margin-top: 20px;
-    width: fit-content;
+    /* width: fit-content; */
     height: fit-content;
 }
 

@@ -150,3 +150,13 @@ input:focus::placeholder {
 #sign_in:hover {
     color:#18734c;
 }
+
+#error_block {
+    margin-left: 25px;
+}
+
+#error_text {
+    font-size: 13px;
+    color: rgb(120, 18, 18);
+    font-style: italic;
+}

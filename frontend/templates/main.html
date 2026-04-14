@@ -10,29 +10,28 @@
     <div class = 'head'>
         <a href="/"><img id="logo" src="frontend/static/pictures/logo.jpeg" alt="logo"></a>
         <div class = 'menu'>
-            <button id="language_button">En/Ru</button>
-            <a class='menu_link' href="/">Home</a>
-            <a class='menu_link' href="#info_text_block">About</a>
-            <a class='menu_link' href="/pick_topics">Test me</a>
-            <a class='menu_link' href="#contacts_block">Contacts</a>
-            <a class='profile_link' id="profile" href="/profile">Profile</a>
+            <a id="language_button" href="/set_language">En/Ru</a>
+            <a class='menu_link' href="/">{{ t('main.header.home') }}</a>
+            <a class='menu_link' href="#info_text_block">{{ t('main.header.about') }}</a>
+            <a class='menu_link' href="/pick_topics">{{ t('main.header.test_me') }}</a>
+            <a class='menu_link' href="#contacts_block">{{ t('main.header.contact') }}</a>
+            <a class='profile_link' id="profile" href="/profile">{{ t('main.header.profile') }}</a>
             <a id="profile_container" href="/profile"><img id="profile_logo" src="frontend/static/pictures/profile_logo.jpeg" alt="profile_logo"></a>
         </div>
     </div>
 
     <div class="main_block">
         <div class="above_photo">
-            <h1 id="main_slogan">Test. Learn. Grow.</h1>
+            <h1 id="main_slogan">{{ t('main.main_block.main_slogan') }}</h1>
         </div>
         <div class="main_photo">
             <div class="main_text">
-                <pre id="head_text">Want to test your IT skills?</pre>
-                <pre id="second_text">Level up your coding resume. Dive into a set of challenges and see how 
-you stack up!</pre>
-                <h3 id="slogan">Pick a topic. Face the challenge. Unlock your level.</h3>
+                <p id="head_text">{{ t('main.main_block.head_text') }}</p>
+                <p id="second_text">{{ t('main.main_block.second_text') }}</p>
+                <h3 id="slogan">{{ t('main.main_block.slogan') }}</h3>
                 <div class="button_block">
                     <form action="/pick_topics" method="GET">
-                        <button id="start_button">Start</button>
+                        <button id="start_button">{{ t('main.main_block.start_button') }}</button>
                     </form>
                 </div>
             </div>
@@ -41,56 +40,55 @@ you stack up!</pre>
 
     <div class="info_text" id="info_text_block">
         <div id="info_title_text">
-            <a>Choose your way in IT sphere. Don't know how? Your journey starts here.</a>
+            <a>{{ t('main.steps_block.info_title_text') }}</a>
         </div>
-        <pre id="info_main_text">Our platform is here to help you start your career in Information Technology. From algorithms and data structures 
-to front-end frameworks and system design — we cover what really matters in the IT industry. How to get started?</pre>
+        <p id="info_main_text">{{ t('main.steps_block.info_main_text') }}</p>
         <div class="steps">
             <div id="first_step">
                 <div class="header">
                     <img id="step_image" src="frontend/static/pictures/first_step.jpg" alt="first_step_logo">
-                    <p id="first_step_head">Press start</p>
+                    <p id="first_step_head">{{ t('main.steps_block.first_step_head') }}</p>
                 </div>
-                <p id="first_step_body">Click on the start button and meet your personal assistant. Choose topics in which you want to test yourself and press a start button to begin your testing.</p>
+                <p id="first_step_body">{{ t('main.steps_block.first_step_body') }}</p>
             </div>
             <div id="second_step">
                 <div class="header">
                     <img id="step_image" src="frontend/static/pictures/second_step.jpg" alt="second_step_logo">
-                    <p id="second_step_head">Take the test</p>
+                    <p id="second_step_head">{{ t('main.steps_block.second_step_head') }}</p>
                 </div>
-                <p id="second_step_body">Try to solve all the questions in the test or let your personal assistant help you. Show everyone what you are capable of!</p>
+                <p id="second_step_body">{{ t('main.steps_block.second_step_body') }}</p>
             </div>
             <div id="third_step">
                 <div class="header">
                     <img id="step_image" src="frontend/static/pictures/third_step.jpg" alt="third_step_logo">
-                    <p id="third_step_head">Get results</p>
+                    <p id="third_step_head">{{ t('main.steps_block.third_step_head') }}</p>
                 </div>
-                <p id="third_step_body">Recieve your results with the full statistics of your knowledge and see your best and bad sides. Get useful recommendations for your further studies.</p>
+                <p id="third_step_body">{{ t('main.steps_block.third_step_body') }}</p>
             </div>
         </div>
         <div class="analys">
             <div id="first_column">
-                <p id="first_text">30 min</p>
-                <p id="second_text">Needed For Test</p>
+                <p id="first_text">{{ t('main.steps_block.first_column_first_text') }}</p>
+                <p id="second_text">{{ t('main.steps_block.first_column_second_text') }}</p>
             </div>
             <div id="second_column">
-                <p id="first_text">200+</p>
-                <p id="second_text">Tests Available</p>
+                <p id="first_text">{{ t('main.steps_block.second_column_first_text') }}</p>
+                <p id="second_text">{{ t('main.steps_block.second_column_second_text') }}</p>
             </div>
             <div id="third_column">
-                <p id="first_text">35+</p>
-                <p id="second_text">IT Domains Covered</p>
+                <p id="first_text">{{ t('main.steps_block.third_column_first_text') }}</p>
+                <p id="second_text">{{ t('main.steps_block.third_column_second_text') }}</p>
             </div>
             <div id="fourth_column">
-                <p id="first_text">95%</p>
-                <p id="second_text">Satisfaction Rate</p>
+                <p id="first_text">{{ t('main.steps_block.fourth_column_first_text') }}</p>
+                <p id="second_text">{{ t('main.steps_block.fourth_column_second_text') }}</p>
             </div>
         </div>
     </div>
     <div class="contacts" id="contacts_block">
         <div class="first_column_contact">
             <a href="/"><img id="logo" src="frontend/static/pictures/white_logo.jpg" alt="logo"></a>
-            <p id="contact_text">Your go-to platform for professional IT skill assessments. Test yourself, grow faster.</p>
+            <p id="contact_text">{{ t('main.contacts_block.contact_text') }}</p>
             <div class="three_logos">
                 <img id="instagram_logo" src="frontend/static/pictures/instagram_logo.jpg" alt="instagram_logo">
                 <img id="facebook_logo" src="frontend/static/pictures/facebook_logo.jpg" alt="facebook_logo">
@@ -98,14 +96,14 @@ to front-end frameworks and system design — we cover what really matters in th
             </div>
         </div>
         <div class="second_column_contact">
-            <p id="platform">PLATFORM</p>
-            <p id="enter"><a class='link' href="/">Home</a></p>
-            <p id="enter"><a class='link' href="#">About</a></p>
-            <p id="enter"><a class='link' href="/pick_topics">Test me</a></p>
-            <p id="enter"><a class='link' href="#">Contacts</a></p>
+            <p id="platform">{{ t('main.contacts_block.platform') }}</p>
+            <p id="enter"><a class='link' href="/">{{ t('main.header.home') }}</a></p>
+            <p id="enter"><a class='link' href="/#info_text_block">{{ t('main.header.about') }}</a></p>
+            <p id="enter"><a class='link' href="/pick_topics">{{ t('main.header.test_me') }}</a></p>
+            <p id="enter"><a class='link' href="/#contacts">{{ t('main.header.contact') }}</a></p>
         </div>
         <div class="third_column_contact">
-            <p id="contacts">CONTACTS</p>
+            <p id="contacts">{{ t('main.contacts_block.contacts') }}</p>
             <div class="contacts_logos">
                 <div class="logos">
                     <p id="enter"><img id="telephone_logo" src="frontend/static/pictures/telephone.jpg" alt="telephone_logo"></p>
@@ -123,8 +121,8 @@ to front-end frameworks and system design — we cover what really matters in th
     <div class="rights">
         <hr id="horizontal_hr">
         <div class="two_columns">
-            <p id="left_text">© 2026 ITest.ai. All rights reserved.</p>
-            <p id="right_text">Made with passion for IT professionals.</p>
+            <p id="left_text">{{ t('main.contacts_block.left_text') }}</p>
+            <p id="right_text">{{ t('main.contacts_block.right_text') }}</p>
         </div>
     </div>
 </body>

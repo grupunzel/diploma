@@ -12,9 +12,19 @@ gigachat = GigaChat(temperature=0,
                     verify_ssl_certs=False)
 
 
-def make_report(test_id, content, topics):
+def make_report(lang, test_id, content, topics, is_anonym):
+
+    questions_data = content.get('questions', {})
+    total_score_earned = content.get('total_score_earned', 0)
+    total_score_max = content.get('total_score_max', 0)
+    percentage = content.get('percentage', 0)
+
     prompt = prompt_for_agent_3.format(
-                        content=content,
+                        lang=lang,
+                        total_score_earned=total_score_earned,
+                        total_score_max=total_score_max,
+                        percentage=percentage,
+                        questions_data=questions_data,
                         topics=topics)
 
     try:
@@ -36,8 +46,8 @@ def make_report(test_id, content, topics):
             "topics": topics_dict,
             "recomendations": report_dict.get('recomendations', '')
         }
-
-        update_user_progress(test_id, result)
+        if not is_anonym:
+            update_user_progress(test_id, result)
         return result
     except Exception as e:
         logger.error('Error: ', e)

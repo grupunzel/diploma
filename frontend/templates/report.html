@@ -10,12 +10,12 @@
     <div class = 'head'>
         <a href="/"><img id="logo" src="frontend/static/pictures/logo.jpeg" alt="logo"></a>
         <div class = 'menu'>
-            <button id="language_button">En/Ru</button>
-            <a class='menu_link' href="/">Home</a>
-            <a class='menu_link' href="/#info_text_block">About</a>
-            <a class='menu_link' href="/pick_topics">Test me</a>
-            <a class='menu_link' href="/#contacts">Contacts</a>
-            <a class='profile_link' id="profile" href="/profile">Profile</a>
+            <a id="language_button" href="/set_language">En/Ru</a>
+            <a class='menu_link' href="/">{{ t('report.header.home') }}</a>
+            <a class='menu_link' href="/#info_text_block">{{ t('report.header.about') }}</a>
+            <a class='menu_link' href="/pick_topics">{{ t('report.header.test_me') }}</a>
+            <a class='menu_link' href="/#contacts_block">{{ t('report.header.contact') }}</a>
+            <a class='profile_link' id="profile" href="/profile">{{ t('report.header.profile') }}</a>
             <a id="profile_container" href="/profile"><img id="profile_logo" src="frontend/static/pictures/profile_logo.jpeg" alt="profile_logo"></a>
         </div>
     </div>
@@ -23,9 +23,9 @@
     <div class="report_container">
         <div class="report_header_container">
             <img id="report_logo" src="frontend/static/pictures/report_logo.jpeg" alt="report_logo">
-            <h1 id="report_header">Test report</h1>
+            <h1 id="report_header">{{ t('report.main_block.report_header') }}</h1>
             <div class="download_container">
-                <button id="download_button"><img id="upload_logo" src="frontend/static/pictures/upload_logo.jpg" alt="upload_logo"><span id="download_text">Save as PDF</span></button>
+                <button id="download_button"><img id="upload_logo" src="frontend/static/pictures/upload_logo.jpg" alt="upload_logo"><span id="download_text">{{ t('report.main_block.download_button') }}</span></button>
             </div>
         </div>
         <div class="total_analys" id="total"></div>
@@ -36,7 +36,7 @@
     <div class="analys_recomendations" id="recomendations">
         <div class="recomendations_header_container">
             <img id="recomendations_logo" src="frontend/static/pictures/recomendations_logo.jpeg" alt="recomendations_logo">
-            <h1 id="recomendations_header">Recommendations</h1>
+            <h1 id="recomendations_header">{{ t('report.main_block.recommendations_header') }}</h1>
         </div>
     </div>
 

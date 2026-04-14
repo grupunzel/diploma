@@ -10,12 +10,12 @@
     <div class = 'head'>
         <a href="/"><img id="logo" src="frontend/static/pictures/logo.jpeg" alt="logo"></a>
         <div class = 'menu'>
-            <button id="language_button">En/Ru</button>
-            <a class='menu_link' href="/">Home</a>
-            <a class='menu_link' href="/#info_text_block">About</a>
-            <a class='menu_link' href="/pick_topics">Test me</a>
-            <a class='menu_link' href="/#contacts">Contacts</a>
-            <a class='profile_link' id="profile" href="/profile">Profile</a>
+            <a id="language_button" href="/set_language">En/Ru</a>
+            <a class='menu_link' href="/">{{ t('profile.header.home') }}</a>
+            <a class='menu_link' href="/#info_text_block">{{ t('profile.header.about') }}</a>
+            <a class='menu_link' href="/pick_topics">{{ t('profile.header.test_me') }}</a>
+            <a class='menu_link' href="/#contacts_block">{{ t('profile.header.contact') }}</a>
+            <a class='profile_link' id="profile" href="/profile">{{ t('profile.header.profile') }}</a>
             <a id="profile_container" href="/profile"><img id="profile_logo" src="frontend/static/pictures/profile_logo.jpeg" alt="profile_logo"></a>
         </div>
     </div>
@@ -23,21 +23,21 @@
         <div class="left_block">
             <div class="left_block_head">
                 <img id="profile_logo" src="frontend/static/pictures/profile_logo.jpeg" alt="profile_logo">
-                <p id="left_block_head_text">Profile</p>
+                <p id="left_block_head_text">{{ t('profile.main_block.left_block_head_text') }}</p>
             </div>
             <hr class="profile_hr">
             <div class="left_block_body"></div>
             <div class="log_out_block">
-                <a class="log_out_link" href="/log_out">⍇ Log out</a>
+                <a class="log_out_link" href="/log_out">{{ t('profile.main_block.log_out_link') }}</a>
             </div>
             <div class="delete_block">
-                <a class="delete_link" href="/delete_account">✗ Delete account</a>
+                <a class="delete_link" href="/delete_account">{{ t('profile.main_block.delete_link') }}</a>
             </div>
         </div>
         <div class="right_block">
             <div class="right_block_head">
                 <img id="report_logo" src="frontend/static/pictures/report_logo.jpeg" alt="report_logo">
-                <p id="right_block_head_text">Tests history</p>
+                <p id="right_block_head_text">{{ t('profile.main_block.right_block_head_text') }}</p>
             </div>
             <hr class="profile_hr">
             <div class="right_block_body"></div>
@@ -49,6 +49,21 @@
     </script>
     <script type="application/json" id="test_data">
         {{ test_info | tojson }}
+    </script>
+
+    <script>
+        window.translations = {
+            first_name_text: "{{ t('profile_js.first_name_text') }}",
+            last_name_text: "{{ t('profile_js.last_name_text') }}",
+            email_text: "{{ t('profile_js.email_text') }}",
+            change_button: "{{ t('profile_js.change_button') }}",
+            password_text: "{{ t('profile_js.password_text') }}",
+            save_button: "{{ t('profile_js.save_button') }}",
+            cancel_button: "{{ t('profile_js.cancel_button') }}",
+            test_show_button: "{{ t('profile_js.test_show_button') }}",
+            recomendations_block_header: "{{ t('profile_js.recomendations_block_header') }}",
+        }
+        window.currentLang = "{{ lang }}";
     </script>
     
     <script src="/frontend/static/js/profile.js"></script>
