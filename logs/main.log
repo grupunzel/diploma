@@ -6255,3 +6255,156 @@ print(y)
 2026-04-14 18:45:27,254 - database_functions.py - backend.config.logger - INFO - Успешно занесли время начала тестирования #9 в UserProgress.
 2026-04-14 18:45:27,254 - database_functions.py - backend.config.logger - INFO - Успешно вывели вопросы из теста №9
 2026-04-14 18:45:53,431 - database_functions.py - backend.config.logger - INFO - Успешно вывели вопросы из теста №9
+2026-04-14 19:26:56,294 - database_functions.py - backend.config.logger - INFO - Пользователь существует
+2026-04-14 19:26:56,316 - database_functions.py - backend.config.logger - INFO - Успешно вывели информацию о пользователе
+2026-04-14 19:29:04,640 - database_functions.py - backend.config.logger - INFO - Пользователь существует
+2026-04-14 19:29:22,700 - database_functions.py - backend.config.logger - INFO - Создан пользователь #6: Мария Никитина
+2026-04-14 19:29:27,316 - database_functions.py - backend.config.logger - INFO - Пользователь существует
+2026-04-14 19:29:27,319 - database_functions.py - backend.config.logger - INFO - Успешно вывели информацию о пользователе
+2026-04-14 19:29:35,338 - database_functions.py - backend.config.logger - INFO - Пользователь существует
+2026-04-14 19:29:35,338 - database_functions.py - backend.config.logger - INFO - Успешно вывели информацию о пользователе
+2026-04-14 19:29:40,152 - database_functions.py - backend.config.logger - INFO - Пользователь существует
+2026-04-14 19:29:44,930 - database_functions.py - backend.config.logger - INFO - Пароль не правильный
+2026-04-14 19:29:48,892 - database_functions.py - backend.config.logger - INFO - Пароль правильный
+2026-04-14 19:29:48,892 - database_functions.py - backend.config.logger - INFO - Успешно получили id пользователя
+2026-04-14 19:29:48,896 - database_functions.py - backend.config.logger - INFO - Пользователь существует
+2026-04-14 19:29:48,897 - database_functions.py - backend.config.logger - INFO - Успешно вывели информацию о пользователе
+2026-04-14 19:30:03,538 - database_functions.py - backend.config.logger - INFO - Успешно вывели историю прошлах тестирований пользователя №6
+2026-04-14 19:30:06,403 - database_functions.py - backend.config.logger - INFO - Начало обработки 4 заданий
+2026-04-14 19:30:06,404 - database_functions.py - backend.config.logger - INFO - Обработка задания 1/4: Что такое функция в Python?
+2026-04-14 19:30:06,404 - database_functions.py - backend.config.logger - INFO - Добавлено задание 1 для теста #10
+2026-04-14 19:30:06,404 - database_functions.py - backend.config.logger - INFO - Обработка задания 2/4: Напишите программу на Python, которая выводит сумму двух целых чисел.
+2026-04-14 19:30:06,404 - database_functions.py - backend.config.logger - INFO - Добавлено задание 2 для теста #10
+2026-04-14 19:30:06,404 - database_functions.py - backend.config.logger - INFO - Обработка задания 3/4: Какой оператор используется для выборки данных из таблицы в SQL?
+2026-04-14 19:30:06,404 - database_functions.py - backend.config.logger - INFO - Добавлено задание 3 для теста #10
+2026-04-14 19:30:06,404 - database_functions.py - backend.config.logger - INFO - Обработка задания 4/4: Опишите разницу между операторами SELECT DISTINCT и SELECT ALL в SQL.
+2026-04-14 19:30:06,404 - database_functions.py - backend.config.logger - INFO - Добавлено задание 4 для теста #10
+2026-04-14 19:30:06,405 - database_functions.py - backend.config.logger - INFO - Тест #10 успешно сохранен в БД (4 вопросов)
+2026-04-14 19:30:06,408 - database_functions.py - backend.config.logger - INFO - Добавили запись о тесте #10 в UserProgress
+2026-04-14 19:30:06,409 - database_functions.py - backend.config.logger - INFO - Успешно занесли время начала тестирования #10 в UserProgress.
+2026-04-14 19:30:06,409 - database_functions.py - backend.config.logger - INFO - Успешно вывели вопросы из теста №10
+2026-04-14 19:31:03,121 - database_functions.py - backend.config.logger - INFO - Успешно занесли время окончания тестирования #10 в UserProgress.
+2026-04-14 19:31:03,123 - database_functions.py - backend.config.logger - INFO - Ответ пользователя успешно изменён
+2026-04-14 19:31:03,123 - database_functions.py - backend.config.logger - INFO - Ответ пользователя успешно изменён
+2026-04-14 19:31:03,124 - database_functions.py - backend.config.logger - INFO - Ответ пользователя успешно изменён
+2026-04-14 19:31:03,125 - database_functions.py - backend.config.logger - INFO - Ответ пользователя успешно изменён
+2026-04-14 19:31:03,127 - database_functions.py - backend.config.logger - INFO - Успешно получили информацию о заданиях теста №10
+2026-04-14 19:31:04,689 - database_functions.py - backend.config.logger - INFO - Начало проверки заданий для теста #10
+2026-04-14 19:31:04,690 - database_functions.py - backend.config.logger - INFO - Проверка задания 1/4: Что такое функция в Python?
+2026-04-14 19:31:04,690 - database_functions.py - backend.config.logger - INFO - Типы: user_id=<class 'str'>, test_id=<class 'str'>, question=<class 'str'>
+2026-04-14 19:31:04,690 - database_functions.py - backend.config.logger - INFO - Задание 1/4 успешно проверено
+2026-04-14 19:31:04,691 - database_functions.py - backend.config.logger - INFO - Проверка задания 2/4: Напишите программу на Python, которая выводит сумму двух целых чисел.
+2026-04-14 19:31:04,691 - database_functions.py - backend.config.logger - INFO - Типы: user_id=<class 'str'>, test_id=<class 'str'>, question=<class 'str'>
+2026-04-14 19:31:04,691 - database_functions.py - backend.config.logger - INFO - Задание 2/4 успешно проверено
+2026-04-14 19:31:04,691 - database_functions.py - backend.config.logger - INFO - Проверка задания 3/4: Какой оператор используется для выборки данных из таблицы в SQL?
+2026-04-14 19:31:04,691 - database_functions.py - backend.config.logger - INFO - Типы: user_id=<class 'str'>, test_id=<class 'str'>, question=<class 'str'>
+2026-04-14 19:31:04,691 - database_functions.py - backend.config.logger - INFO - Задание 3/4 успешно проверено
+2026-04-14 19:31:04,691 - database_functions.py - backend.config.logger - INFO - Проверка задания 4/4: Опишите разницу между операторами SELECT DISTINCT и SELECT ALL в SQL.
+2026-04-14 19:31:04,691 - database_functions.py - backend.config.logger - INFO - Типы: user_id=<class 'str'>, test_id=<class 'str'>, question=<class 'str'>
+2026-04-14 19:31:04,691 - database_functions.py - backend.config.logger - INFO - Задание 4/4 успешно проверено
+2026-04-14 19:31:04,693 - database_functions.py - backend.config.logger - INFO - Тест #10 успешно проверен
+2026-04-14 19:31:04,694 - database_functions.py - backend.config.logger - INFO - Успешно получили информацию об ответах пользователя на тест #10
+2026-04-14 19:31:06,461 - database_functions.py - backend.config.logger - INFO - Тест #10 успешно добавлен в UserProgress
+2026-04-14 19:31:06,470 - database_functions.py - backend.config.logger - INFO - Успешно получили информацию о заданиях теста №10
+2026-04-14 19:31:07,843 - database_functions.py - backend.config.logger - INFO - Начало проверки заданий для теста #10
+2026-04-14 19:31:07,843 - database_functions.py - backend.config.logger - INFO - Проверка задания 1/4: Что такое функция в Python?
+2026-04-14 19:31:07,843 - database_functions.py - backend.config.logger - INFO - Типы: user_id=<class 'str'>, test_id=<class 'str'>, question=<class 'str'>
+2026-04-14 19:31:07,844 - database_functions.py - backend.config.logger - INFO - Задание 1/4 успешно проверено
+2026-04-14 19:31:07,844 - database_functions.py - backend.config.logger - INFO - Проверка задания 2/4: Напишите программу на Python, которая выводит сумму двух целых чисел.
+2026-04-14 19:31:07,844 - database_functions.py - backend.config.logger - INFO - Типы: user_id=<class 'str'>, test_id=<class 'str'>, question=<class 'str'>
+2026-04-14 19:31:07,844 - database_functions.py - backend.config.logger - INFO - Задание 2/4 успешно проверено
+2026-04-14 19:31:07,844 - database_functions.py - backend.config.logger - INFO - Проверка задания 3/4: Какой оператор используется для выборки данных из таблицы в SQL?
+2026-04-14 19:31:07,844 - database_functions.py - backend.config.logger - INFO - Типы: user_id=<class 'str'>, test_id=<class 'str'>, question=<class 'str'>
+2026-04-14 19:31:07,844 - database_functions.py - backend.config.logger - INFO - Задание 3/4 успешно проверено
+2026-04-14 19:31:07,844 - database_functions.py - backend.config.logger - INFO - Проверка задания 4/4: Опишите разницу между операторами SELECT DISTINCT и SELECT ALL в SQL.
+2026-04-14 19:31:07,844 - database_functions.py - backend.config.logger - INFO - Типы: user_id=<class 'str'>, test_id=<class 'str'>, question=<class 'str'>
+2026-04-14 19:31:07,844 - database_functions.py - backend.config.logger - INFO - Задание 4/4 успешно проверено
+2026-04-14 19:31:07,845 - database_functions.py - backend.config.logger - INFO - Тест #10 успешно проверен
+2026-04-14 19:31:07,845 - database_functions.py - backend.config.logger - INFO - Успешно получили информацию об ответах пользователя на тест #10
+2026-04-14 19:31:09,621 - database_functions.py - backend.config.logger - INFO - Тест #10 успешно добавлен в UserProgress
+2026-04-14 19:31:42,636 - database_functions.py - backend.config.logger - INFO - Пользователь существует
+2026-04-14 19:31:42,638 - database_functions.py - backend.config.logger - INFO - Успешно вывели информацию о пользователе
+2026-04-14 19:31:43,901 - database_functions.py - backend.config.logger - INFO - Пользователь #6 успешно удалён
+2026-04-14 19:31:47,999 - database_functions.py - backend.config.logger - WARNING - Пользователя #None не существует
+2026-04-14 19:32:18,136 - database_functions.py - backend.config.logger - WARNING - Пользователя #None не существует
+2026-04-14 19:32:35,936 - database_functions.py - backend.config.logger - WARNING - Пользователя #None не существует
+2026-04-14 19:32:36,576 - database_functions.py - backend.config.logger - WARNING - Пользователя #None не существует
+2026-04-14 19:32:37,309 - database_functions.py - backend.config.logger - WARNING - Пользователя #None не существует
+2026-04-14 19:33:09,753 - database_functions.py - backend.config.logger - INFO - Пользователь существует
+2026-04-14 19:33:24,426 - database_functions.py - backend.config.logger - INFO - Создан пользователь #7: Мария Никитина
+2026-04-14 19:33:26,633 - database_functions.py - backend.config.logger - INFO - Пользователь существует
+2026-04-14 19:33:26,635 - database_functions.py - backend.config.logger - INFO - Успешно вывели информацию о пользователе
+2026-04-14 19:33:33,419 - database_functions.py - backend.config.logger - INFO - Пользователь существует
+2026-04-14 19:33:33,420 - database_functions.py - backend.config.logger - INFO - Успешно вывели информацию о пользователе
+2026-04-14 19:33:37,802 - database_functions.py - backend.config.logger - INFO - Пользователь существует
+2026-04-14 19:33:41,644 - database_functions.py - backend.config.logger - INFO - Пароль правильный
+2026-04-14 19:33:41,644 - database_functions.py - backend.config.logger - INFO - Успешно получили id пользователя
+2026-04-14 19:33:41,647 - database_functions.py - backend.config.logger - INFO - Пользователь существует
+2026-04-14 19:33:41,648 - database_functions.py - backend.config.logger - INFO - Успешно вывели информацию о пользователе
+2026-04-14 19:33:56,056 - database_functions.py - backend.config.logger - INFO - Успешно вывели историю прошлах тестирований пользователя №7
+2026-04-14 19:34:00,547 - database_functions.py - backend.config.logger - INFO - Начало обработки 4 заданий
+2026-04-14 19:34:00,548 - database_functions.py - backend.config.logger - INFO - Обработка задания 1/4: Что такое функция в Python?
+2026-04-14 19:34:00,548 - database_functions.py - backend.config.logger - INFO - Добавлено задание 1 для теста #11
+2026-04-14 19:34:00,548 - database_functions.py - backend.config.logger - INFO - Обработка задания 2/4: Создайте скрипт, который выводит на экран ваше имя и фамилию.
+2026-04-14 19:34:00,548 - database_functions.py - backend.config.logger - INFO - Добавлено задание 2 для теста #11
+2026-04-14 19:34:00,548 - database_functions.py - backend.config.logger - INFO - Обработка задания 3/4: Какой оператор используется для выборки данных из таблицы в SQL?
+2026-04-14 19:34:00,548 - database_functions.py - backend.config.logger - INFO - Добавлено задание 3 для теста #11
+2026-04-14 19:34:00,548 - database_functions.py - backend.config.logger - INFO - Обработка задания 4/4: Опишите разницу между операторами INSERT и UPDATE в SQL.
+2026-04-14 19:34:00,548 - database_functions.py - backend.config.logger - INFO - Добавлено задание 4 для теста #11
+2026-04-14 19:34:00,550 - database_functions.py - backend.config.logger - INFO - Тест #11 успешно сохранен в БД (4 вопросов)
+2026-04-14 19:34:00,555 - database_functions.py - backend.config.logger - INFO - Добавили запись о тесте #11 в UserProgress
+2026-04-14 19:34:00,556 - database_functions.py - backend.config.logger - INFO - Успешно занесли время начала тестирования #11 в UserProgress.
+2026-04-14 19:34:00,556 - database_functions.py - backend.config.logger - INFO - Успешно вывели вопросы из теста №11
+2026-04-14 19:34:49,003 - database_functions.py - backend.config.logger - INFO - Успешно занесли время окончания тестирования #11 в UserProgress.
+2026-04-14 19:34:49,004 - database_functions.py - backend.config.logger - INFO - Ответ пользователя успешно изменён
+2026-04-14 19:34:49,004 - database_functions.py - backend.config.logger - INFO - Ответ пользователя успешно изменён
+2026-04-14 19:34:49,005 - database_functions.py - backend.config.logger - INFO - Ответ пользователя успешно изменён
+2026-04-14 19:34:49,005 - database_functions.py - backend.config.logger - INFO - Ответ пользователя успешно изменён
+2026-04-14 19:34:49,007 - database_functions.py - backend.config.logger - INFO - Успешно получили информацию о заданиях теста №11
+2026-04-14 19:34:50,571 - database_functions.py - backend.config.logger - INFO - Начало проверки заданий для теста #11
+2026-04-14 19:34:50,571 - database_functions.py - backend.config.logger - INFO - Проверка задания 1/4: Что такое функция в Python?
+2026-04-14 19:34:50,571 - database_functions.py - backend.config.logger - INFO - Типы: user_id=<class 'str'>, test_id=<class 'str'>, question=<class 'str'>
+2026-04-14 19:34:50,572 - database_functions.py - backend.config.logger - INFO - Задание 1/4 успешно проверено
+2026-04-14 19:34:50,572 - database_functions.py - backend.config.logger - INFO - Проверка задания 2/4: Создайте скрипт, который выводит на экран ваше имя и фамилию.
+2026-04-14 19:34:50,572 - database_functions.py - backend.config.logger - INFO - Типы: user_id=<class 'str'>, test_id=<class 'str'>, question=<class 'str'>
+2026-04-14 19:34:50,573 - database_functions.py - backend.config.logger - INFO - Задание 2/4 успешно проверено
+2026-04-14 19:34:50,573 - database_functions.py - backend.config.logger - INFO - Проверка задания 3/4: Какой оператор используется для выборки данных из таблицы в SQL?
+2026-04-14 19:34:50,573 - database_functions.py - backend.config.logger - INFO - Типы: user_id=<class 'str'>, test_id=<class 'str'>, question=<class 'str'>
+2026-04-14 19:34:50,573 - database_functions.py - backend.config.logger - INFO - Задание 3/4 успешно проверено
+2026-04-14 19:34:50,573 - database_functions.py - backend.config.logger - INFO - Проверка задания 4/4: Опишите разницу между операторами INSERT и UPDATE в SQL.
+2026-04-14 19:34:50,573 - database_functions.py - backend.config.logger - INFO - Типы: user_id=<class 'str'>, test_id=<class 'str'>, question=<class 'str'>
+2026-04-14 19:34:50,573 - database_functions.py - backend.config.logger - INFO - Задание 4/4 успешно проверено
+2026-04-14 19:34:50,575 - database_functions.py - backend.config.logger - INFO - Тест #11 успешно проверен
+2026-04-14 19:34:50,575 - database_functions.py - backend.config.logger - INFO - Успешно получили информацию об ответах пользователя на тест #11
+2026-04-14 19:34:52,391 - database_functions.py - backend.config.logger - INFO - Тест #11 успешно добавлен в UserProgress
+2026-04-14 19:34:52,404 - database_functions.py - backend.config.logger - INFO - Успешно получили информацию о заданиях теста №11
+2026-04-14 19:34:53,798 - database_functions.py - backend.config.logger - INFO - Начало проверки заданий для теста #11
+2026-04-14 19:34:53,798 - database_functions.py - backend.config.logger - INFO - Проверка задания 1/4: Что такое функция в Python?
+2026-04-14 19:34:53,798 - database_functions.py - backend.config.logger - INFO - Типы: user_id=<class 'str'>, test_id=<class 'str'>, question=<class 'str'>
+2026-04-14 19:34:53,798 - database_functions.py - backend.config.logger - INFO - Задание 1/4 успешно проверено
+2026-04-14 19:34:53,798 - database_functions.py - backend.config.logger - INFO - Проверка задания 2/4: Создайте скрипт, который выводит на экран ваше имя и фамилию.
+2026-04-14 19:34:53,798 - database_functions.py - backend.config.logger - INFO - Типы: user_id=<class 'str'>, test_id=<class 'str'>, question=<class 'str'>
+2026-04-14 19:34:53,798 - database_functions.py - backend.config.logger - INFO - Задание 2/4 успешно проверено
+2026-04-14 19:34:53,798 - database_functions.py - backend.config.logger - INFO - Проверка задания 3/4: Какой оператор используется для выборки данных из таблицы в SQL?
+2026-04-14 19:34:53,798 - database_functions.py - backend.config.logger - INFO - Типы: user_id=<class 'str'>, test_id=<class 'str'>, question=<class 'str'>
+2026-04-14 19:34:53,798 - database_functions.py - backend.config.logger - INFO - Задание 3/4 успешно проверено
+2026-04-14 19:34:53,798 - database_functions.py - backend.config.logger - INFO - Проверка задания 4/4: Опишите разницу между операторами INSERT и UPDATE в SQL.
+2026-04-14 19:34:53,798 - database_functions.py - backend.config.logger - INFO - Типы: user_id=<class 'str'>, test_id=<class 'str'>, question=<class 'str'>
+2026-04-14 19:34:53,798 - database_functions.py - backend.config.logger - INFO - Задание 4/4 успешно проверено
+2026-04-14 19:34:53,798 - database_functions.py - backend.config.logger - INFO - Тест #11 успешно проверен
+2026-04-14 19:34:53,799 - database_functions.py - backend.config.logger - INFO - Успешно получили информацию об ответах пользователя на тест #11
+2026-04-14 19:34:55,555 - database_functions.py - backend.config.logger - INFO - Тест #11 успешно добавлен в UserProgress
+2026-04-14 19:35:19,294 - database_functions.py - backend.config.logger - INFO - Пользователь существует
+2026-04-14 19:35:19,294 - database_functions.py - backend.config.logger - INFO - Успешно вывели информацию о пользователе
+2026-04-16 12:31:50,543 - database_functions.py - backend.config.logger - INFO - Пользователь существует
+2026-04-16 12:34:47,551 - database_functions.py - backend.config.logger - INFO - Пароль правильный
+2026-04-16 12:34:47,551 - database_functions.py - backend.config.logger - INFO - Успешно получили id пользователя
+2026-04-16 12:34:47,553 - database_functions.py - backend.config.logger - INFO - Пользователь существует
+2026-04-16 12:34:47,554 - database_functions.py - backend.config.logger - INFO - Успешно вывели информацию о пользователе
+2026-04-16 12:34:50,708 - database_functions.py - backend.config.logger - INFO - Пользователь существует
+2026-04-16 12:34:50,708 - database_functions.py - backend.config.logger - INFO - Успешно вывели информацию о пользователе
+2026-04-16 12:34:53,859 - database_functions.py - backend.config.logger - INFO - Пользователь существует
+2026-04-16 12:34:57,854 - database_functions.py - backend.config.logger - INFO - Пароль правильный
+2026-04-16 12:34:57,854 - database_functions.py - backend.config.logger - INFO - Успешно получили id пользователя
+2026-04-16 12:34:57,855 - database_functions.py - backend.config.logger - INFO - Пользователь существует
+2026-04-16 12:34:57,856 - database_functions.py - backend.config.logger - INFO - Успешно вывели информацию о пользователе

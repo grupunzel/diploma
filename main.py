@@ -80,7 +80,7 @@ async def register_user(request: Request, first_name: str=Form(...), last_name: 
     if if_new_user:
         user_id = add_user(first_name=first_name, last_name=last_name, email=email, password=real_password, is_anonymous=False)
         request.session["user_id"] = user_id
-        return RedirectResponse(url="/", status_code=303)
+        return RedirectResponse(url=f"/profile", status_code=303)
     else:
         return templates.TemplateResponse(
             "sign_up.html",
